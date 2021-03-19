@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Food_Type(db.Model):
     __tablename__ = 'food_types'
     id = db.Column(db.Integer, primary_key=True)
