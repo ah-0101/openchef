@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(75), nullable=False, unique=True)
     chef_id = db.Column(db.Integer, db.ForeignKey="chefs.id")
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     chef = db.relationship("Chef")
 
@@ -65,6 +67,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             "id": self.id,
-            "username": self.username,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "chef_id": self.chef_id,
             "email": self.email
         }
