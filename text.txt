@@ -1,0 +1,3 @@
+1. define our database : 
+    open_chef_app
+    open_chef_db

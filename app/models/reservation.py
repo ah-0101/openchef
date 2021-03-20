@@ -9,5 +9,5 @@ class Reservation(db.Model):
     duration = db.Column(db.Integer)
     event_date = db.Column(db.Date)
     event_time = db.Column(db.DateTime)
-    created_at = Column(DateTime, default=datetime.now)
-    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+    # created_at = db.Column(db.DateTime, default=db.datetime.utcnow)
+    # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow)
