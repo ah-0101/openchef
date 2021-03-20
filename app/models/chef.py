@@ -8,7 +8,7 @@ class Chef(db.Model):
     price = db.Column(db.Integer, nullable=False)
     profile_image = db.Column(db.String(1000))
     # created_at = db.Column(db.DateTime, default=db.datetime.utcnow)
-    # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow)
+    # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow) # noqa
 
     # We are not including back_populates("chef")
     food_type = db.relationship("Food_Type")
