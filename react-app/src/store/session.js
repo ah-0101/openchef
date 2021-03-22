@@ -62,6 +62,20 @@ export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_p
   return dispatch(setUser(data))
 }
 
+export const restoreUser = () => async(dispatch) => {
+  const response = await fetch('/api/session', {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  });
+  const data = await response.json()
+  if (response.ok){
+  dispatch(setUser(data))
+  return response
+  }
+}
+
 
 const initialState = {user: null}
 

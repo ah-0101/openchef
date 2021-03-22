@@ -7,42 +7,45 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { useDispatch } from "react-redux";
+import {restoreUser} from "./store/session.js"
 
 function App() {
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    
-  })
+  useEffect( () => {
+   dispatch(restoreUser())
+   setLoaded(true)
+  }, [dispatch])
 
   if (!loaded) {
     return null;
   }
 
   return (
-    <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
+    <>
+      <NavBar  />
+      {loaded && (
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm
+            />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm   />
+          </Route>
+          <ProtectedRoute path="/users" exact={true} >
+            <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true} >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true} >
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+        </Switch>
+        )}
+    </>
+    
   );
 }
 
