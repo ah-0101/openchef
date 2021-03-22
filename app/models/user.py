@@ -1,7 +1,10 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .reservation import Reservation
+from .favorites import Favorite
+from .chef import Chef
+from .reviews import Review
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -11,8 +14,10 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(75), nullable=False, unique=True)
-    chef_id = db.Column(db.Integer, db.ForeignKey="chefs.id")
+    chef_id = db.Column(db.Integer, db.ForeignKey("chefs.id"))
     hashed_password = db.Column(db.String(255), nullable=False)
+    # created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    # updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     chef = db.relationship("Chef")
 
@@ -65,6 +70,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             "id": self.id,
-            "username": self.username,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "chef_id": self.chef_id,
             "email": self.email
         }
