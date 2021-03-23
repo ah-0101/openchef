@@ -32,7 +32,7 @@ def authenticate():
 def login():
     """
     Logs a user in
-    
+
     """
     form = LoginForm()
     print(request.get_json())
@@ -72,7 +72,7 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password']
         )
-        
+
         # print(">>>>>>>>>>>>>>>>>>", user)
         db.session.add(user)
         db.session.commit()
