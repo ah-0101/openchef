@@ -10,29 +10,29 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const onLogin = (e) => {
+  const onLogin = async (e)  => {
     e.preventDefault();
-    dispatch(login(email, password));
+    await dispatch(login(email, password));
     // if (!user.errors) {
     //   setAuthenticated(true);
     // } else {
     //   setErrors(user.errors);
     // }
 
-    history.push('/dashboard')
+    history.push('/')
   };
 
-  const handleDemoUser = e => {
+  const handleDemoUser = async (e) => {
     e.preventDefault()
-    dispatch(login(email='demo@aa.io', password='password'))
+    await dispatch(login(email='demo@aa.io', password='password'))
 
-    history.push('/dashboard')
+    history.push('/')
   }
-  const handleDemoChef = e => {
+  const handleDemoChef = async (e) => {
     e.preventDefault()
-    dispatch(login(email='demo_chef@aa.io', password='password'))
+    await dispatch(login(email='demo_chef@aa.io', password='password'))
 
-    history.push('/dashboard')
+    history.push('/')
   }
 
   const updateEmail = (e) => {

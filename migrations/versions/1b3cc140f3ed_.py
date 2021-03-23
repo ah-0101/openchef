@@ -57,9 +57,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('chef_id', sa.Integer(), nullable=True),
-    sa.Column('duration', sa.Integer(), nullable=True),
-    sa.Column('event_date', sa.Date(), nullable=True),
-    sa.Column('event_time', sa.DateTime(), nullable=True),
+    sa.Column('duration', sa.Integer(), nullable=False),
+    sa.Column('event_date', sa.String(), nullable=False),
+    sa.Column('event_time', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['chef_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
