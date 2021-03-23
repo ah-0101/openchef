@@ -1,10 +1,15 @@
 import React from "react";
-import { logout } from "../../services/auth";
+import {useDispatch} from "react-redux"
+import { logout } from "../../store/session";
+import { Redirect } from 'react-router-dom'
 
-const LogoutButton = ({setAuthenticated}) => {
+const LogoutButton = () => {
+  const dispatch = useDispatch()
   const onLogout = async (e) => {
-    await logout();
-    setAuthenticated(false);
+
+
+    await dispatch(logout())
+    return <Redirect to="/login"/>
   };
 
   return <button onClick={onLogout}>Logout</button>;

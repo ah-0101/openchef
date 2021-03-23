@@ -10,6 +10,8 @@ def seed_users():
                 hashed_password=generate_password_hash(('password')))
 
     user_chef1 = User(first_name='Chef', last_name='Demo', email='demo_chef@aa.io', city='Houston', chef_id=1,
+
+
                      hashed_password=generate_password_hash(('password')))
 
     user_chef2 = User(first_name='Tom', last_name='Boy', email='tom@aa.io', city='Cedar City', chef_id=2,
