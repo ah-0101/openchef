@@ -13,6 +13,6 @@ def seed_reviews():
 # the auto incrementing primary key
 
 
-def seed_reviews():
+def undo_reviews():
     db.session.execute('TRUNCATE reviews;')
     db.session.commit()

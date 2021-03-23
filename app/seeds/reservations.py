@@ -12,6 +12,6 @@ def seed_reservations():
 # the auto incrementing primary key
 
 
-def seed_reservations():
+def undo_reservations():
     db.session.execute('TRUNCATE reservations;')
     db.session.commit()
