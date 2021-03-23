@@ -5,7 +5,11 @@ from app.models import db, Review
 def seed_reviews():
     review1 = Review(user_id=1, chef_id=1, rating=5,
                      comment="Super great chef!")
+    review2 = Review(user_id=1, chef_id=4, rating=4,
+                     comment="Amazing foods")
+
     db.session.add(review1)
+    db.session.add(review2)
     db.session.commit()
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
