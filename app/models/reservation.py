@@ -10,4 +10,4 @@ class Reservation(db.Model):
     event_date = db.Column(db.Date)
     event_time = db.Column(db.DateTime)
     # created_at = db.Column(db.DateTime, default=db.datetime.utcnow)
-    # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow)
+    # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow) # noqa
