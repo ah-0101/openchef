@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
-import { userSignUp } from '../../store/session';
+import { userSignUp, chefSignUp } from '../../store/session';
 import { useDispatch } from "react-redux"
 
 const SignUpForm = ({ }) => {
@@ -11,17 +11,23 @@ const SignUpForm = ({ }) => {
   const [city, setCity] = useState("")
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isChef, setIsChef] = useState(false)
+  const [foodType, setFoodType] = useState("")
+  const [price, setPrice] = useState(0)
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      const data ={first_name, last_name, city, email, password}
+    if (password === confirmPassword && !isChef) {
       dispatch(userSignUp(first_name, last_name, city, email, password));
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
+    } else if (password === confirmPassword && isChef) {
+      dispatch(chefSignUp(foodType, price))
+      dispatch(userSignUp(first_name, last_name, city, email, password));
+      // here we need to append (connect) the chef to its user
     }
-  };
+  }
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
@@ -46,12 +52,61 @@ const SignUpForm = ({ }) => {
     setConfirmPassword(e.target.value);
   };
 
+  const updateIsChef = (e) => {
+    setIsChef(!isChef)
+  }
+
+  const updateFoodType = (e) => {
+    console.log("BEFORE--->>>", foodType)
+    setFoodType(e.target.id)
+    console.log("AFTER--->>>", foodType)
+  }
+
+  const updatePrice = (e) => {
+    setPrice(e.target.value)
+  }
+
+  // if chef button is selected,
+  // render additional form fields
+  // 1. Add button
+  // 2. Create function to handle select isChef
+  // 3. 
+
   // if (authenticated) {
   //   return <Redirect to="/" />;
   // }
 
+  let result;
+  if (isChef) {
+    result = (
+      <>
+        <div>
+          <label>Food Type</label>
+          <select
+            onChange={updateFoodType}
+            value={foodType}
+          >
+            <option hidden disabled>Select one...</option>
+            <option value="Italian">Italian</option>
+            <option value="American">American</option>
+            <option value="Middle Eastern">Middle Eastern</option>
+          </select>
+        </div>
+        <div>
+          <label>Price $</label>
+          <input
+            type="number"
+            name="price"
+            onChange={updatePrice}
+            value={price}
+          />
+        </div>
+      </>
+    )
+  }
+
   return (
-    <form onSubmit={onSignUp}>
+    <form>
       <div>
         <label>First Name</label>
         <input
@@ -107,7 +162,17 @@ const SignUpForm = ({ }) => {
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <div>
+        <label>I'm a Chef!</label>
+        <input
+          type="checkbox"
+          name="chef_id"
+          onClick={updateIsChef}
+          value={isChef}
+        />
+      </div>
+      {result}
+      <button onSubmit={onSignUp} type="submit">Sign Up</button>
     </form>
   );
 };
