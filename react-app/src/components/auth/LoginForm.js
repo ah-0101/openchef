@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux"
+import { allChefs } from "../../store/chefs";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -13,6 +14,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e)  => {
     e.preventDefault();
     await dispatch(login(email, password));
+    await dispatch(allChefs())
     // if (!user.errors) {
     //   setAuthenticated(true);
     // } else {
