@@ -7,14 +7,15 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { useDispatch } from "react-redux";
-import {restoreUser} from "./store/session.js"
+import { restoreUser } from "./store/session"
 
 function App() {
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
-  useEffect( () => {
-   dispatch(restoreUser())
-   setLoaded(true)
+
+  useEffect(async () => {
+    await dispatch(restoreUser())
+    setLoaded(true)
   }, [dispatch])
 
   if (!loaded) {
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      <NavBar  />
+      <NavBar />
       {loaded && (
         <Switch>
           <Route path="/login" exact={true}>
@@ -31,10 +32,10 @@ function App() {
             />
           </Route>
           <Route path="/sign-up" exact={true}>
-            <SignUpForm   />
+            <SignUpForm />
           </Route>
           <ProtectedRoute path="/users" exact={true} >
-            <UsersList/>
+            <UsersList />
           </ProtectedRoute>
           <ProtectedRoute path="/users/:userId" exact={true} >
             <User />
@@ -43,9 +44,9 @@ function App() {
             <h1>My Home Page</h1>
           </ProtectedRoute>
         </Switch>
-        )}
+      )}
     </>
-    
+
   );
 }
 

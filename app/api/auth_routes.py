@@ -28,31 +28,27 @@ def authenticate():
     return {'errors': ['Unauthorized']}, 401
 
 
-@auth_routes.route('/login', methods=['POST'])
+@auth_routes.route('/login/', methods=['POST'])
 def login():
     """
     Logs a user in
     
     """
-    print('before the form LOGIN FORM')
     form = LoginForm()
-
-    print(form)
     print(request.get_json())
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-        print("validated")
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
+        # login_user(user, remember=True, duration=None)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route('/logout')
+@auth_routes.route('/logout/')
 def logout():
     """
     Logs a user out
@@ -61,7 +57,7 @@ def logout():
     return {'message': 'User logged out'}
 
 
-@auth_routes.route('/signup', methods=['POST'])
+@auth_routes.route('/signup/', methods=['POST'])
 def sign_up():
     """
     Creates a new user and logs them in
@@ -84,7 +80,7 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@auth_routes.route('/unauthorized')
+@auth_routes.route('/unauthorized/')
 def unauthorized():
     """
     Returns unauthorized JSON when flask-login authentication fails

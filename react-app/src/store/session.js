@@ -16,10 +16,8 @@ const removeUser = () => {
     }
 }
 
-export const login = (email, password) => async(dispatch) => {
-    console.log("HEREERE")
-    console.log(email, password)
-    const response = await fetch('/api/auth/login', {
+export const login = (email, password) => async (dispatch) => {
+    const response = await fetch('/api/auth/login/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -31,13 +29,12 @@ export const login = (email, password) => async(dispatch) => {
 
     });
     const data = await response.json();
-    console.log(data)
     await dispatch(setUser(data))
     return response
 }
 
-export const logout = async() => {
-    const response = await fetch("/api/auth/logout", {
+export const logout = async () => {
+    const response = await fetch("/api/auth/logout/", {
         headers: {
             "Content-Type": "application/json",
         }
@@ -46,8 +43,8 @@ export const logout = async() => {
 };
 
 
-export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_password) => async(dispatch) => {
-    const response = await fetch("/api/auth/signup", {
+export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_password) => async (dispatch) => {
+    const response = await fetch("/api/auth/signup/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -65,8 +62,8 @@ export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_p
     return dispatch(setUser(data))
 }
 
-export const restoreUser = () => async(dispatch) => {
-    const response = await fetch('/api/auth', {
+export const restoreUser = () => async (dispatch) => {
+    const response = await fetch('/api/auth/', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -74,7 +71,7 @@ export const restoreUser = () => async(dispatch) => {
     });
     if (response.ok) {
         const data = await response.json()
-        dispatch(setUser(data))
+        await dispatch(setUser(data))
         return response
     }
 }
@@ -88,6 +85,7 @@ const SessionReducer = (state = initialState, action) => {
         case SET_USER:
             newState = Object.assign({}, state)
             newState.user = action.payload
+            return newState
         default:
             return state
     }

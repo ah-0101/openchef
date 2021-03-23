@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux"
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -11,15 +11,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const onLogin = (e) => {
     e.preventDefault();
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>');
     dispatch(login(email, password));
     // if (!user.errors) {
     //   setAuthenticated(true);
     // } else {
     //   setErrors(user.errors);
     // }
-    
-    return <Redirect to="/peter"/>
+
+    return <Redirect to="/peter" />
   };
 
   const updateEmail = (e) => {
