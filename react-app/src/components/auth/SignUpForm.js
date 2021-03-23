@@ -22,11 +22,12 @@ const SignUpForm = ({ }) => {
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
-    } else if (password === confirmPassword && isChef) {
-      dispatch(chefSignUp(foodType, price))
-      dispatch(userSignUp(first_name, last_name, city, email, password));
-      // here we need to append (connect) the chef to its user
     }
+    // else if (password === confirmPassword && isChef) {
+      // dispatch(chefSignUp(foodType, price))
+      // dispatch(userSignUp(first_name, last_name, city, email, password));
+      // here we need to append (connect) the chef to its user
+    // }
   }
 
   const updateFirstName = (e) => {

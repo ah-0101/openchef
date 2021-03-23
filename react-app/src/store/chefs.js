@@ -23,13 +23,13 @@ const ChefsReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_CHEFS:
             console.log('>>>>>>>>>>>>>>>>', action.payload)
-            newState = {};
+            newState = JSON.parse(JSON.stringify(state));
             action.payload.chefs.forEach(chef => {
                 newState[chef.id] = chef;
             })
             return newState
         default:
-            return {...state, ...newState }
+            return state
     }
 }
 

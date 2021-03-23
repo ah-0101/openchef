@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-
+import SearchBar from './SearchBar'
 
 export default function HomePage() {
 const chefs = useSelector(state => state.chefs)
@@ -15,7 +15,10 @@ console.log('+++++',chefArr[0]?.email)
     return (
         <>
             <h1>here is the chefs ''''''</h1>
-            {chefArr[0]?.email}
+            {chefArr[0]?.email
+            // <img src="image" alt=""/>
+        }
+        < SearchBar />
         </>
     )
 }
