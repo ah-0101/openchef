@@ -69,6 +69,7 @@ export const restoreUser = () => async (dispatch) => {
             "Content-Type": "application/json",
         }
     });
+    // console.log("DOC", document.cookie)
     if (response.ok) {
         const data = await response.json()
         await dispatch(setUser(data))
