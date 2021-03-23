@@ -32,14 +32,20 @@ def authenticate():
 def login():
     """
     Logs a user in
+    
     """
+    print('before the form LOGIN FORM')
     form = LoginForm()
+
+    print(form)
     print(request.get_json())
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print("validated")
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
         return user.to_dict()
@@ -64,9 +70,12 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
-            username=form.data['username'],
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
             email=form.data['email'],
-            password=form.data['password']
+            city=form.data['city'],
+            chef_id=form.data['chef_id'],
+            hashed_password=form.data['password']
         )
         db.session.add(user)
         db.session.commit()
