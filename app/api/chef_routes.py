@@ -7,5 +7,4 @@ chef_routes = Blueprint('chefs', __name__)
 @chef_routes.route('/')
 def get_all_chefs():
   users = User.query.all()
-  print(users)
-  return {"chefs": [user.to_dict() for user in users if user.chef_id]}
+  return {'chefs': [user.to_dict() for user in users if user.chef_id]}
