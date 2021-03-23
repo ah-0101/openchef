@@ -3,9 +3,9 @@ from app.models import db, Review
 
 
 def seed_reviews():
-    review1 = Review(user_id=1, chef_id=1, rating=5,
+    review1 = Review(user_id=1, chef_id=2, rating=5,
                      comment="Super great chef!")
-    review2 = Review(user_id=1, chef_id=4, rating=4,
+    review2 = Review(user_id=2, chef_id=3, rating=4,
                      comment="Amazing foods")
 
     db.session.add(review1)
