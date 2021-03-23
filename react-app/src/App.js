@@ -13,9 +13,6 @@ function App() {
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
 
-  const cookieee = document.cookie
-  console.log('coooookie', cookieee)
-
   useEffect(async () => {
     await dispatch(restoreUser())
     setLoaded(true)

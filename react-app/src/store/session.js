@@ -17,7 +17,7 @@ const removeUser = () => {
 }
 
 export const login = (email, password) => async (dispatch) => {
-    const response = await fetch('/api/auth/login', {
+    const response = await fetch('/api/auth/login/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = async () => {
-    const response = await fetch("/api/auth/logout", {
+    const response = await fetch("/api/auth/logout/", {
         headers: {
             "Content-Type": "application/json",
         }
@@ -44,7 +44,7 @@ export const logout = async () => {
 
 
 export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_password) => async (dispatch) => {
-    const response = await fetch("/api/auth/signup", {
+    const response = await fetch("/api/auth/signup/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -63,13 +63,12 @@ export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_p
 }
 
 export const restoreUser = () => async (dispatch) => {
-    const response = await fetch('/api/auth', {
+    const response = await fetch('/api/auth/', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         }
     });
-    // console.log("DOC", document.cookie)
     if (response.ok) {
         const data = await response.json()
         await dispatch(setUser(data))
