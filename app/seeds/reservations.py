@@ -3,8 +3,8 @@ from app.models import db, Reservation
 
 
 def seed_reservations():
-    reserv1 = Reservation(user_id=1, chef_id=2, duration=2)
-    reserv2 = Reservation(user_id=2, chef_id=3, duration=2)
+    reserv1 = Reservation(user_id=1, chef_id=2, duration=2, event_date="Tue Apr 13 2021",event_time="8:00 pm")
+    reserv2 = Reservation(user_id=2, chef_id=3, duration=2, event_date="Thurs Apr 15 2021", event_time="10:00 pm")
     db.session.add(reserv1)
     db.session.add(reserv2)
     db.session.commit()

@@ -7,13 +7,13 @@ from app.models import db, User
 def seed_users():
 
     demo = User(first_name='Demo', last_name='Test', email='demo@aa.io', city='Houston',
-                hashed_password=('password'))
+                hashed_password=generate_password_hash(('password')))
 
     user_chef1 = User(first_name='Chef', last_name='Demo', email='demo_chef@aa.io', city='Houston', chef_id=1,
-                     hashed_password=('password'))
+                     hashed_password=generate_password_hash(('password')))
 
     user_chef2 = User(first_name='Tom', last_name='Boy', email='tom@aa.io', city='Cedar City', chef_id=2,
-                     hashed_password=('password'))
+                     hashed_password=generate_password_hash(('password')))
 
     db.session.add(demo)
     db.session.add(user_chef1)
