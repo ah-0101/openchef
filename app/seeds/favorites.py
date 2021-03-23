@@ -3,7 +3,11 @@ from app.models import db, Favorite
 
 def seed_favorites():
 
-    db.session.add(demo)
+    favorite = Favorite(chef_id=4, user_id=1)
+    favorite2 = Favorite(chef_id=5, user_id=1)
+
+    db.session.add(favorite)
+    db.session.add(favorite2)
 
     db.session.commit()
 
