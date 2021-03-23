@@ -33,15 +33,14 @@ export const login = (email, password) => async (dispatch) => {
     return response
 }
 
-export const logout = () =>  async (dispatch) => {
+export const logout = () => async (dispatch) => {
     const response = await fetch("/api/auth/logout/", {
-        method: "DELETE",
         headers: {
             "Content-Type": "application/json",
         }
     });
-//    const  data =  await response.json();
-      await dispatch(removeUser())
+    //    const  data =  await response.json();
+    await dispatch(removeUser())
 
 
 };
@@ -90,9 +89,9 @@ const SessionReducer = (state = initialState, action) => {
             newState.user = action.payload
             return newState
         case REMOVE_USER:
-             newState = Object.assign({}, state)
-             newState.user = null;
-             return newState
+            newState = Object.assign({}, state)
+            newState.user = null;
+            return newState
 
         default:
             return state
