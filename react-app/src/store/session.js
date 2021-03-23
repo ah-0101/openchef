@@ -39,12 +39,8 @@ export const logout = () => async (dispatch) => {
             "Content-Type": "application/json",
         }
     });
-    //    const  data =  await response.json();
     await dispatch(removeUser())
-
-
 };
-
 
 export const userSignUp = (first_name, last_name, city, email, password) => async (dispatch) => {
     const response = await fetch("/api/auth/signup/", {
@@ -77,7 +73,6 @@ export const restoreUser = () => async (dispatch) => {
         return response
     }
 }
-
 
 const initialState = { user: null }
 
