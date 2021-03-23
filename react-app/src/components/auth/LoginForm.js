@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux"
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -18,8 +19,21 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     //   setErrors(user.errors);
     // }
 
-    return <Redirect to="/peter" />
+    history.push('/dashboard')
   };
+
+  const handleDemoUser = e => {
+    e.preventDefault()
+    dispatch(login(email='demo@aa.io', password='password'))
+
+    history.push('/dashboard')
+  }
+  const handleDemoChef = e => {
+    e.preventDefault()
+    dispatch(login(email='demo_chef@aa.io', password='password'))
+
+    history.push('/dashboard')
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -29,9 +43,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  // if (authenticated) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <form onSubmit={onLogin}>
@@ -59,7 +73,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">PETER</button>
+        <button type="submit">Login</button>
+        <button type="button" onClick={handleDemoUser}>Demo User</button>
+        <button type="button" onClick={handleDemoChef}>Demo Chef</button>
       </div>
     </form>
   );

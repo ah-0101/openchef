@@ -6,6 +6,7 @@ class Chef(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     food_type_id = db.Column(db.Integer, db.ForeignKey("food_types.id"), nullable=False)  # noqa
     price = db.Column(db.Integer, nullable=False)
+    bio = db.Column(db.String)
     profile_image = db.Column(db.String(1000))
     # created_at = db.Column(db.DateTime, default=db.datetime.utcnow)
     # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow) # noqa

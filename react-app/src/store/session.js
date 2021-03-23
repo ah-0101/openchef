@@ -43,7 +43,7 @@ export const logout = async () => {
 };
 
 
-export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_password) => async (dispatch) => {
+export const userSignUp = (first_name, last_name, city, email, password) => async (dispatch) => {
     const response = await fetch("/api/auth/signup/", {
         method: "POST",
         headers: {
@@ -53,9 +53,8 @@ export const userSignUp = (first_name, last_name, city, chef_id, email, hashed_p
             first_name,
             last_name,
             city,
-            chef_id,
             email,
-            hashed_password
+            password
         }),
     });
     const data = await response.json();

@@ -5,10 +5,13 @@ from app.models import db, User
 def seed_users():
 
     demo = User(first_name='Demo', last_name='Test', email='demo@aa.io', city='Houston',
-                hashed_password= generate_password_hash('password'))
+                hashed_password= ('password'))
+
+    demo_chef = User(first_name='Chef', last_name='Demo', email='demo_chef@aa.io', city='Houston', chef_id=4,
+                hashed_password = ('password'))
 
     db.session.add(demo)
-
+    db.session.add(demo_chef)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.

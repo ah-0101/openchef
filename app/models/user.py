@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(75), nullable=False, unique=True)
     chef_id = db.Column(db.Integer, db.ForeignKey("chefs.id"))
-    hashed_password = db.Column(db.String(255), nullable=False)
+    hashed_password = db.Column(db.String, nullable=False)
     # created_at = db.Column(db.DateTime, default=datetime.utcnow)
     # updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -62,6 +62,7 @@ class User(db.Model, UserMixin):
 
     @password.setter
     def password(self, password):
+        print(password)
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
