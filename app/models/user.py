@@ -6,6 +6,7 @@ from .favorites import Favorite
 from .chef import Chef
 from .reviews import Review
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -17,7 +18,7 @@ class User(db.Model, UserMixin):
     chef_id = db.Column(db.Integer, db.ForeignKey("chefs.id"))
     hashed_password = db.Column(db.String, nullable=False)
     # created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    # updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    # updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow) # noqa
 
     chef = db.relationship("Chef")
 

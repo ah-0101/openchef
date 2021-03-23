@@ -1,14 +1,19 @@
-from app.models import db, Food_Type
+from app.models import db, Favorite
 
-def seed_food_types():
-    food_type1 = Food_Type(name="Italian")
-    db.session.add(food_type1)
+
+def seed_favorites():
+
+    db.session.add(demo)
+
     db.session.commit()
+
+
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 
-def undo_food_types():
-    db.session.execute('TRUNCATE food_types;')
+
+def undo_favorites():
+    db.session.execute('TRUNCATE favorites;')
     db.session.commit()
