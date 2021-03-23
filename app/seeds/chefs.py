@@ -1,8 +1,10 @@
+from werkzeug.security import generate_password_hash
 from app.models import db, Chef
-# Adds a demo user, you can add other users here if you want
-
 
 def seed_chefs():
+
+    demo = Chef(food_type_id=2, price=60, bio="I have been a chef for 20 years and am the best",
+    profile_image="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Feducationcareerarticles.com%2Fwp-content%2Fuploads%2F2014%2F07%2FChef9.jpg&f=1&nofb=1")
     chef1 = Chef(food_type_id=1, price=50, bio="I love to cook! My mom taught me to cook when I was 5 years old.",
                  profile_image="https://i.postimg.cc/W1RQGDyh/faceless-profile1.jpg")
     chef2 = Chef(food_type_id=2, price=60, bio="Cooking is cool. Hire me for all your family events.",
@@ -30,8 +32,10 @@ def seed_chefs():
     db.session.add(chef7)
     db.session.add(chef8)
     db.session.add(chef9)
-
+    db.session.add(demo)
+    db.session.commit()
 
 def undo_chefs():
-    db.session.execute('TRUNCATE chefs;')
-    db.session.commit()
+  db.session.execute('TRUNCATE chefs;')
+  db.session.commit()
+# Adds a demo user, you can add other users here if you want

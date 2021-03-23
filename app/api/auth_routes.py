@@ -68,11 +68,12 @@ def sign_up():
         user = User(
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],
-            email=form.data['email'],
             city=form.data['city'],
-            chef_id=form.data['chef_id'],
-            hashed_password=form.data['password']
+            email=form.data['email'],
+            password=form.data['password']
         )
+        
+        # print(">>>>>>>>>>>>>>>>>>", user)
         db.session.add(user)
         db.session.commit()
         login_user(user)

@@ -15,6 +15,8 @@ seed_commands = AppGroup('seed')
 
 @seed_commands.command('all')
 def seed():
+    # seed_food_types()
+    # seed_chefs()
     seed_users()
     seed_favorites()
     # Add other seed functions here
@@ -24,6 +26,8 @@ def seed():
 
 @seed_commands.command('undo')
 def undo():
+    undo_food_types()
+    undo_chefs()
     undo_users()
     undo_favorites()
     # Add other undo functions here
