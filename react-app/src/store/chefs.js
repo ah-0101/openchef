@@ -7,6 +7,7 @@ const getChefs = (chefs) => {
     }
 }
 
+
 export const allChefs = () => async (dispatch) => {
     const response = await fetch('/api/chefs/')
 
@@ -16,6 +17,7 @@ export const allChefs = () => async (dispatch) => {
         return response
     }
 }
+
 
 // // export const chefSignUp = () => async (dispatch) => {
 // //     const response = await fetch('/api/chefs/')
@@ -36,4 +38,6 @@ const ChefsReducer = (state = {}, action) => {
     }
 }
 
+
 export default ChefsReducer
+

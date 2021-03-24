@@ -15,6 +15,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     await dispatch(allChefs())
     await dispatch(login(email, password));
+    await dispatch(allChefs())
     // if (!user.errors) {
     //   setAuthenticated(true);
     // } else {
@@ -26,14 +27,18 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const handleDemoUser = async (e) => {
     e.preventDefault()
-    await dispatch(login(email = 'demo@aa.io', password = 'password'))
+
+    await dispatch(login(email ='demo@aa.io', password = 'password'))
+
     await dispatch(allChefs())
 
     history.push('/')
   }
   const handleDemoChef = async (e) => {
     e.preventDefault()
+
     await dispatch(login(email = 'demo_chef@aa.io', password = 'password'))
+
     await dispatch(allChefs())
 
     history.push('/')
