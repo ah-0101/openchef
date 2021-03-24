@@ -8,10 +8,10 @@ const getReservations = (reservations) => {
 }
 
 
-export const getChefReservation = (id) => async(dispatch) => {
-    const res = await fetch(`/api/reservations/${id}/`)
+// export const getChefReservation = (id) => async (dispatch) => {
+//     const res = await fetch(`/api/reservations/${id}/`)
 
-}
+// }
 
 
 const ChefReservationReducer = (state = {}, action) => {
@@ -19,7 +19,7 @@ const ChefReservationReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_RESERVATIONS:
             newState = JSON.parse(JSON.stringify(state))
-                //utilize the data first and see whats the outcome.
+            //utilize the data first and see whats the outcome.
             return newState
         default:
             return state

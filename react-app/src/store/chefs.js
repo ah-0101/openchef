@@ -1,4 +1,5 @@
 const GET_CHEFS = 'chefs/getChefs'
+// const
 
 const getChefs = (chefs) => {
     return {
@@ -6,6 +7,7 @@ const getChefs = (chefs) => {
         payload: chefs
     }
 }
+
 
 
 export const allChefs = () => async (dispatch) => {
