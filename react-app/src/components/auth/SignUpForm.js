@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { userSignUp } from '../../store/session';
 import { useDispatch } from "react-redux";
-import { allChefs } from "../../store/chefs";
+import { allChefs, chefSignUp } from "../../store/chefs";
 
 const SignUpForm = ({ }) => {
   const dispatch = useDispatch()
