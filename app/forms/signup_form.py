@@ -20,5 +20,5 @@ class SignUpForm(FlaskForm):
     password = StringField('Password', validators=[DataRequired()])
 
 
-## test test
-#TODO routes- -Seeding Data- -Creating the redux store
+# test test
+# TODO routes- -Seeding Data- -Creating the redux store

@@ -4,6 +4,7 @@ import { userSignUp } from '../../store/session';
 import { useDispatch } from "react-redux";
 import { allChefs } from "../../store/chefs";
 
+
 const SignUpForm = ({ }) => {
   const dispatch = useDispatch()
   const [first_name, setFirstName] = useState("");
@@ -25,6 +26,7 @@ const SignUpForm = ({ }) => {
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
+
     } //else if (password === confirmPassword && isChef) {
     //   dispatch(chefSignUp(foodType, price))
     //   dispatch(userSignUp(first_name, last_name, city, email, password));
@@ -74,7 +76,7 @@ const SignUpForm = ({ }) => {
   // render additional form fields
   // 1. Add button
   // 2. Create function to handle select isChef
-  // 3. 
+  // 3.
 
   // if (authenticated) {
   //   return <Redirect to="/" />;
