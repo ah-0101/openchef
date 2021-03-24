@@ -10,3 +10,12 @@ class Review(db.Model):
     comment = db.Column(db.String(255), nullable=False)
     # created_at = db.Column(db.DateTime, default=db.datetime.utcnow)
     # updated_at = db.Column(db.DateTime, default=db.datetime.utcnow, onupdate=db.datetime.utcnow) # noqa
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "chef_id": self.chef_id,
+            "rating": self.rating,
+            "comment": self.comment
+        }

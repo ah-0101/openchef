@@ -15,6 +15,14 @@ def get_all_chefs():
     return jsonify({'chefs': [user.to_dict_chefs() for user in users]})
 
 
+@chef_routes.route('/<int:id>')
+def get_one_chefs(id):
+    chef = User.query.get(id)
+    # chef = user.query.join(Chef).first()
+    print(">>>>>>>>>>>",chef)
+    return chef.to_dict()
+
+
 
 
 #TODO this is going to fitch the data for the chef where the chef have an 'h' anywhere.

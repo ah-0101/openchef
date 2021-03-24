@@ -74,6 +74,7 @@ class User(db.Model, UserMixin):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "email": self.email,
+            "city": self.city
         }
 
     def to_dict_chefs(self):
@@ -83,6 +84,7 @@ class User(db.Model, UserMixin):
             "last_name": self.last_name,
             "chef": self.chef.to_dict(),
             "email": self.email,
+            "city": self.city
         }
 
     def to_dict_reservations(self):

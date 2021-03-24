@@ -3,12 +3,16 @@ import { createStore, combineReducers, compose, logger, applyMiddleware } from '
 import SessionReducer from './session';
 import ChefReservationReducer from './chef_reservations';
 import ChefsReducer from './chefs';
+import FoodsReducer from './food_types'
+import ReviewsReducer from './reviews';
 
 
 const rootReducer = combineReducers({
     session: SessionReducer,
     chef_reservations: ChefReservationReducer,
     chefs: ChefsReducer,
+    food_types: FoodsReducer,
+    reviews: ReviewsReducer
     
 })
 
