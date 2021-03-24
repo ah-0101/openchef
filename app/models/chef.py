@@ -13,3 +13,12 @@ class Chef(db.Model):
 
     # We are not including back_populates("chef")
     food_type = db.relationship("Food_Type")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "food_type_id": self.food_type_id,
+            "price": self.price,
+            "bio": self.bio,
+            "profile_image": self.profile_image,
+        }
