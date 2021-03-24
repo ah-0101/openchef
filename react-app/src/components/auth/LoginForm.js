@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux"
+import { allChefs } from "../../store/chefs";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -10,8 +11,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const onLogin = async (e)  => {
+  const onLogin = async (e) => {
     e.preventDefault();
+    await dispatch(allChefs())
     await dispatch(login(email, password));
     // if (!user.errors) {
     //   setAuthenticated(true);
@@ -24,13 +26,15 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const handleDemoUser = async (e) => {
     e.preventDefault()
-    await dispatch(login(email='demo@aa.io', password='password'))
+    await dispatch(login(email = 'demo@aa.io', password = 'password'))
+    await dispatch(allChefs())
 
     history.push('/')
   }
   const handleDemoChef = async (e) => {
     e.preventDefault()
-    await dispatch(login(email='demo_chef@aa.io', password='password'))
+    await dispatch(login(email = 'demo_chef@aa.io', password = 'password'))
+    await dispatch(allChefs())
 
     history.push('/')
   }

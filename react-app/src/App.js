@@ -8,7 +8,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import HomePage from "./components/HomePage";
 import { useDispatch } from "react-redux";
-import { restoreUser } from "./store/session"
+import { restoreUser } from "./store/session";
 
 function App() {
   const dispatch = useDispatch()
