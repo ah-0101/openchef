@@ -18,6 +18,19 @@ export const allChefs = () => async(dispatch) => {
     }
 }
 
+export const chefSignUp = () => async (dispatch) => {
+    const response = await fetch('/api/chefs/')
+
+
+
+}
+
+
+
+
+
+
+
 const ChefsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {

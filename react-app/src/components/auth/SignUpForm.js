@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
-import { userSignUp, chefSignUp } from '../../store/session';
+import { userSignUp} from '../../store/session';
 import { useDispatch } from "react-redux"
+import {chefSignUp} from '../../store/chefs'
 
 const SignUpForm = ({ }) => {
   const dispatch = useDispatch()
@@ -70,7 +71,7 @@ const SignUpForm = ({ }) => {
   // render additional form fields
   // 1. Add button
   // 2. Create function to handle select isChef
-  // 3. 
+  // 3.
 
   // if (authenticated) {
   //   return <Redirect to="/" />;
