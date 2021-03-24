@@ -75,7 +75,7 @@ const SignUpForm = ({ }) => {
   // render additional form fields
   // 1. Add button
   // 2. Create function to handle select isChef
-  // 3. 
+  // 3.
 
   // if (authenticated) {
   //   return <Redirect to="/" />;
@@ -111,57 +111,65 @@ const SignUpForm = ({ }) => {
   }
 
   return (
-    <form>
+    <>
+    <h2>Welcome to OpenChef!</h2>
+    <form className="login-sign-up">
       <div>
-        <label>First Name</label>
         <input
           type="text"
           name="first_name"
+          className="form_text"
+          placeholder="First Name"
           onChange={updateFirstName}
           value={first_name}
         ></input>
       </div>
       <div>
-        <label>Last Name</label>
         <input
           type="text"
           name="last_name"
+          className="form_text"
+          placeholder="Last Name"
           onChange={updateLastName}
           value={last_name}
         ></input>
       </div>
       <div>
-        <label>Email</label>
         <input
           type="text"
           name="email"
+          placeholder="Enter Email"
+          className="form_text"
           onChange={updateEmail}
           value={email}
         ></input>
       </div>
       <div>
-        <label>City</label>
         <input
           type="text"
           name="city"
+          placeholder="City"
+          className="form_text"
           onChange={updateCity}
           value={city}
         ></input>
       </div>
       <div>
-        <label>Password</label>
         <input
           type="password"
           name="password"
+          className="form_text"
+          placeholder="Enter Password"
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
       <div>
-        <label>Confirm Password</label>
         <input
           type="password"
           name="confirm_password"
+          className="form_text"
+          placeholder="Re-enter Password"
           onChange={updateConfirmPassword}
           value={confirmPassword}
           required={true}
@@ -172,13 +180,15 @@ const SignUpForm = ({ }) => {
         <input
           type="checkbox"
           name="chef_id"
+          className="form_text"
           onClick={updateIsChef}
           value={isChef}
         />
       </div>
       {result}
-      <button onClick={onSignUp} type="submit">Sign Up</button>
+      <button className="mainButton" onClick={onSignUp} type="submit">Sign Up</button>
     </form>
+    </>
   );
 };
 

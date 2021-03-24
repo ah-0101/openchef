@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: black;
+  font-family: "Sofia", cursive;
+  font-style: italic;
+  font-size: 3.6em;
+  text-align: center;
+  margin-top: 20px;
+}
+#posts {
+  color: #03045e;
+  font-family: "Sofia", cursive;
+  font-style: italic;
+  font-size: 2em;
+  text-align: left;
+  padding-left: 25%;
+  margin-top: 20px;
+}
+
+a {
+  color: #03045e;
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-sign-up {
+  margin-top: 140px;
+  margin: auto;
+  width: 350px;
+
+  top: 10%;
+  left: 50%;
+}
+
+::placeholder {
+  color: #03045e;
+  font-family: "Raleway", sans-serif;
+}
+
+.form_text {
+  color: #03045e;
+  width: 350px;
+  padding: 20px 0px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #03045e;
+  outline: none;
+  font-size: 17px;
+}
+
+.mainButton {
+  background: #da3743;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  border: 0;
+  width: 350px;
+  height: 40px;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+.mainButton:hover {
+  background: #b8222d;
+}
