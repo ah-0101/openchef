@@ -12,7 +12,7 @@ chef_routes = Blueprint('chefs', __name__)
 @chef_routes.route('/')
 def get_all_chefs():
     users = User.query.join(Chef).all()
-    return jsonify({'chefs': [user.to_dict() for user in users]})
+    return jsonify({'chefs': [user.to_dict_chefs() for user in users]})
 
 
 
