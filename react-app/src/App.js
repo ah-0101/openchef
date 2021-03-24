@@ -29,37 +29,25 @@ function App() {
         // return <Redirect to='/login' />
     }
 
-    return ( <
-        >
-        <
-        NavBar / > {
-            loaded && ( <
-                Switch >
-                <
-                Route path = "/login"
+    return ( 
+      <>
+        <NavBar /> {
+            loaded && ( 
+              <Switch >
+                <Route path = "/login"exact = { true } >
+                  <LoginForm />
+                </Route> 
+                <Route path = "/sign-up"
                 exact = { true } >
-                <
-                LoginForm /
-                >
-                <
-                /Route> <
-                Route path = "/sign-up"
-                exact = { true } >
-                <
-                SignUpForm / >
-                <
-                /Route> <
-                Route path = "/"
-                exact = { true } >
-                <
-                HomePage / >
-                <
-                /Route> <
-                /Switch>
+                  <SignUpForm />
+                </Route> 
+                <Route path = "/" exact = { true } >
+                  <HomePage />
+                </Route> 
+              </Switch>
             )
-        } <
-        />
-
+        } 
+        </>
     );
 }
 

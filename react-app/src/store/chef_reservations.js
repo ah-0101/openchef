@@ -8,8 +8,8 @@ const getReservations = (reservations) => {
 }
 
 
-export const getChefReservation = (userId) => async(dispatch) => {
-    // const res = await fetch('')
+export const getChefReservation = (id) => async(dispatch) => {
+    const res = await fetch(`/api/reservations/${id}/`)
 
 }
 
