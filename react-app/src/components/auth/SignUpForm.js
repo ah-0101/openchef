@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
-import { userSignUp} from '../../store/session';
-import { useDispatch } from "react-redux"
-import {chefSignUp} from '../../store/chefs'
+import { userSignUp } from '../../store/session';
+import { useDispatch } from "react-redux";
+import { allChefs } from "../../store/chefs";
+
 
 const SignUpForm = ({ }) => {
   const dispatch = useDispatch()
@@ -19,15 +20,18 @@ const SignUpForm = ({ }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === confirmPassword && !isChef) {
-      dispatch(userSignUp(first_name, last_name, city, email, password));
+      await dispatch(allChefs())
+      await dispatch(userSignUp(first_name, last_name, city, email, password));
+      return <Redirect to="/" />
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
-    }
-    // else if (password === confirmPassword && isChef) {
-      // dispatch(chefSignUp(foodType, price))
-      // dispatch(userSignUp(first_name, last_name, city, email, password));
-      // here we need to append (connect) the chef to its user
+
+    } //else if (password === confirmPassword && isChef) {
+    //   dispatch(chefSignUp(foodType, price))
+    //   dispatch(userSignUp(first_name, last_name, city, email, password));
+    //   // here we need to append (connect) the chef to its user
+    // return <Redirect to="/" />
     // }
   }
 

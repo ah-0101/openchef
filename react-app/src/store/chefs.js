@@ -7,36 +7,28 @@ const getChefs = (chefs) => {
     }
 }
 
-export const allChefs = () => async(dispatch) => {
+
+export const allChefs = () => async (dispatch) => {
     const response = await fetch('/api/chefs/')
 
     if (response.ok) {
         const data = await response.json()
-        console.log(data)
         await dispatch(getChefs(data))
         return response
     }
 }
 
-export const chefSignUp = () => async (dispatch) => {
-    const response = await fetch('/api/chefs/')
 
+// // export const chefSignUp = () => async (dispatch) => {
+// //     const response = await fetch('/api/chefs/')
 
-
-}
-
-
-
-
-
-
+// // }
 
 const ChefsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_CHEFS:
-            console.log('>>>>>>>>>>>>>>>>', action.payload)
-            newState = JSON.parse(JSON.stringify(state));
+            newState = {};
             action.payload.chefs.forEach(chef => {
                 newState[chef.id] = chef;
             })
@@ -46,4 +38,6 @@ const ChefsReducer = (state = {}, action) => {
     }
 }
 
+
 export default ChefsReducer
+
