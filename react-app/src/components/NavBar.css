@@ -1,27 +1,22 @@
 .nav-bar {
   background: #f1f2f4;
-  /* border-bottom: 2px solid#faf4d3; */
   display: flex;
-  text-align: start;
-  /* padding: 5px 0px 5px 0px; */
-  /* justify-content: space-between;
-  align-items: space-between; */
-  font-size: 18px;
   position: relative;
+  /* padding: 5px 0px 5px 0px; */
+  justify-content: space-between;
 }
 
 .nav-bar a:hover {
   color: #b8222d;
-  position: sticky;
-  /* background: #00b4d8; */
 }
 
 .nav-bar a {
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #da3743;
-  /* background: #00b4d8; */
+  font-size: 16px;
 }
 
-/* .nav-bar > li {
- background: #00b4d8;
- }  */
+li {
+  display: inline;
+  padding: 30px;
+}

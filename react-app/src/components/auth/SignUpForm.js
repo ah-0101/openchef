@@ -15,7 +15,7 @@ const SignUpForm = ({ }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isChef, setIsChef] = useState(false)
   const [foodType, setFoodType] = useState("")
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(10)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -90,6 +90,7 @@ const SignUpForm = ({ }) => {
           <select
             onChange={updateFoodType}
             value={foodType}
+            // className="form_text"
           >
             <option hidden disabled>Select one...</option>
             <option value="Italian">Italian</option>
@@ -102,6 +103,10 @@ const SignUpForm = ({ }) => {
           <input
             type="number"
             name="price"
+            className="form_text"
+            min={ 10 }
+            max={ 300 }
+            step={5}
             onChange={updatePrice}
             value={price}
           />
@@ -176,7 +181,7 @@ const SignUpForm = ({ }) => {
         ></input>
       </div>
       <div>
-        <label>I'm a Chef!</label>
+       <label>I'm a Chef!</label>
         <input
           type="checkbox"
           name="chef_id"

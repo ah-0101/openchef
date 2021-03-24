@@ -29,24 +29,24 @@ function App() {
         // return <Redirect to='/login' />
     }
 
-    return ( 
+    return (
       <>
         <NavBar /> {
-            loaded && ( 
+            loaded && (
               <Switch >
                 <Route path = "/login"exact = { true } >
                   <LoginForm />
-                </Route> 
+                </Route>
                 <Route path = "/sign-up"
                 exact = { true } >
                   <SignUpForm />
-                </Route> 
+                </Route>
                 <Route path = "/" exact = { true } >
                   <HomePage />
-                </Route> 
+                </Route>
               </Switch>
             )
-        } 
+        }
         </>
     );
 }
