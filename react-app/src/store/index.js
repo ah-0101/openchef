@@ -4,10 +4,12 @@ import SessionReducer from './session';
 import ChefReservationReducer from './chef_reservations';
 import ChefsReducer from './chefs';
 
+
 const rootReducer = combineReducers({
     session: SessionReducer,
     chef_reservations: ChefReservationReducer,
     chefs: ChefsReducer,
+    
 })
 
 let enhancer;

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux"
 import { allChefs } from "../../store/chefs";
+import { chefTable } from "../../store/all_chef_table";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -13,9 +14,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    await dispatch(allChefs())
     await dispatch(login(email, password));
     await dispatch(allChefs())
+    await dispatch(chefTable())
     // if (!user.errors) {
     //   setAuthenticated(true);
     // } else {
@@ -31,6 +32,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     await dispatch(login(email ='demo@aa.io', password = 'password'))
 
     await dispatch(allChefs())
+    
 
     history.push('/')
   }
