@@ -2,12 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import {useSelector} from 'react-redux'
+import "./NavBar.css"
 
 const NavBar = ({ setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
-  
+
   return (
-    <nav>
+    <nav className="nav-bar">
       <ul>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
