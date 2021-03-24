@@ -9,17 +9,11 @@ from app.models import User, db, Chef,Favorite
 chef_routes = Blueprint('chefs', __name__)
 
 
-# @chef_routes.route('/')
-# def get_all_chefs():
-#     users = User.query.join(Chef).all()
-#     return jsonify({'chefs': [user.to_dict() for user in users]})
-
 @chef_routes.route('/')
 def get_all_chefs():
-    users = User.query.first()
-    print("USERS------------", users.user_reservations)
-    return jsonify({ "reservation": users.to_dict_reservations()})
-    # return jsonify({'chefs': [user.to_dict_reservations() for user in users]})
+    users = User.query.join(Chef).all()
+    return jsonify({'chefs': [user.to_dict() for user in users]})
+
 
 
 
