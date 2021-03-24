@@ -1,0 +1,18 @@
+.logout_Button {
+  background: #da3743;
+  font-family: "Raleway", sans-serif;
+  /* font-weight: bold; */
+  /* border: 0; */
+  width: 80px;
+  height: 40px;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 5px;
+}
+
+.logout_Button:hover {
+  background: #b8222d;
+}

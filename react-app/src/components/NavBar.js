@@ -9,7 +9,7 @@ const NavBar = ({ setAuthenticated }) => {
 
   return (
     <nav className="nav-bar">
-      <ul>
+      <ul className="nav-stuff">
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
             Home
