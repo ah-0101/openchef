@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { userSignUp } from '../../store/session';
 import { useDispatch } from "react-redux";
 import { allChefs, chefSignUp } from "../../store/chefs";
 
 const SignUpForm = ({ }) => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const SignUpForm = ({ }) => {
     if (password === confirmPassword && !isChef) {
       await dispatch(allChefs())
       await dispatch(userSignUp(first_name, last_name, city, email, password));
-      return <Redirect to="/" />
+      history.push('/')
       // if (!user.errors) {
       //   setAuthenticated(true);
       // }
@@ -176,7 +177,7 @@ const SignUpForm = ({ }) => {
         />
       </div>
       {result}
-      <button onSubmit={onSignUp} type="submit">Sign Up</button>
+      <button onClick={onSignUp} type="submit">Sign Up</button>
     </form>
   );
 };
