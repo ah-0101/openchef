@@ -1,7 +1,6 @@
-import { Redirect } from 'react-router-dom'
-
 const SET_USER = 'session/setUser'
 const REMOVE_USER = 'session/removeUser'
+const UPDATE_USER = 'session/updateUser'
 
 const setUser = (user) => {
     return {
@@ -9,6 +8,13 @@ const setUser = (user) => {
         payload: user
     }
 }
+
+// const updateUser = (user) => {
+//     return {
+//         type: UPDATE_USER,
+//         payload: user
+//     }
+// }
 
 const removeUser = () => {
     return {
@@ -73,6 +79,21 @@ export const restoreUser = () => async (dispatch) => {
         return response
     }
 }
+
+// export const updateUser = () => async (dispatch) => {
+//     const response = await fetch(`/api/auth/${id}/`, {
+//         method: "PUT",
+//         body: JSON.stringify({
+//             first_name,
+//             last_name,
+//             city,
+//         }),
+//     })
+//     if (response.ok) {
+//         const data = await response.json()
+//         await dispatch(updateUser(data))
+//     }
+// }
 
 const initialState = { user: null }
 
