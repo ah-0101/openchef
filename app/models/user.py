@@ -73,6 +73,11 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "first_name": self.first_name,
             "last_name": self.last_name,
-            "chef_id": self.chef_id,
-            "email": self.email
+            "chef": self.chef.to_dict(),
+            "email": self.email,
+        }
+
+    def to_dict_reservations(self):
+        return {
+            "reservations": [reservation.to_dict() for reservation in self.user_reservations],
         }
