@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
+// import { updateUser } from '../../store/session';
 
 
 const Account = ({ isSelected, setIsSelected }) => {
@@ -9,10 +10,10 @@ const Account = ({ isSelected, setIsSelected }) => {
     const [firstName, setFirstName] = useState(user.first_name);
     const [lastName, setLastName] = useState(user.last_name);
     const [city, setCity] = useState(user.city);
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        // dispatch()
-        setIsSelected(true)
+        // dispatch(updateUser(user.id))
     }, [dispatch])
 
     if (isSelected) {
@@ -24,7 +25,7 @@ const Account = ({ isSelected, setIsSelected }) => {
     }
 
     const handleFirstName = (e) => {
-        //dispatch()
+        // dispatch(updateUser())
         setFirstName(e.target.value)
     }
 
@@ -36,10 +37,26 @@ const Account = ({ isSelected, setIsSelected }) => {
         setCity(e.target.value)
     }
 
+    const handleUpdateAccount = (e) => {
+        if (user.firstName === firstName &&
+            user.lastName === lastName &&
+            user.city === city) {
+            errors.push("No changes have been made! Please make an update.")
+        }
+        if (user.firstName === "" ||
+            user.lastName === "" ||
+            user.city === "") {
+            errors.push("Please fill out all fields");
+        }
+    }
+
     let view;
     if (isSelected === "Account") {
         view = (
             <>
+                <ul>
+                    {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
+                </ul>
                 <div>
                     <label>First Name</label>
                     <input
@@ -64,6 +81,7 @@ const Account = ({ isSelected, setIsSelected }) => {
                         onChange={handleCity}
                     />
                 </div>
+                <button type="button" onClick={handleUpdateAccount}>Update</button>
             </>
         )
     }
@@ -71,7 +89,7 @@ const Account = ({ isSelected, setIsSelected }) => {
 
     return (
         <>
-            <button type="button" onClick={handleAccountView}>Account</button>
+            <button type="button" onClick={handleAccountView}>Account Info</button>
             {view}
         </>
     )
