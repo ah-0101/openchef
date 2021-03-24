@@ -5,12 +5,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import SearchBar from './SearchBar'
 
 export default function HomePage() {
+    const user = useSelector(state => state.session.user)
     const chefs = useSelector(state => state.chefs)
+    
     const history = useHistory()
     const dispatch = useDispatch()
-
     const chefArr = Object.values(chefs)
-    console.log(chefs)
+    
+    if(!user){
+        history.push('/login')
+    }
+
     return (
         <>
             <h1>here is the chefs ''''''</h1>
