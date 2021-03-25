@@ -8,6 +8,7 @@ import { allChefs } from '../store/chefs';
 import { getFoodTypes } from '../store/food_types';
 import { getAllReviews } from '../store/reviews';
 import ChefDetailPage from './ChefDetailPage';
+import { getChefReviews } from '../store/chef_reviews';
 
 export default function HomePage() {
     const user = useSelector(state => state.session.user)
@@ -24,16 +25,17 @@ export default function HomePage() {
         dispatch(allChefs())
     
     }, [])
-    
-    const chefDetails = async (e) => {
-        let id = e.target.id
-        await dispatch(allChefs());
-        // return <Redirect to={`/chefs/${id}`} />
-        history.push(`/chefs`)
+
+    const chefInfo = async (e) => {
+        e.preventDefault()
+        setChefId(e.target.id)
+        await dispatch(getChefReviews(e.target.id))
     }
+    
 
     const chefArr = Object.values(chefs)
     
+    //fix this later
     if(user.errors){
         history.push('/login')
     }
@@ -45,20 +47,21 @@ export default function HomePage() {
                 // <img src="image" alt=""/>
             }
             <SearchBar />
-            <div id={2} onClick={e => setChefId(e.target.id)}>Chef number 2</div>
+            <div id={2} onClick={chefInfo}>Chef number 2</div>
+            <ChefsContainer />
         </>)
 
     const indivdualChef = (
         <>
             <ChefDetailPage id={chefId} />
+            <button onClick={e => setChefId(null)}>Back button test</button>
         </>
     )
     return (
 
-
         <>
             {chefId ? indivdualChef : searchStuff}
-            <ChefsContainer />
+            
         </>
 
     )
