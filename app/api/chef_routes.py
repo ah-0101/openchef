@@ -13,12 +13,16 @@ def get_all_chefs():
     return jsonify({'chefs': [user.to_dict_chefs() for user in users]})
 
 
-@chef_routes.route('/<int:id>')
+@chef_routes.route('/<int:id>/')
 def get_one_chefs(id):
-    chef = User.query.get(id)
-    # chef = user.query.join(Chef).first()
-    print(">>>>>>>>>>>", chef)
-    return chef.to_dict()
+    print("IDIDIDIDIID", id)
+    """
+    Passing in chef_id from the component/thunk to get one
+    user who is a chef
+    """
+    # chef = User.query.join(Chef).filter_by(id=Chef.id).first()
+    chef = Chef.query.get(id)
+    return jsonify(chef.to_dict())
 
 
 # TODO this is going to fitch the data for the chef where the chef have an 'h' anywhere. # noqa
@@ -37,19 +41,3 @@ def get_one_chefs(id):
 
 # @chef_routes.route('/', methods=['POST'])
 # def create_chefs():
-
-    #   // @app.route("/simple-form", methods=["POST"])
-    # def form_post():
-    #     form = SimpleForm()
-    #     if form.validate_on_submit():
-    #         data = form.data
-    #         person = SimplePerson(
-    #             name=data['name'],
-    #             age=data["age"],
-    #             bio=data['bio']
-    #         )
-    #         db.session.add(person)
-    #         db.session.commit()
-    #         return redirect('/')
-    #     elif not form.validate_on_submit():
-    #         return "Bad Data"
