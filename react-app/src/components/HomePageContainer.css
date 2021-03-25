@@ -1,0 +1,91 @@
+.chef-container {
+    display: flex;
+    /* max-width: 20rem; */
+    width: 5px;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: .1rem auto;
+    /* border-width: 10px; */
+    min-width: 50rem;
+    min-height: 15rem;
+    border: 1px solid #333536;
+    background-color: rgb(255, 254, 254);
+}
+
+.pic-size {
+    height: 250px;
+    width: 300px;
+    border-radius: 4px;
+}
+
+.chef-container-none {
+    display: none;
+}
+
+.chef-container:hover {
+    box-shadow: 3px 3px 7px 2px rgb(31, 30, 30);
+}
+
+.btn-style {
+    background: #da3743;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    border: 0;
+    width: 350px;
+    height: 40px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.btn-style-find {
+    background: #da3743;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    border: 0;
+    width: 150px;
+    height: 60px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.nav-search-bar {
+    margin-top: 40px;
+    background-image: url("../searchpic.png");
+    display: flex;
+    /* position: relative; */
+    /* padding: 5px 0px 5px 0px; */
+    justify-content: space-evenly;
+    /* justify-content: space-between; */
+    height: 80px;
+}
+
+.chef-city {
+    color: #247f9e;
+    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    ;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    word-break: break-word;
+}
+
+.chef-name {
+    color: #0e0f0f;
+    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    ;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    word-break: break-word;
+}
