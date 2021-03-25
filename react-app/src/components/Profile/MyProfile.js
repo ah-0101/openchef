@@ -15,7 +15,7 @@ function MyProfile() {
   const history = useHistory();
   const [isSelected, setIsSelected] = useState("Account")
 
-  if (!user.id) {
+  if (user === null) {
     history.push('/login')
   }
 
@@ -24,6 +24,7 @@ function MyProfile() {
   console.log("USER-----------", user)
 
   return (
+    user &&
     <div className="outer-profile-container">
       <div className="account">
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />

@@ -81,6 +81,21 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
+@auth_routes.route('/<int:id>/', methods=["PATCH"])
+def update_user(id):
+    """
+    Updates user information
+    """
+    user = User.query.get(id)
+    user.first_name = request.json.get('first_name', user.first_name)
+    user.last_name = request.json.get('last_name', user.last_name)
+    user.city = request.json.get('city', user.city)
+    db.session.commit()
+    return jsonify(user.to_dict())
+    
+
+
+
 @auth_routes.route('/unauthorized/')
 def unauthorized():
     """

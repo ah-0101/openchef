@@ -82,7 +82,10 @@ export const restoreUser = () => async (dispatch) => {
 
 export const updateUser = ({ id, first_name, last_name, city }) => async (dispatch) => {
     const response = await fetch(`/api/auth/${id}/`, {
-        method: "PUT",
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({
             first_name,
             last_name,
@@ -91,7 +94,7 @@ export const updateUser = ({ id, first_name, last_name, city }) => async (dispat
     })
     if (response.ok) {
         const data = await response.json()
-        await dispatch(updateUserFields(data))
+        await dispatch(setUser(data))
     }
 }
 
@@ -108,7 +111,6 @@ const SessionReducer = (state = initialState, action) => {
             newState = Object.assign({}, state)
             newState.user = null;
             return newState
-
         default:
             return state
     }

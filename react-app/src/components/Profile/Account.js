@@ -8,9 +8,10 @@ import { updateUser } from '../../store/session';
 const Account = ({ isSelected, setIsSelected }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const [firstName, setFirstName] = useState(user.first_name);
-    const [lastName, setLastName] = useState(user.last_name);
+    const [first_name, setFirstName] = useState(user.first_name);
+    const [last_name, setLastName] = useState(user.last_name);
     const [city, setCity] = useState(user.city);
+    // const [email, setEmail] = useState(user.email);
     const [errors, setErrors] = useState([]);
     const id = user.id;
 
@@ -26,24 +27,8 @@ const Account = ({ isSelected, setIsSelected }) => {
         setIsSelected("Account")
     }
 
-    useEffect(() => {
-        handleFirstName()
-        //do I want this in the same useEffect?
-        // handleLastName()
-        // handleCity()
-    }, [firstName, lastName, city])
-
-    const handleFirstName = async (e) => {
-        if (firstName !== user.first_name) {
-            const data = {
-                id: id,
-                firstName: firstName,
-                lastName: lastName,
-                city: city,
-            }
-            console.log("FIRSTNAME-->", data)
-            await dispatch(updateUser(data))
-        }
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value)
     }
 
     const handleLastName = (e) => {
@@ -54,29 +39,42 @@ const Account = ({ isSelected, setIsSelected }) => {
         setCity(e.target.value)
     }
 
-    const handleUpdateAccount = (e) => {
+    // const handleEmail = (e) => {
+    //     setEmail(e.target.value)
+    // }
+
+    const handleUpdateAccount = async (e) => {
         e.preventDefault();
 
         const error = []
-        if (user.firstName === firstName &&
-            user.lastName === lastName &&
+        if (user.first_name === first_name &&
+            user.last_name === last_name &&
             user.city === city) {
             error.push("No changes have been made! Please make an update.")
         }
-        if (user.firstName === "" ||
-            user.lastName === "" ||
-            user.city === "") {
+        if (first_name === "" ||
+            last_name === "" ||
+            city === "" /*||
+            email === ""*/) {
             error.push("Please fill out all fields");
         }
         setErrors(error)
 
-        // dispatch()
+        const data = {
+            id: id,
+            first_name: first_name,
+            last_name: last_name,
+            city: city,
+            // email: email,
+        }
+        console.log("FIRSTNAME-->", data)
+        await dispatch(updateUser(data))
     }
 
     let view;
     if (isSelected === "Account") {
         view = (
-            <div className="inner-account-info-container">
+            <form className="inner-account-info-container">
                 <ul>
                     {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
                 </ul>
@@ -87,8 +85,8 @@ const Account = ({ isSelected, setIsSelected }) => {
                     <div className="profile-input">
                         <input
                             name="first_name"
-                            value={firstName}
-                            onChange={e => setFirstName(e.target.value)}
+                            value={first_name}
+                            onChange={handleFirstName}
                         />
                     </div>
                 </div>
@@ -99,7 +97,7 @@ const Account = ({ isSelected, setIsSelected }) => {
                     <div className="profile-input">
                         <input
                             name="last_name"
-                            value={lastName}
+                            value={last_name}
                             onChange={handleLastName}
                         />
                     </div>
@@ -118,8 +116,22 @@ const Account = ({ isSelected, setIsSelected }) => {
                         </div>
                     </div>
                 </div>
+                {/* <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>Email</label>
+                    </div>
+                    <div>
+                        <div className="profile-input">
+                            <input
+                                name="email"
+                                value={email}
+                                onChange={handleEmail}
+                            />
+                        </div>
+                    </div>
+                </div> */}
                 <button type="button" onClick={handleUpdateAccount}>Update</button>
-            </div>
+            </form>
         )
     }
 
