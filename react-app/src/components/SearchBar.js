@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import "./SearchBar.css"
 
 
+
 const TIMES = [
   "8:00 AM",
   "8:30 AM",
