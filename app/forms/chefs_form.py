@@ -10,4 +10,3 @@
 #     city = StringField('City', validators=[DataRequired()])
 #     email = StringField('Email', validators=[DataRequired(), user_exists])
 #     password = StringField('Password', validators=[DataRequired()])
-
