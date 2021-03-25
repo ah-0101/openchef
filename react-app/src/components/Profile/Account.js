@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom';
 import './profile.css';
 import { updateUser } from '../../store/session';
+import ChefAccount from './ChefAccount';
 
 
 const Account = ({ isSelected, setIsSelected }) => {
@@ -55,7 +55,7 @@ const Account = ({ isSelected, setIsSelected }) => {
         if (first_name === "" ||
             last_name === "" ||
             city === "" /*||
-            email === ""*/) {
+        email === ""*/) {
             error.push("Please fill out all fields");
         }
         setErrors(error)
@@ -71,8 +71,12 @@ const Account = ({ isSelected, setIsSelected }) => {
         await dispatch(updateUser(data))
     }
 
+    // if (user.chef_id) {
+
+    // }
+
     let view;
-    if (isSelected === "Account") {
+    if (isSelected === "Account" && user.chef_id === null) {
         view = (
             <form className="inner-account-info-container">
                 <ul>
@@ -130,6 +134,68 @@ const Account = ({ isSelected, setIsSelected }) => {
                         </div>
                     </div>
                 </div> */}
+                <button type="button" onClick={handleUpdateAccount}>Update</button>
+            </form>
+        )
+    } else if (isSelected === "Account" && user.chef_id) {
+        view = (
+            <form className="inner-account-info-container">
+                <ul>
+                    {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
+                </ul>
+                <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>First Name</label>
+                    </div>
+                    <div className="profile-input">
+                        <input
+                            name="first_name"
+                            value={first_name}
+                            onChange={handleFirstName}
+                        />
+                    </div>
+                </div>
+                <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>Last Name</label>
+                    </div>
+                    <div className="profile-input">
+                        <input
+                            name="last_name"
+                            value={last_name}
+                            onChange={handleLastName}
+                        />
+                    </div>
+                </div>
+                <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>City</label>
+                    </div>
+                    <div>
+                        <div className="profile-input">
+                            <input
+                                name="city"
+                                value={city}
+                                onChange={handleCity}
+                            />
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>Email</label>
+                    </div>
+                    <div>
+                        <div className="profile-input">
+                            <input
+                                name="email"
+                                value={email}
+                                onChange={handleEmail}
+                            />
+                        </div>
+                    </div>
+                </div> */}
+                <ChefAccount />
                 <button type="button" onClick={handleUpdateAccount}>Update</button>
             </form>
         )
