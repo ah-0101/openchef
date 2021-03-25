@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useHistory, Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import SearchBar from './SearchBar'
+import ChefsContainer from './ChefsContainer'
 import { allChefs } from '../store/chefs';
 import { getFoodTypes } from '../store/food_types';
 import { getAllReviews } from '../store/reviews';
@@ -57,6 +58,7 @@ export default function HomePage() {
 
         <>
             {chefId ? indivdualChef : searchStuff}
+            <ChefsContainer />
         </>
 
     )

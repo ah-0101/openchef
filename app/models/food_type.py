@@ -18,3 +18,12 @@ class Food_Type(db.Model):
             "image": self.image,
             "name": self.name,
         }
+
+    def to_dict_search(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            # 'image': self.image,
+            # 'chef_id': [chef.to_dict() for chef in self.chef],
+            # [reservation.to_dict() for reservation in self.user_reservations]
+        }
