@@ -1,5 +1,5 @@
 const GET_CHEFS = 'chefs/getChefs'
-// const
+const GET_ONE_CHEF = 'chefs/getOneChef'
 
 const getChefs = (chefs) => {
     return {
@@ -8,6 +8,12 @@ const getChefs = (chefs) => {
     }
 }
 
+const getAChef = (chef) => {
+    return {
+        type: GET_ONE_CHEF,
+        payload: chef,
+    }
+}
 
 
 export const allChefs = () => async (dispatch) => {
@@ -20,6 +26,16 @@ export const allChefs = () => async (dispatch) => {
     }
 }
 
+export const getOneChef = (id) => async (dispatch) => {
+    console.log("IDIDID", id)
+    const response = await fetch(`/api/chefs/${id}/`)
+
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(getAChef(data))
+        return response;
+    }
+}
 
 // // export const chefSignUp = () => async (dispatch) => {
 // //     const response = await fetch('/api/chefs/')
@@ -34,6 +50,10 @@ const ChefsReducer = (state = {}, action) => {
             action.payload.chefs.forEach(chef => {
                 newState[chef.id] = chef;
             })
+            return newState
+        case GET_ONE_CHEF:
+            newState = {};
+            newState.chef = action.payload;
             return newState
         default:
             return state

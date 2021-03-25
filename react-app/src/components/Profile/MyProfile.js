@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Account from './Account';
+import ChefAccount from './ChefAccount';
 import UserReservations from './UserReservations';
 import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
@@ -21,7 +22,7 @@ function MyProfile() {
 
   let profileNav;
 
-  console.log("USER-----------", user)
+  // console.log("USER-----------", user)
 
   return (
     user &&
