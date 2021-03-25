@@ -9,12 +9,12 @@ const setUser = (user) => {
     }
 }
 
-// const updateUser = (user) => {
-//     return {
-//         type: UPDATE_USER,
-//         payload: user
-//     }
-// }
+const updateUserFields = (user) => {
+    return {
+        type: UPDATE_USER,
+        payload: user
+    }
+}
 
 const removeUser = () => {
     return {
@@ -80,20 +80,23 @@ export const restoreUser = () => async (dispatch) => {
     }
 }
 
-// export const updateUser = () => async (dispatch) => {
-//     const response = await fetch(`/api/auth/${id}/`, {
-//         method: "PUT",
-//         body: JSON.stringify({
-//             first_name,
-//             last_name,
-//             city,
-//         }),
-//     })
-//     if (response.ok) {
-//         const data = await response.json()
-//         await dispatch(updateUser(data))
-//     }
-// }
+export const updateUser = ({ id, first_name, last_name, city }) => async (dispatch) => {
+    const response = await fetch(`/api/auth/${id}/`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            first_name,
+            last_name,
+            city,
+        }),
+    })
+    if (response.ok) {
+        const data = await response.json()
+        await dispatch(setUser(data))
+    }
+}
 
 const initialState = { user: null }
 
@@ -108,7 +111,6 @@ const SessionReducer = (state = initialState, action) => {
             newState = Object.assign({}, state)
             newState.user = null;
             return newState
-
         default:
             return state
     }

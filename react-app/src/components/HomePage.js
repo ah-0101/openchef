@@ -6,7 +6,6 @@ import SearchBar from './SearchBar'
 // import ChefsContainer from './ChefsContainer'
 import { allChefs } from '../store/chefs';
 import { getFoodTypes } from '../store/food_types';
-import { getAllReviews } from '../store/reviews';
 import ChefDetailPage from './ChefDetailPage';
 import { getChefReviews } from '../store/chef_reviews';
 import './HomePageContainer.css'
@@ -24,7 +23,6 @@ export default function HomePage() {
     // testing use effect for the chef detail page
     useEffect(() => {
         dispatch(getFoodTypes())
-        dispatch(getAllReviews())
         dispatch(allChefs())
     
     }, [])
@@ -37,9 +35,8 @@ export default function HomePage() {
     }
     const chefInfoDisplay = async (e) => {
         e.preventDefault()
-        setChefId(e.target.id)
-        // setBarId(chef?.id)
         await dispatch(getChefReviews(e.target.id))
+        setChefId(e.target.id)
     }
     
 
