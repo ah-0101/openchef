@@ -6,11 +6,12 @@ import SearchBar from './SearchBar'
 import { allChefs } from '../store/chefs';
 import { getFoodTypes } from '../store/food_types';
 import { getAllReviews } from '../store/reviews';
+import ChefDetailPage from './ChefDetailPage';
 
 export default function HomePage() {
     const user = useSelector(state => state.session.user)
     const chefs = useSelector(state => state.chefs)
-    const [chefId, setChefId] = useState(0)
+    const [chefId, setChefId] = useState()
     
     const history = useHistory()
     const dispatch = useDispatch()
@@ -19,31 +20,43 @@ export default function HomePage() {
     useEffect(() => {
         dispatch(getFoodTypes())
         dispatch(getAllReviews())
+        dispatch(allChefs())
     
     }, [])
     
     const chefDetails = async (e) => {
-        let id = 2
+        let id = e.target.id
         await dispatch(allChefs());
         // return <Redirect to={`/chefs/${id}`} />
-        history.push(`/chefs/${id}`)
+        history.push(`/chefs`)
     }
 
     const chefArr = Object.values(chefs)
     
-    if(!user){
+    if(user.errors){
         history.push('/login')
     }
 
-    return (
+    const searchStuff = (
         <>
             <h1>here is the chefs</h1>
             {chefArr[0]?.email
                 // <img src="image" alt=""/>
             }
             <SearchBar />
-            <div id={chefId} onClick={chefDetails}>Chef number 2</div>
-            
+            <div id={2} onClick={e => setChefId(e.target.id)}>Chef number 2</div>
+        </>)
+
+    const indivdualChef = (
+        <>
+            <ChefDetailPage id={chefId} />
+        </>
+    )
+    return (
+
+
+        <>
+            {chefId ? indivdualChef : searchStuff}
         </>
 
     )
