@@ -1,11 +1,12 @@
 .outer-profile-container {
   display: flex;
   flex-direction: column;
+  /* margin-top: 50px; */
 }
 
 .outer-account-info-container {
   display: flex;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 .input-wrapper {
@@ -14,4 +15,8 @@
 
 button.account-btn {
   margin-top: 25px;
+}
+
+.account {
+  /* margin-top: 25px; */
 }

@@ -5,6 +5,7 @@ import Account from './Account';
 import UserReservations from './UserReservations';
 import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
+import './profile.css';
 // import { getChefReservation } from '../../store/chef_reservations'
 
 
@@ -24,7 +25,7 @@ function MyProfile() {
 
   return (
     <div className="outer-profile-container">
-      <div>
+      <div className="account">
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       <div>
