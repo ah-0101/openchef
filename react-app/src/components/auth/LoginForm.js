@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { login } from "../../store/session";
+import { login, userSignUp } from "../../store/session";
 import { useDispatch } from "react-redux"
 import { allChefs } from "../../store/chefs";
 import "./LoginForm.css"
@@ -16,6 +16,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     await dispatch(login(email, password));
     await dispatch(allChefs())
+  
+    
     // if (!user.errors) {
     //   setAuthenticated(true);
     // } else {

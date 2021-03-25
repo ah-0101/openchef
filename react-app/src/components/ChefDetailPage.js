@@ -6,7 +6,7 @@ import { allChefs } from '../store/chefs';
 
 export default function ChefDetailPage({id}) {
   const user = useSelector(state => state.session.user)
-  const chef = useSelector(state => state?.chefs[2])
+  const chef = useSelector(state => state?.chefs[id])
   const cuisine = useSelector(state => state?.food_types[2])
   const reviews = useSelector(state => state?.reviews)
 
@@ -15,13 +15,13 @@ export default function ChefDetailPage({id}) {
 
 
   return (
-    chef &&
       <>
         <img src={`${chef.chef.profile_image}`} />
         <p>{chef.first_name} {chef.last_name} - {chef.city}</p>
         <p>{chef.chef.price}</p>
         <p>{chef.chef.bio}</p>
         <p>{cuisine.name}</p>
+        <h1> helloe</h1>
 
       </>
   

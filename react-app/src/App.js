@@ -9,22 +9,21 @@ import HomePage from "./components/HomePage";
 import { useDispatch, useSelector } from "react-redux";
 import { restoreUser } from "./store/session";
 import ChefDetailPage from "./components/ChefDetailPage";
-import MyProfile from './components/Profile/MyProfile';
 
 function App() {
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false);
     const user = useSelector((state) => state.session.user)
-    const [id, setId] = useState(useParams())
+    const [id, setId] = useState(0)
 
-  useEffect(async () => {
-    await dispatch(restoreUser())
-    setLoaded(true)
-  }, [dispatch])
+    useEffect(async() => {
+        await dispatch(restoreUser())
+        setLoaded(true)
+    }, [dispatch])
 
-  if (!loaded) {
-    return null;
-  }
+    if (!loaded) {
+        return null;
+    }
 
     if (!user) {
         //THIS IS CAUSING ISSUES
@@ -46,11 +45,8 @@ function App() {
                 <Route path = "/" exact = { true } >
                   <HomePage />
                 </Route> 
-                <Route path ="/chef/:id" exact ={true}>
-                  <ChefDetailPage id={id}/>
-                </Route>
-                <Route path="/profile" exact={true}>
-                  <MyProfile />
+                <Route path ="/chef" exact ={true}>
+                  <ChefDetailPage />
                 </Route>
               </Switch>
             )
