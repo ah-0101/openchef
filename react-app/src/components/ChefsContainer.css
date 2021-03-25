@@ -1,0 +1,13 @@
+.chef-container {
+    display: flex;
+    /* max-width: 20rem; */
+    width: 5px;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: .1rem auto;
+    /* border-width: 10px; */
+    min-width: 15rem;
+    border: 4px solid #15181c;
+    background-color: rgb(218, 194, 194);
+}
