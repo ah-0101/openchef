@@ -21,7 +21,7 @@ function ChefAccount() {
 
     return (
         <>
-            <h1>CHEF ACCOUNT</h1>
+            <h1>--CHEF ACCOUNT</h1>
         </>
     )
 }
