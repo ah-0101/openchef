@@ -1,0 +1,17 @@
+.outer-profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.outer-account-info-container {
+  display: flex;
+  margin-top: 50px;
+}
+
+.input-wrapper {
+  display: flex;
+}
+
+button.account-btn {
+  margin-top: 25px;
+}

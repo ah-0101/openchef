@@ -12,13 +12,13 @@ const Account = ({ isSelected, setIsSelected }) => {
     const [city, setCity] = useState(user.city);
     const [errors, setErrors] = useState([]);
 
-    useEffect(() => {
-        // dispatch(updateUser(user.id))
-    }, [dispatch])
+    // useEffect(() => {
+    //     // dispatch(updateUser(user.id))
+    // }, [dispatch])
 
-    if (isSelected) {
+    // if (isSelected) {
 
-    }
+    // }
 
     const handleAccountView = (e) => {
         setIsSelected("Account")
@@ -38,60 +38,78 @@ const Account = ({ isSelected, setIsSelected }) => {
     }
 
     const handleUpdateAccount = (e) => {
+        e.preventDefault();
+
+        const error = []
         if (user.firstName === firstName &&
             user.lastName === lastName &&
             user.city === city) {
-            errors.push("No changes have been made! Please make an update.")
+            error.push("No changes have been made! Please make an update.")
         }
         if (user.firstName === "" ||
             user.lastName === "" ||
             user.city === "") {
-            errors.push("Please fill out all fields");
+            error.push("Please fill out all fields");
         }
+        setErrors(error)
     }
 
     let view;
     if (isSelected === "Account") {
         view = (
-            <>
+            <div className="inner-account-info-container">
                 <ul>
                     {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
                 </ul>
-                <div>
-                    <label>First Name</label>
-                    <input
-                        name="first_name"
-                        value={firstName}
-                        onChange={handleFirstName}
-                    />
+                <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>First Name</label>
+                    </div>
+                    <div className="profile-input">
+                        <input
+                            name="first_name"
+                            value={firstName}
+                            onChange={handleFirstName}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label>Last Name</label>
-                    <input
-                        name="last_name"
-                        value={lastName}
-                        onChange={handleLastName}
-                    />
+                <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>Last Name</label>
+                    </div>
+                    <div className="profile-input">
+                        <input
+                            name="last_name"
+                            value={lastName}
+                            onChange={handleLastName}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label>City</label>
-                    <input
-                        name="city"
-                        value={city}
-                        onChange={handleCity}
-                    />
+                <div className="input-wrapper">
+                    <div className="profile-label">
+                        <label>City</label>
+                    </div>
+                    <div>
+                        <div className="profile-input">
+                            <input
+                                name="city"
+                                value={city}
+                                onChange={handleCity}
+                            />
+                        </div>
+                    </div>
                 </div>
                 <button type="button" onClick={handleUpdateAccount}>Update</button>
-            </>
+            </div>
         )
     }
 
 
     return (
-        <>
-            <button type="button" onClick={handleAccountView}>Account Info</button>
+        <div className="outer-account-info-container">
+            <button className="account-btn" type="button" onClick={handleAccountView}>Account Info</button>
             {view}
-        </>
+        </div>
     )
 }
 

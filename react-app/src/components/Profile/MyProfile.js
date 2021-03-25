@@ -23,7 +23,7 @@ function MyProfile() {
   console.log("USER-----------", user)
 
   return (
-    <>
+    <div className="outer-profile-container">
       <div>
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
@@ -36,7 +36,7 @@ function MyProfile() {
       <div>
         <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
-    </>
+    </div>
   )
 }
 
