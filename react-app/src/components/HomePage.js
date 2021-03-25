@@ -36,7 +36,7 @@ export default function HomePage() {
     const chefArr = Object.values(chefs)
     
     //fix this later
-    if(user.errors){
+    if(user == null || user.errors){
         history.push('/login')
     }
 
