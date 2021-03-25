@@ -8,6 +8,7 @@ const getReviews = (reviews) => {
   }
 }
 
+// get all of the
 export const getAllReviews = () => async(dispatch) => {
   const response = await fetch('/api/reviews/')
 
