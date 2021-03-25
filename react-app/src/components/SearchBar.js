@@ -1,9 +1,9 @@
 import React from 'react';
 import DatePicker from 'react-datepicker'
-
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { Form } from 'react-bootstrap';
 import "./SearchBar.css"
 
 const TIMES = [
@@ -45,19 +45,23 @@ const DURATIONS = [
     1, 2, 3, 4
 ]
 
-export default function SearchBar() {
+export default function SearchBar({search,setSearch,setBarId,setClassHandler}) {
 
-    const [event_date, setEventState] = useState('')
+    const [event_date, setEventState] = useState(new Date())
     const [event_time, setEventTime] = useState('')
     const [duration, setDuration] = useState('')
-    const [search, setSearch] = useState('')
+    
 
     const handleSearchType = async (e) => {
         // e.preventDefault()
+
         const keyword = e.target.value
-        if (keyword === '') {
+        if (keyword === '' ) {
             setSearch('')
+            setClassHandler('chef-container-none')
             return
+        }else{
+            setClassHandler('chef-container')
         }
         const chefSearch = await fetch(`/api/search`);
         const jsonChefs = await chefSearch.json();
@@ -66,50 +70,51 @@ export default function SearchBar() {
                 for(let i = 0; i < chefName.length; i++){
     
                     if (chefName[i].includes(e.target.value)){
-                        console.log(chef.first_name + ' ' + chef.last_name)
+                        console.log(chefName)
                         let chefName2 = chef.first_name + ' ' + chef.last_name
                         setSearch(chefName2)
+                        setBarId(chef.id)
+                        
                     }
                 }
                 
            })
-           console.log(e.target.value)
-
-
-
-
-        
-
     }
-
+    // const handleClick = (e) => {
+    //     $('.datepicker').datepicker();
+    // }
     return (
         <>
-            <h1>hello from search</h1>
-            <div>
-                <DatePicker selected={new Date()} />
-            </div>
-            <div>
-                <select value={event_time} onChange={e => setEventTime(e.target.value)}>
-                    {TIMES.map(time => (
-                        <option key={time} value={time}>{time}</option>
-                    ))}
-                </select> 
-            </div>
-            <div>
-                <select value={duration} onChange={e => setDuration(e.target.value)}>
-                    {DURATIONS.map(duration => (
-                        <option key={duration} value={duration}>{duration}</option>
-                    ))}
-                </select> <p>Hours</p>
-            </div>
-            <div>
-                <input className='search-bar' onClick={handleSearchType} placeholder={"Search by Cuisine or Chef name!"}></input>
-            </div>
-            <div>
-                <h1>{search}</h1>
-            </div>
-            <button>Find your Chef!</button>
+            <nav className="nav-search-bar">
 
+            <div className="border-calender">
+
+            <Form.Control className='calender-form' type="date" name="dob"
+                    placeholder="Date of Birth" onChange={ date => setEventState(date)}/>
+
+
+            <select className='time-form' value={event_time} onChange={e => setEventTime(e.target.value)}>
+                {TIMES.map(time => (
+                <option key={time} value={time}>{time}</option>
+                ))}
+            </select> 
+
+
+            <select className='duration-form' value={duration} onChange={e => setDuration(e.target.value)}>
+                    {DURATIONS.map(duration => (
+                    <option key={duration} value={duration}>{duration}</option>
+                    ))}
+            </select> 
+
+
+
+                </div>
+            <div>
+                <input className='search-bar' onClick={handleSearchType} placeholder={" 🔍 Search by Cuisine or Chef name!"}></input>
+            </div>
+            <button className='btn-style-find' >Find a Chef!</button>
+
+                        </nav>
         </>
     )
 }
