@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import './profile.css';
-// import { updateUser } from '../../store/session';
+import { updateUser } from '../../store/session';
 
 
 const Account = ({ isSelected, setIsSelected }) => {
@@ -12,6 +12,7 @@ const Account = ({ isSelected, setIsSelected }) => {
     const [lastName, setLastName] = useState(user.last_name);
     const [city, setCity] = useState(user.city);
     const [errors, setErrors] = useState([]);
+    const id = user.id;
 
     // useEffect(() => {
     //     // dispatch(updateUser(user.id))
@@ -25,9 +26,24 @@ const Account = ({ isSelected, setIsSelected }) => {
         setIsSelected("Account")
     }
 
-    const handleFirstName = (e) => {
-        // dispatch(updateUser())
-        setFirstName(e.target.value)
+    useEffect(() => {
+        handleFirstName()
+        //do I want this in the same useEffect?
+        // handleLastName()
+        // handleCity()
+    }, [firstName, lastName, city])
+
+    const handleFirstName = async (e) => {
+        if (firstName !== user.first_name) {
+            const data = {
+                id: id,
+                firstName: firstName,
+                lastName: lastName,
+                city: city,
+            }
+            console.log("FIRSTNAME-->", data)
+            await dispatch(updateUser(data))
+        }
     }
 
     const handleLastName = (e) => {
@@ -53,6 +69,8 @@ const Account = ({ isSelected, setIsSelected }) => {
             error.push("Please fill out all fields");
         }
         setErrors(error)
+
+        // dispatch()
     }
 
     let view;
@@ -70,7 +88,7 @@ const Account = ({ isSelected, setIsSelected }) => {
                         <input
                             name="first_name"
                             value={firstName}
-                            onChange={handleFirstName}
+                            onChange={e => setFirstName(e.target.value)}
                         />
                     </div>
                 </div>
