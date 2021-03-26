@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { Form } from 'react-bootstrap';
+import { getChefReviews } from '../store/chef_reviews';
 import "./SearchBar.css"
 
 const TIMES = [
@@ -44,12 +45,16 @@ const DURATIONS = [
     1, 2, 3, 4
 ]
 
-export default function SearchBar({ search, setSearch, setBarId, setClassHandler }) {
+
+export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
+
 
     const [event_date, setEventState] = useState(new Date())
     const [event_time, setEventTime] = useState('')
     const [duration, setDuration] = useState('')
 
+    const [classHandler, setClassHandler] = useState("search-toggle-none")
+    const dispatch = useDispatch()
 
     const handleSearchType = async (e) => {
         // e.preventDefault()
@@ -57,27 +62,37 @@ export default function SearchBar({ search, setSearch, setBarId, setClassHandler
         const keyword = e.target.value
         if (keyword === '') {
             setSearch('')
-            setClassHandler('chef-container-none')
+            setClassHandler('search-toggle-none')
             return
-        } else {
-            setClassHandler('chef-container')
+        }else{
+            setClassHandler('search-toggle')
+
         }
         const chefSearch = await fetch(`/api/search`);
         const jsonChefs = await chefSearch.json();
         jsonChefs.chefs.forEach(chef => {
-            let chefName = chef.first_name.toLowerCase();
-            for (let i = 0; i < chefName.length; i++) {
 
-                if (chefName[i].includes(e.target.value)) {
-                    console.log(chefName)
-                    let chefName2 = chef.first_name + ' ' + chef.last_name
-                    setSearch(chefName2)
-                    setBarId(chef.id)
+                let chefName = chef.first_name.toLowerCase();
+                for(let i = 0; i < chefName.length; i++){
+    
+                    if (chefName[i].includes(e.target.value)){
+                        let chefName2 = chef.first_name + ' ' + chef.last_name
+                        setSearch(chefName2)
+                        setBarId(chef.id)
+                        
+                    }
 
                 }
             }
 
         })
+    }
+
+    const chefInfoDisplay = async (e) => {
+        e.preventDefault()
+        setChefId(e.target.id)
+        // setBarId(chef?.id)
+        await dispatch(getChefReviews(e.target.id))
     }
     // const handleClick = (e) => {
     //     $('.datepicker').datepicker();
@@ -108,12 +123,18 @@ export default function SearchBar({ search, setSearch, setBarId, setClassHandler
 
 
                 </div>
-                <div>
-                    <input className='search-bar' onClick={handleSearchType} placeholder={" 🔍 Search by Cuisine or Chef name!"}></input>
-                </div>
-                <button className='btn-style-find' >Find a Chef!</button>
 
-            </nav>
+            <div>
+                <div className='chef-welcome'>Find your Chef for any occasion</div>
+                <input className='search-bar' onClick={handleSearchType} placeholder={" 🔍 Search by Cuisine or Chef name!"}></input>
+                <div className={classHandler} id={barId} onClick={chefInfoDisplay}> <p className='search-toggle-content'  id={barId}  onClick={chefInfoDisplay}>{search}</p></div>
+            </div>
+
+            <button className='btn-style-find' >Find a Chef!</button>
+            
+                        </nav>
+
+
         </>
     )
 }
