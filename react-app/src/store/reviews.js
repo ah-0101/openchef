@@ -8,20 +8,22 @@ const getReviews = (reviews) => {
   }
 }
 
-// get all of the
-export const getAllReviews = () => async(dispatch) => {
-  const response = await fetch('/api/reviews/')
+// pass in id
+export const getAllReviews = (id) => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${id}/`)
 
-  const data = await response.json()
-  await dispatch(getReviews(data))
-  return response
+  if (response.ok) {
+    const data = await response.json()
+    await dispatch(getReviews(data))
+    return response
+  }
 }
 
-const ReviewsReducer = (state={}, action) => {
+const ReviewsReducer = (state = {}, action) => {
   let newState;
-  switch(action.type) {
+  switch (action.type) {
     case GET_REVIEWS:
-      newState={}
+      newState = {}
       action.payload.reviews.forEach(review => {
         newState[review.id] = review
       })
