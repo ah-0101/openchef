@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import ChefReviews from './ChefReviews';
 import ReservationForm from './ReservationForm';
+import Favorites from './Favorites'
 import './ChefDetailsPage.css'
 
 
@@ -14,12 +15,12 @@ export default function ChefDetailPage({id}) {
 
   const history = useHistory()
   const dispatch = useDispatch()
-  
+
 
   return (
     reviews &&
       <>
-        
+
         <div className='all-details'>
           <div className='profile-image'>
             <img src={`${chef.chef.profile_image}`} />
@@ -49,7 +50,7 @@ export default function ChefDetailPage({id}) {
             <ChefReviews/>
             </div>
           </div>
-          
+
           <div className='reservation-r'>
             <ReservationForm chef_id={id}
                             price={chef.chef.price}
@@ -57,6 +58,6 @@ export default function ChefDetailPage({id}) {
           </div>
         </div>
       </>
-  
+
   )
   }

@@ -34,41 +34,6 @@ const SignUpForm = ({ }) => {
     // }
   }
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const updateCity = (e) => {
-    setCity(e.target.value)
-  }
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const updateIsChef = (e) => {
-    setIsChef(!isChef)
-  }
-
-  const updateFoodType = (e) => {
-    setFoodType(e.target.id)
-  }
-
-  const updatePrice = (e) => {
-    setPrice(e.target.value)
-  }
-
   // if chef button is selected,
   // render additional form fields
   // 1. Add button
@@ -86,7 +51,7 @@ const SignUpForm = ({ }) => {
         <div>
           <label>Food Type</label>
           <select
-            onChange={updateFoodType}
+            onChange={e => setFoodType(e.target.id)}
             value={foodType}
           // className="form_text"
           >
@@ -105,7 +70,7 @@ const SignUpForm = ({ }) => {
             min={10}
             max={300}
             step={5}
-            onChange={updatePrice}
+            onChange={e => setPrice(e.target.value)}
             value={price}
           />
         </div>
@@ -123,7 +88,7 @@ const SignUpForm = ({ }) => {
             name="first_name"
             className="form_text"
             placeholder="First Name"
-            onChange={updateFirstName}
+            onChange={e => setFirstName(e.target.value)}
             value={first_name}
           ></input>
         </div>
@@ -133,7 +98,7 @@ const SignUpForm = ({ }) => {
             name="last_name"
             className="form_text"
             placeholder="Last Name"
-            onChange={updateLastName}
+            onChange={e => setLastName(e.target.value)}
             value={last_name}
           ></input>
         </div>
@@ -143,7 +108,7 @@ const SignUpForm = ({ }) => {
             name="email"
             placeholder="Enter Email"
             className="form_text"
-            onChange={updateEmail}
+            onChange= {e => setEmail(e.target.value)}
             value={email}
           ></input>
         </div>
@@ -153,7 +118,7 @@ const SignUpForm = ({ }) => {
             name="city"
             placeholder="City"
             className="form_text"
-            onChange={updateCity}
+            onChange={e => setCity(e.target.value)}
             value={city}
           ></input>
         </div>
@@ -163,7 +128,7 @@ const SignUpForm = ({ }) => {
             name="password"
             className="form_text"
             placeholder="Enter Password"
-            onChange={updatePassword}
+            onChange={e => setPassword(e.target.value)}
             value={password}
           ></input>
         </div>
@@ -173,7 +138,7 @@ const SignUpForm = ({ }) => {
             name="confirm_password"
             className="form_text"
             placeholder="Re-enter Password"
-            onChange={updateConfirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
             value={confirmPassword}
             required={true}
           ></input>
@@ -184,7 +149,7 @@ const SignUpForm = ({ }) => {
             type="checkbox"
             name="chef_id"
             className="form_text"
-            onClick={updateIsChef}
+            onClick={e => setIsChef(!isChef)}
             value={isChef}
           />
         </div>
