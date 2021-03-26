@@ -1,0 +1,138 @@
+.all-details{
+  border: 1px black solid;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  /* flex-direction: row-reverse; */
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.reservation-r{
+  width: 320px;
+  margin: 0 0 0 1rem;
+  z-index:0;
+}
+
+.detail-rev-section-r{
+  /* padding: 2rem 1rem; */
+  width: 640px;
+  z-index: 0;
+  background: white;
+  display: block;
+}
+
+.details-only-r{
+padding: 2rem 1rem;
+}
+
+.profile-image img{
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.chef-name-title-r{
+  outline: none;
+  color: #2d333f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #d8d9db;
+  margin: 0 0;
+  /* text-align: center; */
+}
+
+.navigation-chef-div-r{
+  margin:0;
+  padding:0
+}
+
+.navigation-bar-chef-details{
+  height: 48px;
+  list-style: none;
+  background-color: #fff;
+  border-radius: 2px 2px 0 0;
+  padding: 0 .5rem;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  border-bottom: 1px solid #d8d9db;
+  /* justify-content: center; */
+}
+
+.list-elements-chef-detail{
+    padding: 14px .5rem;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #da3743;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.chef-short-info-r{
+  display: flex;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0;
+  /* justify-content: space-around; */
+}
+
+.chef-city-r{
+  margin-right: 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+
+}
+
+.chef-price-r{
+  margin-right: 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  
+}
+.chef-cuisine-r{
+  margin-right: 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  
+}
+.chef-bio-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.33;
+    color: #2d333f;
+    border-bottom: 1px solid #d8d9db;
+    padding-bottom: 1rem;
+    margin: 0 0;
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.chef-reviews-r{
+  padding: 2rem 1rem;
+  width: 640px;
+  z-index: 0;
+  background: white;
+  display: block;
+}
+
+.chef-bio-text-r{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}

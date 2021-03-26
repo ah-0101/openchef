@@ -96,24 +96,25 @@ export default function HomePage() {
 
             <div>
                 {
-                    chefArr?.map(chef => (
-                        <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
-                            <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
-                            <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
-                            <img id={chef.id} className="pic-size" src={chef.chef.profile_image} alt='chef-pic' />
-                            <p id={chef.id} >{chef.chef.price}</p>
-                            <p id={chef.id} >{chef.chef.bio}</p>
-                            <p id={chef.id} >{chef.chef.food_type_id == 2 ?
-                                'Food Type: American' : chef.chef.food_type_id == 3 ?
-                                    'Food Type: Middle Eastern' : chef.chef.food_type_id == 1 ?
-                                        'Food Type: Italian' : chef.chef.food_type_id == 4 ?
-                                            'Food Type: Mexican' : chef.chef.food_type_id == 5 ?
-                                                'Food Type: Japanese' : chef.chef.food_type_id == 4 ?
-                                                    'Food Type: Chinese' : 'Expert at all meals'}</p>
-                            <button className="btn-style" id={chef.id}>Book Me</button>
-                        </div>
-                    ))
-
+                 chefArr?.map(chef => (
+                    <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
+                        <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
+                        <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
+                        <img id={chef.id} className="pic-size"  src={chef.chef.profile_image} alt='chef-pic'/>
+                        <p id={chef.id} >{chef.chef.price}</p>
+                        <p id={chef.id} >{chef.chef.bio}</p>
+                           {/* <p>{food_type[chef.food_type_id]}</p> */}
+                        <p id={chef.id} >{chef.chef.food_type_id == 2?
+                        'Food Type: American':chef.chef.food_type_id == 3?
+                        'Food Type: Middle Eastern':chef.chef.food_type_id == 1?
+                        'Food Type: Italian':chef.chef.food_type_id == 4?
+                        'Food Type: Mexican':chef.chef.food_type_id == 5?
+                        'Food Type: Japanese':chef.chef.food_type_id == 4?
+                        'Food Type: Chinese':'Expert at all meals'}</p>
+                        <button className="btn-style" id={chef.id}>Book Me</button>
+                    </div>
+                                        ))
+                        
                 }
 
             </div>
