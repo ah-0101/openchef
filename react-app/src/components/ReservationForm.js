@@ -1,8 +1,7 @@
-import  React from 'react'
+import React from 'react'
 import { useEffect, useState } from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import DatePicker from 'react-datepicker'
 import { postReservation } from '../store/reservations';
 
 const TIMES = [
@@ -13,7 +12,7 @@ const TIMES = [
   "10:00 AM",
   "10:30 AM",
   "11:00 AM",
-  "11:30 AM", 
+  "11:30 AM",
   "12:00 PM",
   "12:30 PM",
   "1:00 PM",
@@ -41,10 +40,10 @@ const TIMES = [
 ];
 
 const DURATIONS = [
-    1, 2, 3, 4
+  1, 2, 3, 4
 ]
 
-export default function ReservationForm({chef_id, price}) {
+export default function ReservationForm({ chef_id, price }) {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
   const history = useHistory()
@@ -55,7 +54,7 @@ export default function ReservationForm({chef_id, price}) {
 
   const userid = user.id
   const chefid = Number(chef_id)
-  const completeReservation = async(e) => {
+  const completeReservation = async (e) => {
     e.preventDefault()
 
     const startingReservation = {
@@ -64,7 +63,7 @@ export default function ReservationForm({chef_id, price}) {
       event_date: event_date,
       event_time: event_time,
       duration: Number(duration)
-    
+
     }
     // check reservation date to be later than today
     await dispatch(postReservation(startingReservation))
@@ -80,20 +79,20 @@ export default function ReservationForm({chef_id, price}) {
         </div>
         <div>
           <select value={event_time} onChange={e => setEventTime(e.target.value)}>
-              {TIMES.map(time => (
-                  <option key={time} value={time}>{time}</option>
-              ))}
-          </select> 
+            {TIMES.map(time => (
+              <option key={time} value={time}>{time}</option>
+            ))}
+          </select>
         </div>
         <div>
           <select value={duration} onChange={e => setDuration(e.target.value)}>
-              {DURATIONS.map(duration => (
-                  <option key={duration} value={duration}>{duration}</option>
-              ))}
+            {DURATIONS.map(duration => (
+              <option key={duration} value={duration}>{duration}</option>
+            ))}
           </select> <p>Hours</p>
         </div>
         <div>
-          <p>Total - {price*duration}</p>
+          <p>Total - {price * duration}</p>
         </div>
         <button> Complete your Reservation</button>
       </form>

@@ -8,9 +8,19 @@ reservation_routes = Blueprint('reservations', __name__)
 
 @reservation_routes.route('/<int:id>/')
 def getChefReservations(id):
-  user = User.query.get(id)
-  print(user)
-  return {reservations}
+  reservations = Reservation.query.filter_by(user_id=id).all()
+  # reservations currently returns a list of object. IS THE TO_DICT NOT WORKING?
+  print("---------ID ROUTE", reservations)
+  # user = User.query.get(id)
+  return jsonify({"reservations": [reservation.to_dict() for reservation in reservations]})
+
+
+@reservation_routes.route('/')
+def getReservations():
+  reservations = User.query.join(Reservation).all()
+  print("------->>>>>", reservations)
+  return jsonify({"reservations": [reservation.to_dict() for reservation in reservations]})
+
 
 @reservation_routes.route('/', methods=['POST'])
 def postReservation():

@@ -22,7 +22,7 @@ export default function HomePage() {
     useEffect(() => {
         dispatch(getFoodTypes())
         dispatch(allChefs())
-    
+
     }, [])
 
     const chefInfo = async (e) => {
@@ -37,13 +37,13 @@ export default function HomePage() {
         setChefId(e.target.id)
         console.log(search)
     }
-    
+
 
     const chefArr = Object.values(chefs)
-    console.log('0000000000000000000000000',chefArr)
-    
+    console.log('0000000000000000000000000', chefArr)
+
     //fix this later
-    if(user == null || user.errors){
+    if (user == null || user.errors) {
         history.push('/login')
     }
     let chef_city;
@@ -70,6 +70,7 @@ export default function HomePage() {
     // if(barId === )
     const searchStuff = (
         <>
+
                 
             <SearchBar search={search} setSearch={setSearch} setBarId={setBarId} barId={barId} setChefId={setChefId}/>
             {/* <div id={barId}  className={classHandler} onClick={chefInfo}> */}
@@ -92,34 +93,35 @@ export default function HomePage() {
             {/* </div> */}
 
 
+
             <div>
                 {
-                 chefArr?.map(chef => (
-                    <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
-                        <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
-                        <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
-                        <img id={chef.id} className="pic-size"  src={chef.chef.profile_image} alt='chef-pic'/>
-                        <p id={chef.id} >{chef.chef.price}</p>
-                        <p id={chef.id} >{chef.chef.bio}</p>
-                        <p id={chef.id} >{chef.chef.food_type_id == 2?
-                        'Food Type: American':chef.chef.food_type_id == 3?
-                        'Food Type: Middle Eastern':chef.chef.food_type_id == 1?
-                        'Food Type: Italian':chef.chef.food_type_id == 4?
-                        'Food Type: Mexican':chef.chef.food_type_id == 5?
-                        'Food Type: Japanese':chef.chef.food_type_id == 4?
-                        'Food Type: Chinese':'Expert at all meals'}</p>
-                        <button className="btn-style" id={chef.id}>Book Me</button>
-                    </div>
-                                        ))
-                        
+                    chefArr?.map(chef => (
+                        <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
+                            <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
+                            <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
+                            <img id={chef.id} className="pic-size" src={chef.chef.profile_image} alt='chef-pic' />
+                            <p id={chef.id} >{chef.chef.price}</p>
+                            <p id={chef.id} >{chef.chef.bio}</p>
+                            <p id={chef.id} >{chef.chef.food_type_id == 2 ?
+                                'Food Type: American' : chef.chef.food_type_id == 3 ?
+                                    'Food Type: Middle Eastern' : chef.chef.food_type_id == 1 ?
+                                        'Food Type: Italian' : chef.chef.food_type_id == 4 ?
+                                            'Food Type: Mexican' : chef.chef.food_type_id == 5 ?
+                                                'Food Type: Japanese' : chef.chef.food_type_id == 4 ?
+                                                    'Food Type: Chinese' : 'Expert at all meals'}</p>
+                            <button className="btn-style" id={chef.id}>Book Me</button>
+                        </div>
+                    ))
+
                 }
-           
+
             </div>
             {/* <DateTimeField /> */}
-        
+
         </>)
 
-    const indivdualChef = (
+    const individualChef = (
         <>
             <ChefDetailPage id={chefId} />
             <button onClick={e => setChefId(null)}>Back button test</button>
@@ -128,8 +130,8 @@ export default function HomePage() {
     return (
 
         <>
-            {chefId ? indivdualChef : searchStuff}
-            
+            {chefId ? individualChef : searchStuff}
+
         </>
 
     )
