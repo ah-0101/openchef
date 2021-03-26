@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Account from './Account';
 import ChefAccount from './ChefAccount';
-import UserReservations from './UserReservations';
+import Reservations from './Reservations';
 import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
 import './profile.css';
@@ -13,12 +13,21 @@ import './profile.css';
 function MyProfile() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
+  const [chefReservations, setChefReservations] = useState(false)
   const history = useHistory();
   const [isSelected, setIsSelected] = useState("Account")
 
   if (user === null) {
     history.push('/login')
   }
+
+  useEffect(() => {
+    if (user.chef_id) {
+      setChefReservations(true)
+    } else {
+      setChefReservations(false)
+    }
+  }, [chefReservations])
 
   let profileNav;
 
@@ -30,11 +39,11 @@ function MyProfile() {
       <div className="account">
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
-      <div>
+      {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
+      </div> */}
       <div>
-        <UserReservations isSelected={isSelected} setIsSelected={setIsSelected} />
+        <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       <div>
         <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
