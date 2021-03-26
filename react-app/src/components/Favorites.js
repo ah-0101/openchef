@@ -25,7 +25,7 @@ export default function Favorites ({chef_id}){
       await dispatch(createFavorites(data))
 
     }else {
-// start from here peter dont forget delet route and the milk
+// start from here peter dont forget delete route and the milk
     }
  }
 
