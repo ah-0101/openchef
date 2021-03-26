@@ -1,5 +1,5 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export default function ChefReviews() {
   const reviews = useSelector(state => state?.chef_reviews);

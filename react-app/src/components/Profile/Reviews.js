@@ -14,7 +14,7 @@ function Reviews({ isSelected, setIsSelected }) {
     if (isSelected === "Reviews") {
         view = (
             <>
-                <p>Testing for Chef Reservations</p>
+                <p>Testing for USER Reviews</p>
             </>
         )
     }

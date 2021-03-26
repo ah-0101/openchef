@@ -6,6 +6,7 @@ import ChefAccount from './ChefAccount';
 import Reservations from './Reservations';
 import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
+import ChefReviews from './ChefReviews';
 import './profile.css';
 // import { getChefReservation } from '../../store/chef_reservations'
 
@@ -33,6 +34,17 @@ function MyProfile() {
 
   // console.log("USER-----------", user)
 
+  const chefComponents = (
+    <>
+      <div>
+        <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div>
+      <div>
+        <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div>
+    </>
+  )
+
   return (
     user &&
     <div className="outer-profile-container">
@@ -45,6 +57,10 @@ function MyProfile() {
       <div>
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
+      {/* <div>
+        <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div> */}
+      {user.chef_id ? chefComponents : ""}
       <div>
         <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>

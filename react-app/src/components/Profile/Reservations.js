@@ -14,55 +14,19 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     //   dispatch(getChefReservation(user.chef_id))
     // })
 
-    console.log("CHEFRES---", chefReservations)
-
-    let view;
     const handleAccountView = (e) => {
         e.preventDefault();
         setIsSelected("Reservations")
         // setChefReservations(false)
         // if (isSelected === "Reservations") {
-        view = (
-            <>
-                <p>Testing for USER Reservations</p>
-            </>
-        )
         // }
     }
 
-    let chefView;
-    const handleChefView = (e) => {
-        e.preventDefault();
-        console.log("TEST")
-        setIsSelected("Reservations")
-        // setChefReservations(true)
-        chefView = (
+    let view;
+    if (isSelected === "Reservations") {
+        view = (
             <>
-                <p>Testing for CHEF Reservations</p>
-            </>
-        )
-    }
-
-    // let view;
-    // if (isSelected === "Reservations" && !chefReservations) {
-    //     view = (
-    //         <>
-    //             <p>Testing for USER Reservations</p>
-    //         </>
-    //     )
-    // } else if (isSelected === "Reservations" && chefReservations) {
-    //     view = (
-    //         <>
-    //             <p>Testing for CHEF Reservations</p>
-    //         </>
-    //     )
-    // }
-
-    let chefButton;
-    if (chefReservations) {
-        chefButton = (
-            <>
-                <button type="button" onClick={handleChefView}>Chef Reservations</button>
+                <p>Testing for USER Reservations</p>
             </>
         )
     }
@@ -72,10 +36,6 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
             <button type="button" onClick={handleAccountView}>Reservations</button>
             <div>
                 {view}
-            </div>
-            <div>
-                {chefView}
-                {chefButton}
             </div>
         </>
     )

@@ -18,9 +18,8 @@ const NavBar = ({ setAuthenticated }) => {
     await dispatch(getAllReviews(user.id))
     if (user.chef_id) {
       await dispatch(getChefReviews(user.id))
-    } else {
-
     }
+
     history.push('/profile')
   }
 

@@ -52,7 +52,9 @@ const ReservationsReducer = (state = {}, action) => {
       return newState
     case GET_USER_RESERVATIONS:
       newState = JSON.parse(JSON.stringify(state))
-      newState[action.reservations.id] = action.reservations
+      action.reservations.reservations.forEach(reservation => {
+        newState[reservation.id] = reservation
+      })
       return newState
     default:
       return state
