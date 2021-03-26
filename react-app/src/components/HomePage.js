@@ -65,6 +65,7 @@ export default function HomePage() {
                         <img id={chef.id} className="pic-size"  src={chef.chef.profile_image} alt='chef-pic'/>
                         <p id={chef.id} >{chef.chef.price}</p>
                         <p id={chef.id} >{chef.chef.bio}</p>
+                           {/* <p>{food_type[chef.food_type_id]}</p> */}
                         <p id={chef.id} >{chef.chef.food_type_id == 2?
                         'Food Type: American':chef.chef.food_type_id == 3?
                         'Food Type: Middle Eastern':chef.chef.food_type_id == 1?
