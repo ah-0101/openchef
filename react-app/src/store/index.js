@@ -7,6 +7,7 @@ import FoodsReducer from './food_types'
 import ReviewsReducer from './reviews';
 import ChefReviewsReducer from './chef_reviews';
 import ReservationsReducer from './reservations';
+import FavoritesReducer from './favorites';
 
 
 const rootReducer = combineReducers({
@@ -16,8 +17,9 @@ const rootReducer = combineReducers({
     food_types: FoodsReducer,
     reviews: ReviewsReducer,
     chef_reviews: ChefReviewsReducer,
-    reservations: ReservationsReducer
-    
+    reservations: ReservationsReducer,
+    favorites: FavoritesReducer
+
 })
 
 let enhancer;

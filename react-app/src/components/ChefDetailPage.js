@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import ChefReviews from './ChefReviews';
 import ReservationForm from './ReservationForm';
+import Favorites from './Favorites'
 
 
 export default function ChefDetailPage({id}) {
@@ -13,7 +14,7 @@ export default function ChefDetailPage({id}) {
 
   const history = useHistory()
   const dispatch = useDispatch()
-  
+
 
   return (
     reviews &&
@@ -23,13 +24,14 @@ export default function ChefDetailPage({id}) {
         <p>{chef.chef.price}</p>
         <p>{chef.chef.bio}</p>
         <p>{cuisine.name}</p>
-        
+
 
         <ChefReviews/>
+        <Favorites chef_id={id} />
         <ReservationForm chef_id={id}
                         price={chef.chef.price}
                             />
       </>
-  
+
   )
   }
