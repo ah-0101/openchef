@@ -1,11 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import { useSelector } from 'react-redux'
-import "./NavBar.css"
+import { useSelector, useDispatch } from 'react-redux'
+import { getChefReviews } from '../store/chef_reviews';
+import { getAllReviews } from '../store/reviews';
+import { allUserReservations } from '../store/reservations';
+import "./NavBar.css";
 
 const NavBar = ({ setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
+  const history = useHistory();
+
+
+  const getDetails = async (e) => {
+    await dispatch(allUserReservations(user.id))
+    await dispatch(getAllReviews(user.id))
+    if (user.chef_id) {
+      await dispatch(getChefReviews(user.id))
+    }
+
+    history.push('/profile')
+  }
 
   return (
     <nav className="nav-bar">
@@ -27,9 +43,9 @@ const NavBar = ({ setAuthenticated }) => {
         </li>
         {user &&
           <li>
-            <NavLink to="/profile" exact={true} activeClassName="active">
+            <div className="navbar-profile" onClick={getDetails} activeClassName="active">
               My Profile
-          </NavLink>
+          </div>
           </li>
         }
         <li>

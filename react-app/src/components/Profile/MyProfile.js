@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Account from './Account';
 import ChefAccount from './ChefAccount';
-import UserReservations from './UserReservations';
+import Reservations from './Reservations';
 import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
+import ChefReviews from './ChefReviews';
 import './profile.css';
 // import { getChefReservation } from '../../store/chef_reservations'
 
@@ -13,6 +14,7 @@ import './profile.css';
 function MyProfile() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
+  const [chefReservations, setChefReservations] = useState(false)
   const history = useHistory();
   const [isSelected, setIsSelected] = useState("Account")
 
@@ -20,9 +22,28 @@ function MyProfile() {
     history.push('/login')
   }
 
+  useEffect(() => {
+    if (user.chef_id) {
+      setChefReservations(true)
+    } else {
+      setChefReservations(false)
+    }
+  }, [chefReservations])
+
   let profileNav;
 
   // console.log("USER-----------", user)
+
+  const chefComponents = (
+    <>
+      <div>
+        <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div>
+      <div>
+        <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div>
+    </>
+  )
 
   return (
     user &&
@@ -30,12 +51,16 @@ function MyProfile() {
       <div className="account">
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
-      <div>
+      {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
+      </div> */}
       <div>
-        <UserReservations isSelected={isSelected} setIsSelected={setIsSelected} />
+        <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
+      {/* <div>
+        <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div> */}
+      {user.chef_id ? chefComponents : ""}
       <div>
         <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>

@@ -54,18 +54,21 @@
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-    margin-top: 10px;
+    margin-top: 190px;
+    position: absolute;
+    top: 200px;
+    left: 670px
 }
 
 .nav-search-bar {
-    margin-top: 40px;
-    background-image: url("../searchpic.png");
+    /* margin-top: 40px; */
+    background-image: url("../barpic.jpg");
     display: flex;
     /* position: relative; */
     /* padding: 5px 0px 5px 0px; */
     justify-content: space-evenly;
     /* justify-content: space-between; */
-    height: 80px;
+    height: 500px;
 }
 
 .chef-city {
@@ -89,3 +92,21 @@
     line-height: 24px;
     word-break: break-word;
 }
+
+
+/* 
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #f5f7f8;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+} */

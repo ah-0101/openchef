@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import './profile.css';
 import { updateUser } from '../../store/session';
 import { getFoodTypes } from '../../store/food_types';
-import { getOneChef } from '../../store/chefs';
+import { allChefs, getOneChef } from '../../store/chefs';
 
 
 function ChefAccount() {
@@ -11,18 +11,19 @@ function ChefAccount() {
     const chef = useSelector(state => state.chefs[user.id])
     const food_type = useSelector(state => state.food_types)
     const [foodType, setFoodType] = useState(food_type?.name);
-    const [bio, setBio] = useState(chef.chef.bio)
+    const [bio, setBio] = useState(chef?.chef.bio)
     const dispatch = useDispatch();
     const [price, setPrice] = useState()
     const id = user.chef_id
 
+    console.log("BIO-->>>", chef)
     if (chef) {
-        console.log("BIO-->>>", chef.bio)
     }
 
     useEffect(async () => {
         // dispatch(getOneChef(id))
-        dispatch(getFoodTypes())
+        await dispatch(allChefs())
+        await dispatch(getFoodTypes())
     }, [dispatch])
 
     const foods = Object.values(food_type);
@@ -39,11 +40,12 @@ function ChefAccount() {
     }
 
     const handleBio = (e) => {
+        e.preventDefault();
         setBio(e.target.value)
     }
 
     return (
-        // chefs &&
+        // chef &&
         <>
             <div>
                 <label>Food Type</label>
@@ -56,7 +58,6 @@ function ChefAccount() {
                     {foods && foods.map((food, i) => (
                         <option key={i}>{food.name}</option>
                     ))}
-                    <option value="Middle Eastern">Middle Eastern</option>
                 </select>
             </div>
             <div>

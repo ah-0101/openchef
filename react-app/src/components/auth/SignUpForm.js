@@ -80,7 +80,7 @@ const SignUpForm = ({ }) => {
 
   return (
     <>
-      <h2>Welcome to OpenChef!</h2>
+      <h2 className="login-title">Welcome to OpenChef!</h2>
       <form className="login-sign-up">
         <div>
           <input
