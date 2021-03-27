@@ -9,29 +9,37 @@ import { allChefs, getOneChef } from '../../store/chefs';
 function ChefAccount() {
     const user = useSelector(state => state.session.user);
     const chef = useSelector(state => state.chefs[user.id])
-    const food_type = useSelector(state => state.food_types)
-    const [foodType, setFoodType] = useState(food_type?.name);
+    const food_types = useSelector(state => state.food_types)
+    const [foodType, setFoodType] = useState(food_types?.name);
     const [bio, setBio] = useState(chef?.chef.bio)
     const dispatch = useDispatch();
-    const [price, setPrice] = useState()
+    const [price, setPrice] = useState(chef?.chef.price)
     const id = user.chef_id
 
-    console.log("BIO-->>>", chef)
-    if (chef) {
+    console.log("BIO-->>>", bio)
+    if (!chef) {
     }
 
     useEffect(async () => {
-        // dispatch(getOneChef(id))
-        await dispatch(allChefs())
-        await dispatch(getFoodTypes())
+        dispatch(allChefs())
+        dispatch(getFoodTypes())
+
     }, [dispatch])
 
-    const foods = Object.values(food_type);
+    useEffect(async () => {
+        if (chef) {
+            setBio(chef.chef.bio)
+            setFoodType(chef.chef.food_type)
+            setPrice(chef.chef.price)
+        }
+    }, [chef])
+
+    const foods = Object.values(food_types);
     console.log("FOOOOD", foods)
 
     const updateFoodType = (e) => {
         // console.log("BEFORE--->>>", foodType)
-        // setFoodType(e.target.id)
+        setFoodType(e.target.value)
         // console.log("AFTER--->>>", foodType)
     }
 
@@ -40,7 +48,6 @@ function ChefAccount() {
     }
 
     const handleBio = (e) => {
-        e.preventDefault();
         setBio(e.target.value)
     }
 
@@ -51,12 +58,11 @@ function ChefAccount() {
                 <label>Food Type</label>
                 <select
                     onChange={updateFoodType}
-                    value={food_type}
+                    name="food_type"
                 >
-                    <option value='' selected disabled>Select one...</option>
-                    {/* <option selected disabled hidden>Select one...</option> */}
+                    <option value='' disabled>Select one...</option>
                     {foods && foods.map((food, i) => (
-                        <option key={i}>{food.name}</option>
+                        <option value={foodType} key={i}>{food.name}</option>
                     ))}
                 </select>
             </div>
