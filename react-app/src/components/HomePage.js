@@ -94,6 +94,7 @@ export default function HomePage() {
 
 
             <div>
+                <p className="available-chef"> Available to cook </p>
                 {
                     chefArr?.map(chef => (
                         <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>

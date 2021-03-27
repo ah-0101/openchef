@@ -122,21 +122,18 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
                         search?.map(chef=> (
                             <>
 
-                        <div className={classHandler2} id={chef.id} >{event === '' ? '':(<p className='search-ind'  id={chef.id} onClick={chefInfoDisplay}>  {chef.first_name} {chef.last_name}</p>)}
+                        <div className={classHandler2} id={chef.id} >
+                        {event === '' ? '':(<p className='search-ind'  id={chef.id} onClick={chefInfoDisplay}>
+                         <span className='colon'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span> 
+                             {chef.first_name} {chef.last_name}                             
+                        <br/>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{chef.city}</p>)}
                         </div>
-                        {/* <div className='classRender' >{chef.last_name}</div> */}
                         </>
                     ))
                 }
                 </div>
                 </div>
-                {/* <div className={classHandler} id={barId} onClick={chefInfoDisplay}> */}
-                     {/* <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}> */}
-                        {/* {search} */}
-                    {/* </p> */}
-                {/* </div> */}
-                {/* <div className={classHandler2} id={barId} onClick={chefInfoDisplay}><p className='search-toggle-content'  id={inId}  onClick={chefInfoDisplay}>{searchSecondField}</p></div> */}
-            </div>
+                </div>
                         </nav>
                         <div>
                        
