@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './profile.css';
-import { updateUser } from '../../store/session';
 import { getFoodTypes } from '../../store/food_types';
-import { allChefs, getOneChef } from '../../store/chefs';
+import { allChefs } from '../../store/chefs';
 
 
 function ChefAccount() {
@@ -15,10 +14,6 @@ function ChefAccount() {
     const dispatch = useDispatch();
     const [price, setPrice] = useState(chef?.chef.price)
     const id = user.chef_id
-
-    console.log("BIO-->>>", bio)
-    if (!chef) {
-    }
 
     useEffect(() => {
         dispatch(allChefs())
@@ -35,7 +30,6 @@ function ChefAccount() {
     }, [chef])
 
     const foods = Object.values(food_types);
-    console.log("FOOOOD", foods)
 
     const updateFoodType = (e) => {
         // console.log("BEFORE--->>>", foodType)

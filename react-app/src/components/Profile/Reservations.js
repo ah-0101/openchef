@@ -1,71 +1,113 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { allChefs } from '../../store/chefs';
+import { getFoodTypes } from '../../store/food_types';
+import { allUserReservations } from '../../store/reservations';
 
 
 function UserReservations({ isSelected, setIsSelected, chefReservations, setChefReservations }) {
     const user = useSelector(state => state.session.user);
-    // const reviews = useSelector(state => state.)
+    const chefs = useSelector(state => state.chefs)
+    const reservations = useSelector(state => state.reservations)
     const dispatch = useDispatch();
     const [event_date, setEventDate] = useState("")
     const [event_time, setEventTime] = useState("")
     const [duration, setDuration] = useState(0)
 
-    // set a state for either chef or user reservations. 
+    const reservationArr = Object.values(reservations);
+    console.log("reservation array --->", reservationArr)
 
-    // useEffect(() => {
-    //   dispatch(getChefReservation(user.chef_id))
-    // })
+    let reserveId;
+    console.log("reservIDIDID", reserveId)
+
+
+    useEffect(() => {
+        dispatch(allChefs())
+        // dispatch(getFoodTypes())
+        dispatch(allUserReservations(user.id))
+    }, [dispatch])
+
+
+    const chefsArr = Object.values(chefs);
 
     const handleAccountView = (e) => {
         e.preventDefault();
         setIsSelected("Reservations")
-        // setChefReservations(false)
-        // if (isSelected === "Reservations") {
-        // }
     }
 
 
     let view;
     if (isSelected === "Reservations") {
         view = (
-            <>
-                <p>Testing for USER Reservations</p>
-                {/* <form onSubmit={completeReservation}>
-                    <h2>Make a Reservation</h2>
-                    <div>
-                        <input onChange={e => setEventDate(e.target.value)} />
-                    </div>
-                    <div>
-                        <select value={event_time} onChange={e => setEventTime(e.target.value)}>
-                            {TIMES.map(time => (
-                                <option key={time} value={time}>{time}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div>
-                        <select value={duration} onChange={e => setDuration(e.target.value)}>
-                            {DURATIONS.map(duration => (
-                                <option key={duration} value={duration}>{duration}</option>
-                            ))}
-                        </select> <p>Hours</p>
-                    </div>
-                    <div>
-                        <p>Total - {price * duration}</p>
-                    </div>
-                    <button> Complete your Reservation</button>
-                </form> */}
-            </>
+            <div className="outer-profile-div-p">
+                {reservationArr?.map((reservation) => (
+                    <span className="profile-single-container" key={reservation.id} >
+                        {chefsArr?.map(chef => (
+                            <div className="test--div">
+                                <div className="none">
+                                    {reserveId = reservation.chef_id}
+                                </div>
+                                <div className="outer-user-info-p">
+                                    <div className="chef-profile-image-p">
+                                        <p>{reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
+                                    </div>
+                                    <div className="user-fields-p">
+                                        <div>
+                                            <span>{reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
+                                        </div>
+                                        <div>
+                                            <p>{reserveId == chef.chef.id ? chef.city : ""}</p>
+                                        </div>
+                                        <div>
+                                            <p>{reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                        <div>
+                            <div className="label-field-container">
+                                <div>
+                                    <li className="profile-label-p">Date</li>
+                                </div>
+                                <div>
+                                    <li>{reservation.event_date}</li>
+                                </div>
+                            </div>
+                            <div className="label-field-container">
+                                <div>
+                                    <li className="profile-label-p">Time</li>
+                                </div>
+                                <div>
+                                    <li>{reservation.event_time}</li>
+                                </div>
+                            </div>
+                            <div className="label-field-container">
+                                <div>
+                                    <li className="profile-label-p">Duration</li>
+                                </div>
+                                <div>
+                                    <li>{reservation.duration} hour(s)</li>
+                                </div>
+                            </div>
+                        </div>
+                        <>
+                        </>
+                    </span>
+                ))
+                }
+            </div>
         )
     }
 
     return (
-        <>
+        reservations &&
+        <div className="res-btn-form-p">
             <button type="button" onClick={handleAccountView}>Reservations</button>
             <div>
                 {view}
             </div>
-        </>
+        </div>
     )
 }
 

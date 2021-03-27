@@ -14,12 +14,23 @@ def getChefReservations(id):
     # user = User.query.get(id)
     return jsonify({"reservations": [reservation.to_dict() for reservation in reservations]})
 
+@reservation_routes.route('/<int:id>/', methods=['PATCH'])
+def updateReservation(id):
+    reservation = Reservation.query.get(id)
+    reservation.user_id = request.json.get('user_id', reservation.user_id)
+    reservation.chef_id = request.json.get('chef_id', reservation.chef_id)
+    reservation.event_date = request.json.get('event_date', reservation.event_date)
+    reservation.event_time = request.json.get('event_time', reservation.event_time)
+    reservation.duration = request.json.get('duration', reservation.duration)
+    db.session.commit()
+    return jsonify(reservation.to_dict())
 
-@reservation_routes.route('/')
+
+@reservation_routes.route('/reservation/')
 def getReservations():
-    reservations = User.query.join(Reservation).all()
+    reservations = Reservation.query.join(User).all()
     print("------->>>>>", reservations)
-    return jsonify({"reservations": [reservation.to_dict() for reservation in reservations]})
+    return jsonify({"reservations": [user.to_dict() for user in reservations]})
 
 
 @reservation_routes.route('/', methods=['POST'])

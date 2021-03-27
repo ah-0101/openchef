@@ -16,7 +16,7 @@ export default function UpdateReservation({ isSelected, setIsSelected }) {
 
     return (
         <>
-            <ReservationForm title="Update Reservation" callbackReservation={editReservation} formData={formData} buttonText="Update your Reservation" submitForm={updateReservation} />
+            <ReservationForm title="Update Reservation" callbackReservation={editReservation} formData={reservations} buttonText="Update your Reservation" />
         </>
     )
 }

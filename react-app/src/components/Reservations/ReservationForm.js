@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 
-// import { postReservation } from '../../store/reservations';
-
 const TIMES = [
   "8:00 AM",
   "8:30 AM",
@@ -44,7 +42,7 @@ const DURATIONS = [
   1, 2, 3, 4
 ]
 
-export default function ReservationForm({ chef_id, price, title, submitForm, callbackReservation, buttonText, formData = { event_time: "", event_date: "", duration: 0 } }) {
+export default function ReservationForm({ chef_id, price, title, callbackReservation, buttonText, formData = { event_time: "", event_date: "", duration: 0 } }) {
   const user = useSelector(state => state.session.user);
   const [event_date, setEventDate] = useState(formData.event_date)
   const [event_time, setEventTime] = useState(formData.event_time)

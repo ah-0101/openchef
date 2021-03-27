@@ -9,7 +9,7 @@ import Reviews from './Reviews';
 import ChefReviews from './ChefReviews';
 import ReservationForm from '../Reservations/ReservationForm';
 import './profile.css';
-// import { getChefReservation } from '../../store/chef_reservations'
+import UpdateReservation from '../Reservations/UpdateReservationContainer';
 
 
 function MyProfile() {
@@ -17,23 +17,19 @@ function MyProfile() {
   const user = useSelector(state => state.session.user);
   const [chefReservations, setChefReservations] = useState(false)
   const history = useHistory();
-  const [isSelected, setIsSelected] = useState("Account")
+  const [isSelected, setIsSelected] = useState("Reservations")
 
   if (user === null) {
     history.push('/login')
   }
 
-  useEffect(() => {
-    if (user.chef_id) {
-      setChefReservations(true)
-    } else {
-      setChefReservations(false)
-    }
-  }, [chefReservations])
-
-  let profileNav;
-
-  // console.log("USER-----------", user)
+  // useEffect(() => {
+  //   if (user.chef_id) {
+  //     setChefReservations(true)
+  //   } else {
+  //     setChefReservations(false)
+  //   }
+  // }, [chefReservations])
 
   const chefComponents = (
     <>
@@ -49,17 +45,17 @@ function MyProfile() {
   return (
     user &&
     <div className="outer-profile-container">
+      <div>
+        <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div>
       <div className="account">
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
-      {/* <div>
-        <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div> */}
       <div>
-        <ReservationForm chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
+        <UpdateReservation chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       {/* <div>
         <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
