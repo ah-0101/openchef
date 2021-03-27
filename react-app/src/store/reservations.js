@@ -1,5 +1,6 @@
 const CONFIRM_RES = 'reservations/postRes'
 const GET_USER_RESERVATIONS = 'reservations/getUserReservations'
+const EDIT_USER_RESERVATION = 'reservations/editUserReservation'
 
 const postRes = (reservation) => {
   return {
@@ -12,6 +13,13 @@ const userReservations = (reservations) => {
   return {
     type: GET_USER_RESERVATIONS,
     reservations,
+  }
+}
+
+const editUserReservation = (reservation) => {
+  return {
+    type: EDIT_USER_RESERVATION,
+    reservation,
   }
 }
 
@@ -39,6 +47,26 @@ export const allUserReservations = (user_id) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json()
     dispatch(userReservations(data))
+  }
+}
+
+export const editReservation = (user_id, chef_id, event_date, event_time, duration) => async dispatch => {
+  const response = await fetch(`/api/reservations/${user_id}/`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id,
+      chef_id,
+      event_date,
+      event_time,
+      duration
+    })
+  })
+  if (response.ok) {
+    const data = await response.json()
+    await dispatch(postRes(data))
   }
 }
 

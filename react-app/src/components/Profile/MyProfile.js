@@ -7,6 +7,7 @@ import Reservations from './Reservations';
 import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
 import ChefReviews from './ChefReviews';
+import ReservationForm from '../Reservations/ReservationForm';
 import './profile.css';
 // import { getChefReservation } from '../../store/chef_reservations'
 
@@ -54,8 +55,11 @@ function MyProfile() {
       {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
-      <div>
+      {/* <div>
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div> */}
+      <div>
+        <ReservationForm chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       {/* <div>
         <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />

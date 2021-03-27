@@ -27,7 +27,6 @@ export const allChefs = () => async (dispatch) => {
 }
 
 export const getOneChef = (id) => async (dispatch) => {
-    console.log("IDIDID", id)
     const response = await fetch(`/api/chefs/${id}/`)
 
     if (response.ok) {
