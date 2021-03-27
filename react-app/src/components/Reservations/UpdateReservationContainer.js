@@ -3,6 +3,7 @@ import ReservationForm from './ReservationForm';
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
+import { editReservation } from '../../store/reservations';
 
 export default function UpdateReservation({ isSelected, setIsSelected }) {
     const reservations = useSelector(state => state.reservations)
@@ -15,7 +16,7 @@ export default function UpdateReservation({ isSelected, setIsSelected }) {
 
     return (
         <>
-            <ReservationForm title="Update Reservation" callbackReservation={putReservation} formData={formData} buttonText="Update your Reservation" submitForm={updateReservation} />
+            <ReservationForm title="Update Reservation" callbackReservation={editReservation} formData={formData} buttonText="Update your Reservation" submitForm={updateReservation} />
         </>
     )
 }
