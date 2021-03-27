@@ -50,8 +50,8 @@ export const allUserReservations = (user_id) => async (dispatch) => {
   }
 }
 
-export const editReservation = (user_id, chef_id, event_date, event_time, duration) => async dispatch => {
-  const response = await fetch(`/api/reservations/${user_id}/`, {
+export const editReservation = ({ id, user_id, chef_id, event_date, event_time, duration }) => async dispatch => {
+  const response = await fetch(`/api/reservations/${id}/`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
