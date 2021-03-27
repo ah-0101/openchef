@@ -1,6 +1,7 @@
 // Action Types
 const ADD_FAV = "ADD_FAVORITE"
-const GET_FAVORITE = "GET_FAVORITE"
+const SET_FAVORITE = 'favorite/setFavorite'
+const REMOVE_FAVORITE = 'favorite/removeFavorite'
 
 
 // Action Creators
@@ -10,13 +11,26 @@ const GET_FAVORITE = "GET_FAVORITE"
    favorites
  });
 
- const getFavorite = (favorites) =>({
-   type: GET_FAVORITE,
-   favorites
- })
+ const setFavorite = (favorite) => ({
+  type: SET_FAVORITE,
+  favorite
+})
+ const removeFavorite = () => ({
+  type: REMOVE_FAVORITE,
+})
 
 
  // Thunks
+ export const getFavorite = () => async(dispatch) => {
+  const res = await fetch('/api/favorites/')
+  const data = await res.json()
+  dispatch(setFavorite(data.favorite))
+  return res
+}
+
+
+
+
 
  export const createFavorites = (favoriteObject) => async (dispatch) => {
 
@@ -35,6 +49,18 @@ const GET_FAVORITE = "GET_FAVORITE"
 
   return response;
   }
+
+
+
+  export const deleteFavorite = () => async (dispatch) => {
+    const res = await fetch('/api/favorites/', {
+      method: 'DELETE',
+    })
+    dispatch(removeFavorite())
+    return res
+  }
+
+
 
 
   // export const getFavorites = () => async (dispatch) => {
@@ -57,12 +83,21 @@ const GET_FAVORITE = "GET_FAVORITE"
   const FavoritesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case ADD_FAV:
+         case ADD_FAV:
           newState = JSON.parse(JSON.stringify(state))
           newState[action.favorites.id] = action.favorites
           return newState
-        default:
+          case SET_FAVORITE:
+            newState = {}
+            action.favorite.forEach(item => {
+              newState[item.id] = item
+            })
+            return newState;
+          case REMOVE_FAVORITE:
+            return {...state, favorite: null }
+          default:
           return state
+
 
     }
 }

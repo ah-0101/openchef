@@ -3,13 +3,13 @@
     /* max-width: 20rem; */
     width: 5px;
     flex-direction: column;
-    border-radius: 10px;
     padding: 1.5rem;
     margin: .1rem auto;
     /* border-width: 10px; */
     min-width: 50rem;
     min-height: 15rem;
-    border: 1px solid #333536;
+    max-height: 30rem;
+    border-bottom: 1px solid #333536;
     background-color: rgb(255, 254, 254);
 }
 
@@ -24,7 +24,7 @@
 }
 
 .chef-container:hover {
-    box-shadow: 3px 3px 7px 2px rgb(31, 30, 30);
+    /* box-shadow: 3px 3px 7px 2px rgb(31, 30, 30); */
 }
 
 .btn-style {
@@ -32,14 +32,15 @@
     font-family: "Raleway", sans-serif;
     font-weight: bold;
     border: 0;
-    width: 350px;
-    height: 40px;
+    width: 300px;
+    min-height: 40px;
     border-radius: 3px;
     color: #ffffff;
     font-size: 20px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-    margin-top: 10px;
+    position: relative;
+    bottom: 40px
 }
 
 .btn-style-find {
@@ -62,13 +63,13 @@
 
 .nav-search-bar {
     /* margin-top: 40px; */
-    background-image: url("../barpic.jpg");
+    background-image: url("../cbk.jpg");
     display: flex;
     /* position: relative; */
     /* padding: 5px 0px 5px 0px; */
     justify-content: space-evenly;
     /* justify-content: space-between; */
-    height: 500px;
+    height: 430px;
 }
 
 .chef-city {
@@ -80,9 +81,31 @@
     font-weight: 700;
     line-height: 24px;
     word-break: break-word;
+    position: relative;
+    left: 400px;
+    top: 120px;
 }
 
 .chef-name {
+    color: #217996;
+    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    ;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    word-break: break-word;
+    position: relative;
+    left: 400px;
+    top: 100px;
+}
+
+.chef-name:hover {
+    cursor: pointer;
+    color: #1a3f4b;
+}
+
+.chef-price {
     color: #0e0f0f;
     font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     ;
@@ -91,6 +114,37 @@
     font-weight: 700;
     line-height: 24px;
     word-break: break-word;
+    position: relative;
+    left: 400px;
+    bottom: 80px;
+}
+
+.chef-bio {
+    color: #0e0f0f;
+    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    ;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    word-break: break-word;
+    position: relative;
+    left: 398px;
+    bottom: 80px;
+}
+
+.chef-food_type {
+    color: #0e0f0f;
+    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    ;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    word-break: break-word;
+    position: relative;
+    left: 398px;
+    bottom: 80px;
 }
 
 

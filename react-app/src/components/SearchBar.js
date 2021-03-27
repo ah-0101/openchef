@@ -52,50 +52,46 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
     const [event_date, setEventState] = useState(new Date())
     const [event_time, setEventTime] = useState('')
     const [duration, setDuration] = useState('')
-
+    const [searchSecondField,setSearchSecondField] = useState([]) 
     const [classHandler, setClassHandler] = useState("search-toggle-none")
+    const [classHandler2, setClassHandler2] = useState("search-toggle2-none")
+    const [inId, setInId] = useState(0)
     const dispatch = useDispatch()
-
+    
     const handleSearchType = async (e) => {
         // e.preventDefault()
 
         const keyword = e.target.value
         if (keyword === '') {
-            setSearch('')
+            // setSearch('')
             setClassHandler('search-toggle-none')
+            setClassHandler2('search-toggle2-none')
             return
         }else{
             setClassHandler('search-toggle')
+            setClassHandler2('search-toggle2')
 
         }
-        const chefSearch = await fetch(`/api/search`);
-        const jsonChefs = await chefSearch.json();
-        jsonChefs.chefs.forEach(chef => {
+        const chefSearch = await fetch(`/api/search/${keyword}`);
+        let jsonChefs = await chefSearch.json();
+        setSearch(jsonChefs)
 
-                let chefName = chef.first_name.toLowerCase();
-                for(let i = 0; i < chefName.length; i++){
-    
-                    if (chefName[i].includes(e.target.value)){
-                        let chefName2 = chef.first_name + ' ' + chef.last_name
-                        setSearch(chefName2)
-                        setBarId(chef.id)
-                        
-                    }
-
-            }
-
-        })
+        console.log('wwwwwwww', jsonChefs)
+       
     }
+    // search.forEach(chef => {
+    //     console.log('peter >>>>>>>>>>>>>>>',chef.first_name)
+    // })
+    // console.log('search>>>???!!!',typeof search, search[0]?.first_name )
+     
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 
     const chefInfoDisplay = async (e) => {
         e.preventDefault()
         setChefId(e.target.id)
-        // setBarId(chef?.id)
         await dispatch(getChefReviews(e.target.id))
     }
-    // const handleClick = (e) => {
-    //     $('.datepicker').datepicker();
-    // }
+
     return (
         <>
             <nav className="nav-search-bar">
@@ -126,14 +122,34 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
             <div>
                 <div className='chef-welcome'>Find your Chef for any occasion</div>
                 <input className='search-bar' onClick={handleSearchType} placeholder={" 🔍 Search by Cuisine or Chef name!"}></input>
-                <div className={classHandler} id={barId} onClick={chefInfoDisplay}> <p className='search-toggle-content'  id={barId}  onClick={chefInfoDisplay}>{search}</p></div>
+                <div className={classHandler} id={barId} onClick={chefInfoDisplay}>
+                     <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}>
+
+                
+                        {/* {search} */}
+
+
+
+                    </p>
+                </div>
+                {/* <div className={classHandler2} id={barId} onClick={chefInfoDisplay}><p className='search-toggle-content'  id={inId}  onClick={chefInfoDisplay}>{searchSecondField}</p></div> */}
             </div>
 
-            <button className='btn-style-find' >Find a Chef!</button>
+            {/* <button className='btn-style-find' >Find a Chef!</button> */}
             
                         </nav>
+                        <div>
+                            {
 
-
+                                search?.map(chef=> (
+                                    <>
+                                  
+                                    <h1 id={chef.id} onClick={chefInfoDisplay}>{chef.first_name}</h1>
+                                    <h1 >{chef.last_name}</h1>
+                                    </>
+                                ))
+                            }
+                        </div>
         </>
     )
 }
