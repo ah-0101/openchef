@@ -10,7 +10,6 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     const chefs = useSelector(state => state.chefs)
     const reservations = useSelector(state => state.reservations)
     const dispatch = useDispatch();
-    const [reservationId, setReservationId] = useState(0)
     const [event_date, setEventDate] = useState("")
     const [event_time, setEventTime] = useState("")
     const [duration, setDuration] = useState(0)
@@ -36,10 +35,6 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
         setIsSelected("Reservations")
     }
 
-    const handleReservationId = () => {
-        setReservationId()
-    }
-
 
     let view;
     if (isSelected === "Reservations") {
@@ -48,33 +43,51 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                 {reservationArr?.map((reservation) => (
                     <div key={reservation.id} >
                         <div>
-                            <li>{reservation.event_date}</li>
-                            <li>{reservation.event_time}</li>
-                            <li>{reservation.duration}</li>
+                            <div>
+                                <div>
+                                    <li className="profile-label-p">Date</li>
+                                </div>
+                                <div>
+                                    <li>{reservation.event_date}</li>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <li className="profile-label-p">Time</li>
+                                </div>
+                                <div>
+                                    <li>{reservation.event_time}</li>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <li className="profile-label-p">Duration</li>
+                                </div>
+                                <div>
+                                    <li>{reservation.duration} hour(s)</li>
+                                </div>
+                            </div>
                         </div>
                         <>
                         </>
                         {chefsArr?.map(chef => (
-                            <>
+                            <div>
                                 <div className="none">
                                     {reserveId = reservation.chef_id}
                                 </div>
                                 <div>
-                                    <p>{reserveId == chef.chef.id ? chef.first_name : ""}</p>
-                                </div>
-                                <div>
-                                    <p>{reserveId == chef.chef.id ? chef.last_name : ""}</p>
+                                    <span>{reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
                                 </div>
                                 <div>
                                     <p>{reserveId == chef.chef.id ? chef.city : ""}</p>
                                 </div>
                                 <div>
-                                    <p>{reserveId == chef.chef.id ? chef.chef.price : ""}</p>
+                                    <p>{reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
                                 </div>
                                 <div>
                                     <p>{reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
                                 </div>
-                            </>
+                            </div>
                         ))}
                     </div>
                 ))
