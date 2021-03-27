@@ -38,7 +38,7 @@ export default function ChefDetailPage({ id }) {
               <h1 className='chef-name-title-r'>Chef {chef.first_name} {chef.last_name}</h1>
               <div className='chef-short-info-r'>
                 <p className='chef-city-r'>City: {chef.city}</p>
-                <p className='chef-price-r'>Price: {chef.chef.price} per hour</p>
+                <p className='chef-price-r'>Price: ${chef.chef.price} per hour</p>
                 <p className='chef-cuisine-r'>Cuisine: {cuisine.name}</p>
               </div>
             </div>
@@ -57,11 +57,6 @@ export default function ChefDetailPage({ id }) {
             price={chef.chef.price}
           />
         </div>
-        {/* <div className='reservation-r'>
-          <ReservationForm chef_id={id}
-            price={chef.chef.price}
-          />
-        </div> */}
       </div>
     </>
 
