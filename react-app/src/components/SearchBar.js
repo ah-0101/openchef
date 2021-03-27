@@ -52,44 +52,36 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
     const [event_date, setEventState] = useState(new Date())
     const [event_time, setEventTime] = useState('')
     const [duration, setDuration] = useState('')
-    const [searchSecondField,setSearchSecondField] = useState([]) 
-    const [classHandler, setClassHandler] = useState("search-toggle-none")
-    const [classHandler2, setClassHandler2] = useState("search-toggle2-none")
-    const [inId, setInId] = useState(0)
+    const [classHandler, setClassHandler] = useState("search-icon")
+    const [classHandler2, setClassHandler2] = useState("search-ind-none")
+    const [event, setEvent] = useState('')
     const dispatch = useDispatch()
     
     const handleSearchType = async (e) => {
-        // e.preventDefault()
 
         const keyword = e.target.value
         if (keyword === '') {
-            // setSearch('')
-            setClassHandler('search-toggle-none')
-            setClassHandler2('search-toggle2-none')
+            setClassHandler('search-icon')
+            setClassHandler2('search-ind-none')
             return
         }else{
-            setClassHandler('search-toggle')
-            setClassHandler2('search-toggle2')
+            setClassHandler('search-icon-none')
+            setClassHandler2('')
 
         }
+        setEvent(e.target.value)
         const chefSearch = await fetch(`/api/search/${keyword}`);
         let jsonChefs = await chefSearch.json();
-        setSearch(jsonChefs)
-
-        console.log('wwwwwwww', jsonChefs)
-       
+        setTimeout(() => {
+            setSearch(jsonChefs)
+        }, 200);
     }
-    // search.forEach(chef => {
-    //     console.log('peter >>>>>>>>>>>>>>>',chef.first_name)
-    // })
-    // console.log('search>>>???!!!',typeof search, search[0]?.first_name )
-     
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-
     const chefInfoDisplay = async (e) => {
         e.preventDefault()
         setChefId(e.target.id)
+       
         await dispatch(getChefReviews(e.target.id))
+        
     }
 
     return (
@@ -98,20 +90,20 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
 
                 <div className="border-calender">
 
-                    <Form.Control className='calender-form' type="date" name="dob"
-                        placeholder="Date of Birth" onChange={date => setEventState(date)} />
+                    <Form.Control className='calender-form' type="date"
+                         onChange={date => setEventState(date)} />
 
 
                     <select className='time-form' value={event_time} onChange={e => setEventTime(e.target.value)}>
                         {TIMES.map(time => (
-                            <option key={time} value={time}>{time}</option>
+                            <option key={time} value={time}>⏲ {time}</option>
                         ))}
                     </select>
 
 
                     <select className='duration-form' value={duration} onChange={e => setDuration(e.target.value)}>
                         {DURATIONS.map(duration => (
-                            <option key={duration} value={duration}>{duration}</option>
+                            <option key={duration} value={duration}>⌚ {duration}</option>
                         ))}
                     </select>
 
@@ -121,34 +113,33 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
 
             <div>
                 <div className='chef-welcome'>Find your Chef for any occasion</div>
-                <input className='search-bar' onClick={handleSearchType} placeholder={" 🔍 Search by Cuisine or Chef name!"}></input>
-                <div className={classHandler} id={barId} onClick={chefInfoDisplay}>
-                     <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}>
+                {/* <span>ss</span> */}
+                <div>
+                <input className={`search-bar ${classHandler}`} onChange={handleSearchType} placeholder={"         Search by Cuisine or Chef name!"}></input>
+                <div className='classRender'>
 
-                
-                        {/* {search} */}
+                    {
+                        search?.map(chef=> (
+                            <>
 
-
-
-                    </p>
+                        <div className={classHandler2} id={chef.id} >{event === '' ? '':(<p className='search-ind'  id={chef.id} onClick={chefInfoDisplay}>  {chef.first_name} {chef.last_name}</p>)}
+                        </div>
+                        {/* <div className='classRender' >{chef.last_name}</div> */}
+                        </>
+                    ))
+                }
                 </div>
+                </div>
+                {/* <div className={classHandler} id={barId} onClick={chefInfoDisplay}> */}
+                     {/* <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}> */}
+                        {/* {search} */}
+                    {/* </p> */}
+                {/* </div> */}
                 {/* <div className={classHandler2} id={barId} onClick={chefInfoDisplay}><p className='search-toggle-content'  id={inId}  onClick={chefInfoDisplay}>{searchSecondField}</p></div> */}
             </div>
-
-            {/* <button className='btn-style-find' >Find a Chef!</button> */}
-            
                         </nav>
                         <div>
-                            {
-
-                                search?.map(chef=> (
-                                    <>
-                                  
-                                    <h1 id={chef.id} onClick={chefInfoDisplay}>{chef.first_name}</h1>
-                                    <h1 >{chef.last_name}</h1>
-                                    </>
-                                ))
-                            }
+                       
                         </div>
         </>
     )
