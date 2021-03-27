@@ -54,9 +54,9 @@ function MyProfile() {
       {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
-      <div>
+      {/* <div>
         <UpdateReservation chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
+      </div> */}
       {/* <div>
         <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
