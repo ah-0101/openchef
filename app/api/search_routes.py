@@ -22,3 +22,13 @@ def getFoodTypeAndChefName():
     # chefId.items()
     # print('chef >>>>>>>>>>>>>>>>>>>>>>>>>>>', dir(chefId.items()))
     return chefId
+
+
+# @search_routes.route('/<id>')
+# def chef(id):
+
+
+@search_routes.route('/<id>/')
+def getChefReservation(id):
+    search_for_chef = User.query.filter(User.first_name.ilike(f'%{id}%')).join(Chef).all()
+    return jsonify([user.to_dict() for user in search_for_chef])

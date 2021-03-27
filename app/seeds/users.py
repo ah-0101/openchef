@@ -16,10 +16,19 @@ def seed_users():
 
     user_chef2 = User(first_name='Tom', last_name='Boy', email='tom@aa.io', city='Cedar City', chef_id=2,
                      hashed_password=generate_password_hash(('password')))
+    user_chef3 = User(first_name='Daniel', last_name='Sandolman', email='Daniel@aa.io', city='Tampa', chef_id=3,
+                     hashed_password=generate_password_hash(('password')))
+    user_chef4 = User(first_name='Peter', last_name='Anderson', email='Peter@aa.io', city='South Jordan', chef_id=4,
+                     hashed_password=generate_password_hash(('password')))
+    user_chef5 = User(first_name='Emad', last_name='Masoud', email='Emad@aa.io', city='Houston', chef_id=5,
+                     hashed_password=generate_password_hash(('password')))
 
     db.session.add(demo)
     db.session.add(user_chef1)
     db.session.add(user_chef2)
+    db.session.add(user_chef3)
+    db.session.add(user_chef4)
+    db.session.add(user_chef5)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.

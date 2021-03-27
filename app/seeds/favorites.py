@@ -5,9 +5,15 @@ def seed_favorites():
 
     favorite = Favorite(chef_id=2, user_id=1)
     favorite2 = Favorite(chef_id=3, user_id=1)
+    favorite3 = Favorite(chef_id=4, user_id=1)
+    favorite4 = Favorite(chef_id=5, user_id=1)
+    favorite5 = Favorite(chef_id=6, user_id=1)
 
     db.session.add(favorite)
     db.session.add(favorite2)
+    db.session.add(favorite3)
+    db.session.add(favorite4)
+    db.session.add(favorite5)
 
     db.session.commit()
 

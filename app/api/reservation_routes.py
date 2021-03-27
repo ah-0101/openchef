@@ -35,3 +35,9 @@ def postReservation():
     db.session.add(res)
     db.session.commit()
     return jsonify(res.to_dict())
+
+
+@reservation_routes.route('/chef-reservation/<int:id>/')
+def getChefReservation(id):
+    chef_reservations = Reservation.query.filter_by(chef_id=id).all()
+    return jsonify({"reservations": [reservation.to_dict() for reservation in chef_reservations]})

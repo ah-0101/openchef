@@ -14,7 +14,7 @@ export default function HomePage() {
     const user = useSelector(state => state.session.user)
     const chefs = useSelector(state => state.chefs)
     const [chefId, setChefId] = useState()
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState([])
     const [barId, setBarId] = useState(null)
     const history = useHistory()
     const dispatch = useDispatch()
@@ -27,8 +27,8 @@ export default function HomePage() {
 
     const chefInfo = async (e) => {
         e.preventDefault()
-        setChefId(e.target.id)
         // setBarId(chef?.id)
+        setChefId(e.target.id)
         await dispatch(getChefReviews(e.target.id))
     }
     const chefInfoDisplay = async (e) => {
@@ -101,10 +101,10 @@ export default function HomePage() {
                         <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
                         <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
                         <img id={chef.id} className="pic-size"  src={chef.chef.profile_image} alt='chef-pic'/>
-                        <p id={chef.id} >{chef.chef.price}</p>
-                        <p id={chef.id} >{chef.chef.bio}</p>
+                        <p id={chef.id} className="chef-price" >Price : ${chef.chef.price}</p>
+                        <p id={chef.id} className="chef-bio">{chef.chef.bio}</p>
                            {/* <p>{food_type[chef.food_type_id]}</p> */}
-                        <p id={chef.id} >{chef.chef.food_type_id == 2?
+                        <p id={chef.id} className="chef-food_type" >{chef.chef.food_type_id == 2?
                         'Food Type: American':chef.chef.food_type_id == 3?
                         'Food Type: Middle Eastern':chef.chef.food_type_id == 1?
                         'Food Type: Italian':chef.chef.food_type_id == 4?
@@ -116,9 +116,9 @@ export default function HomePage() {
                                         ))
                         
                 }
-
             </div>
             {/* <DateTimeField /> */}
+
 
         </>)
 
