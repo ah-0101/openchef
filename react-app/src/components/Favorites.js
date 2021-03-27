@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react'
 import { useHistory, Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {createFavorites} from '../store/favorites'
-
-
-
+import { getFavorite } from '../store/favorites'
+import { allChefs } from '../store/chefs'
 
 export default function Favorites ({chef_id}){
   const dispatch = useDispatch()
@@ -25,12 +24,9 @@ export default function Favorites ({chef_id}){
       await dispatch(createFavorites(data))
 
     }else {
-// start from here peter dont forget delete route and the milk
+
     }
  }
-
-
-
 
 return (
   <>
