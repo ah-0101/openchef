@@ -35,7 +35,6 @@ export default function HomePage() {
         e.preventDefault()
         await dispatch(getChefReviews(e.target.id))
         setChefId(e.target.id)
-        console.log(search)
     }
 
 
@@ -51,10 +50,8 @@ export default function HomePage() {
     let chef_img;
     let chef_food_type;
     chefArr.forEach(chef => {
-        // console.log(chef.city)
         if (chef.chef_id == barId) {
             chef_city = chef.city
-            // console.log(chef_city)
             chef_price = chef.chef.price
             chef_bio = chef.chef.bio
             chef_food_type = chef.chef.food_type_id == 2 ?

@@ -67,7 +67,6 @@ const Account = ({ isSelected, setIsSelected }) => {
             city: city,
             // email: email,
         }
-        console.log("FIRSTNAME-->", data)
         await dispatch(updateUser(data))
     }
 

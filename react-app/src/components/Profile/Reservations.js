@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
+import { nanoid } from 'nanoid'
 import { allChefs } from '../../store/chefs';
 import { getFoodTypes } from '../../store/food_types';
-import { allUserReservations } from '../../store/reservations';
-import UpdateReservation from '../Reservations/UpdateReservationContainer';
-import { nanoid } from 'nanoid'
+import { allUserReservations, deleteReservation, editReservation } from '../../store/reservations';
 
 const TIMES = [
     "8:00 AM",
@@ -49,26 +49,31 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     const user = useSelector(state => state.session.user);
     const chefs = useSelector(state => state.chefs)
     const reservations = useSelector(state => state.reservations)
-    const dispatch = useDispatch();
     const [event_date, setEventDate] = useState("")
     const [event_time, setEventTime] = useState("")
     const [duration, setDuration] = useState(0)
-    const [test, setTest] = useState()
     const [editSelected, setEditSelected] = useState(0)
+    const [chef_id, setChefId] = useState(0)
+    const [user_id, setUserId] = useState(0)
+    const [reservationId, setReservationId] = useState(0)
+    const dispatch = useDispatch();
+    const history = useHistory();
+
 
     const reservationArr = Object.values(reservations);
-    console.log("reservation array --->", reservationArr)
 
     let reserveId;
-    console.log("reservIDIDID", reserveId)
-
 
     useEffect(() => {
         dispatch(allChefs())
         // dispatch(getFoodTypes())
-        dispatch(allUserReservations(user.id))
+        console.log("CHEFS USEEFFECT-------->>>>>")
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(allUserReservations(user.id))
+        console.log("RESERVATIONS USEEFFECT-------->>>>>")
+    }, [dispatch])
 
     const chefsArr = Object.values(chefs);
 
@@ -81,21 +86,51 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
         e.preventDefault()
         if (reservations[e.target.id].id == e.target.id) {
             setEditSelected(e.target.id)
-        } else {
-            return (
-                console.log("LI tags----")
-            )
+            setEventDate(reservations[e.target.id].event_date)
+            setEventTime(reservations[e.target.id].event_time)
+            setDuration(reservations[e.target.id].duration)
+            setChefId(reservations[e.target.id].chef_id)
+            setUserId(reservations[e.target.id].user_id)
+            setReservationId(reservations[e.target.id].id)
         }
     }
 
+    const handleDeleteReservation = async (e) => {
+        e.preventDefault();
+        if (reservations[e.target.id].id == e.target.id) {
+            await dispatch(deleteReservation(e.target.id))
+            await dispatch(allUserReservations(user.id))
+        }
+    }
+
+    const updateReservation = async (e) => {
+        e.preventDefault()
+        const data = {
+            id: reservationId,
+            user_id: user_id,
+            chef_id: chef_id,
+            event_date: event_date,
+            event_time: event_time,
+            duration: Number(duration)
+        }
+        // console.log(
+        //     "HELLLO",
+        //     data.user_id,
+        //     data.chef_id,
+        //     "HELLLO"
+        // )
+        // check reservation date to be later than today
+        await dispatch(editReservation(data))
+        // history.push('/profile')
+    }
 
     let view;
     if (isSelected === "Reservations") {
         view = (
+            reservations && chefs &&
             <div className="outer-profile-div-p">
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >
-                        <UpdateReservation />
                         {chefsArr?.map(chef => (
                             <div key={nanoid()} className="test--div">
                                 <div className="none">
@@ -103,17 +138,17 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                 </div>
                                 <div className="outer-user-info-p">
                                     <div className="chef-profile-image-p">
-                                        <p>{reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
+                                        <p>{chefs && reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
                                     </div>
                                     <div className="user-fields-p">
                                         <div>
-                                            <span>{reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
+                                            <span>{chefs && reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
                                         </div>
                                         <div>
-                                            <p>{reserveId == chef.chef.id ? chef.city : ""}</p>
+                                            <p>{chefs && reserveId == chef.chef.id ? chef.city : ""}</p>
                                         </div>
                                         <div>
-                                            <p>{reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
+                                            <p>{chefs && reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +160,7 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     <li className="profile-label-p">Date</li>
                                 </div>
                                 <div>
-                                    {reservation.id == editSelected ? <input value={reservation.event_date} onChange={e => setEventDate(e.target.value)} /> : <li>{reservation.event_date}</li>}
+                                    {chefs && reservation.id == editSelected ? <input value={event_date} onChange={e => setEventDate(e.target.value)} /> : <li>{reservation.event_date}</li>}
                                 </div>
                             </div>
                             <div className="label-field-container">
@@ -133,12 +168,13 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     <li className="profile-label-p">Time</li>
                                 </div>
                                 <div>
-                                    {reservation.id == editSelected ? <select name="event_time" onChange={e => setEventTime(e.target.value)}>
-                                        <option value={reservation.event_time}>{reservation.event_time}</option>
-                                        {TIMES.map(time => (
-                                            <option key={nanoid()} value={event_time}>{time}</option>
-                                        ))}
-                                    </select> :
+                                    {chefs && reservation.id == editSelected ?
+                                        <select name="event_time" onChange={e => setEventTime(e.target.value)}>
+                                            <option value={event_time}>{reservation.event_time}</option>
+                                            {TIMES.map(time => (
+                                                <option key={nanoid()} value={reservation.event_time}>{time}</option>
+                                            ))}
+                                        </select> :
                                         <li>{reservation.event_time}</li>}
                                 </div>
                             </div>
@@ -147,8 +183,8 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     <li className="profile-label-p">Duration</li>
                                 </div>
                                 <div>
-                                    {reservation.id == editSelected ?
-                                        <select value={reservations[editSelected].duration} onChange={e => setDuration(e.target.value)}>
+                                    {chefs && reservation.id == editSelected ?
+                                        <select name="duration" onChange={e => setDuration(e.target.value)}>
                                             {DURATIONS.map(duration => (
                                                 <option key={nanoid()} value={duration}>{duration}</option>
                                             ))}
@@ -157,9 +193,18 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                 </div>
                             </div>
                         </div>
-                        <>
-                            <button id={reservation.id} type="button" onClick={handleEditReservation}>Edit</button>
-                        </>
+                        <div>
+                            {chefs && reservation.id == editSelected ? "" :
+                                <button id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>}
+                        </div>
+                        <div>
+                            {chefs && reservation.id == editSelected ?
+                                <button id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button> :
+                                ""}
+                        </div>
+                        <div>
+                            <button id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                        </div>
                     </span>
                 ))
                 }

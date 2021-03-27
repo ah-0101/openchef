@@ -15,7 +15,7 @@ const NavBar = ({ setAuthenticated }) => {
 
 
   const getDetails = async (e) => {
-    await dispatch(allUserReservations(user.id))
+    // await dispatch(allUserReservations(user.id))
     await dispatch(getAllReviews(user.id))
     if (user.chef_id) {
       await dispatch(getChefReviews(user.id))

@@ -46,7 +46,7 @@ const DURATIONS = [
 ]
 
 
-export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
+export default function SearchBar({ search, setSearch, setBarId, barId, setChefId }) {
 
 
     const [event_date, setEventState] = useState(new Date())
@@ -56,7 +56,7 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
     const [classHandler2, setClassHandler2] = useState("search-ind-none")
     const [event, setEvent] = useState('')
     const dispatch = useDispatch()
-    
+
     const handleSearchType = async (e) => {
 
         const keyword = e.target.value
@@ -64,7 +64,7 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
             setClassHandler('search-icon')
             setClassHandler2('search-ind-none')
             return
-        }else{
+        } else {
             setClassHandler('search-icon-none')
             setClassHandler2('')
 
@@ -79,9 +79,9 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
     const chefInfoDisplay = async (e) => {
         e.preventDefault()
         setChefId(e.target.id)
-       
+
         await dispatch(getChefReviews(e.target.id))
-        
+
     }
 
     return (
@@ -91,7 +91,7 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
                 <div className="border-calender">
 
                     <Form.Control className='calender-form' type="date"
-                         onChange={date => setEventState(date)} />
+                        onChange={date => setEventState(date)} />
 
 
                     <select className='time-form' value={event_time} onChange={e => setEventTime(e.target.value)}>
@@ -111,36 +111,36 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
 
                 </div>
 
-            <div>
-                <div className='chef-welcome'>Find your Chef for any occasion</div>
-                {/* <span>ss</span> */}
                 <div>
-                <input className={`search-bar ${classHandler}`} onChange={handleSearchType} placeholder={"         Search by Cuisine or Chef name!"}></input>
-                <div className='classRender'>
+                    <div className='chef-welcome'>Find your Chef for any occasion</div>
+                    {/* <span>ss</span> */}
+                    <div>
+                        <input className={`search-bar ${classHandler}`} onChange={handleSearchType} placeholder={"         Search by Cuisine or Chef name!"}></input>
+                        <div className='classRender'>
 
-                    {
-                        search?.map(chef=> (
-                            <>
+                            {
+                                search?.map(chef => (
+                                    <>
 
-                        <div className={classHandler2} id={chef.id} >{event === '' ? '':(<p className='search-ind'  id={chef.id} onClick={chefInfoDisplay}>  {chef.first_name} {chef.last_name}</p>)}
+                                        <div className={classHandler2} id={chef.id} >{event === '' ? '' : (<p className='search-ind' id={chef.id} onClick={chefInfoDisplay}>  {chef.first_name} {chef.last_name}</p>)}
+                                        </div>
+                                        {/* <div className='classRender' >{chef.last_name}</div> */}
+                                    </>
+                                ))
+                            }
                         </div>
-                        {/* <div className='classRender' >{chef.last_name}</div> */}
-                        </>
-                    ))
-                }
-                </div>
-                </div>
-                {/* <div className={classHandler} id={barId} onClick={chefInfoDisplay}> */}
-                     {/* <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}> */}
-                        {/* {search} */}
+                    </div>
+                    {/* <div className={classHandler} id={barId} onClick={chefInfoDisplay}> */}
+                    {/* <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}> */}
+                    {/* {search} */}
                     {/* </p> */}
-                {/* </div> */}
-                {/* <div className={classHandler2} id={barId} onClick={chefInfoDisplay}><p className='search-toggle-content'  id={inId}  onClick={chefInfoDisplay}>{searchSecondField}</p></div> */}
+                    {/* </div> */}
+                    {/* <div className={classHandler2} id={barId} onClick={chefInfoDisplay}><p className='search-toggle-content'  id={inId}  onClick={chefInfoDisplay}>{searchSecondField}</p></div> */}
+                </div>
+            </nav>
+            <div>
+
             </div>
-                        </nav>
-                        <div>
-                       
-                        </div>
         </>
     )
 }
