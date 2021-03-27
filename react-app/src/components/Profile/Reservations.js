@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid'
 import { allChefs } from '../../store/chefs';
 import { getFoodTypes } from '../../store/food_types';
 import { allUserReservations, deleteReservation, editReservation } from '../../store/reservations';
+import '../ChefReviews.css'
 
 const TIMES = [
     "8:00 AM",
@@ -132,78 +133,82 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >
                         {chefsArr?.map(chef => (
-                            <div key={nanoid()} className="test--div">
-                                <div className="none">
-                                    {reserveId = reservation.chef_id}
-                                </div>
-                                <div className="outer-user-info-p">
-                                    <div className="chef-profile-image-p">
-                                        <p>{chefs && reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
+                            <div className="test--div">
+                                <div className="new-container-p">
+                                    <div key={nanoid()} className="none-2">
+                                        {reserveId = reservation.chef_id}
                                     </div>
-                                    <div className="user-fields-p">
-                                        <div>
-                                            <span>{chefs && reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
+                                    <div className="outer-user-info-p">
+                                        <div className="chef-profile-image-p">
+                                            <p>{chefs && reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
                                         </div>
-                                        <div>
-                                            <p>{chefs && reserveId == chef.chef.id ? chef.city : ""}</p>
-                                        </div>
-                                        <div>
-                                            <p>{chefs && reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
+                                        <div className="user-fields-p">
+                                            <div className="main-text-profile-p">
+                                                <span>{chefs && reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
+                                            </div>
+                                            <div className="main-text-profile-p">
+                                                <span>{chefs && reserveId == chef.chef.id ? chef.city : ""}</span>
+                                            </div>
+                                            <div className="main-text-profile-p">
+                                                <span>{chefs && reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        <div>
-                            <div className="label-field-container">
-                                <div>
-                                    <li className="profile-label-p">Date</li>
+                        <div className="input-label-field-container-p">
+                            <div>
+                                <div className="label-field-container">
+                                    <div>
+                                        <li className="profile-label-p">Date</li>
+                                    </div>
+                                    <div>
+                                        {chefs && reservation.id == editSelected ? <input value={event_date} onChange={e => setEventDate(e.target.value)} /> : <li>{reservation.event_date}</li>}
+                                    </div>
                                 </div>
-                                <div>
-                                    {chefs && reservation.id == editSelected ? <input value={event_date} onChange={e => setEventDate(e.target.value)} /> : <li>{reservation.event_date}</li>}
+                                <div className="label-field-container">
+                                    <div>
+                                        <li className="profile-label-p">Time</li>
+                                    </div>
+                                    <div>
+                                        {chefs && reservation.id == editSelected ?
+                                            <select name="event_time" onChange={e => setEventTime(e.target.value)}>
+                                                <option value={event_time}>{reservation.event_time}</option>
+                                                {TIMES.map(time => (
+                                                    <option key={nanoid()} value={event_time}>{time}</option>
+                                                ))}
+                                            </select> :
+                                            <li>{reservation.event_time}</li>}
+                                    </div>
+                                </div>
+                                <div className="label-field-container">
+                                    <div>
+                                        <li className="profile-label-p">Duration</li>
+                                    </div>
+                                    <div>
+                                        {chefs && reservation.id == editSelected ?
+                                            <select name="duration" onChange={e => setDuration(e.target.value)}>
+                                                {DURATIONS.map(duration => (
+                                                    <option key={nanoid()} value={duration}>{duration}</option>
+                                                ))}
+                                            </select>
+                                            : <li>{reservation.duration} hour(s)</li>}
+                                    </div>
                                 </div>
                             </div>
-                            <div className="label-field-container">
-                                <div>
-                                    <li className="profile-label-p">Time</li>
-                                </div>
-                                <div>
-                                    {chefs && reservation.id == editSelected ?
-                                        <select name="event_time" onChange={e => setEventTime(e.target.value)}>
-                                            <option value={event_time}>{reservation.event_time}</option>
-                                            {TIMES.map(time => (
-                                                <option key={nanoid()} value={reservation.event_time}>{time}</option>
-                                            ))}
-                                        </select> :
-                                        <li>{reservation.event_time}</li>}
-                                </div>
+                            <div>
+                                {chefs && reservation.id == editSelected ? "" :
+                                    <button id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>}
                             </div>
-                            <div className="label-field-container">
-                                <div>
-                                    <li className="profile-label-p">Duration</li>
-                                </div>
-                                <div>
-                                    {chefs && reservation.id == editSelected ?
-                                        <select name="duration" onChange={e => setDuration(e.target.value)}>
-                                            {DURATIONS.map(duration => (
-                                                <option key={nanoid()} value={duration}>{duration}</option>
-                                            ))}
-                                        </select>
-                                        : <li>{reservation.duration} hour(s)</li>}
-                                </div>
+                            <div>
+                                {chefs && reservation.id == editSelected ?
+                                    <button id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button> :
+                                    ""}
                             </div>
-                        </div>
-                        <div>
-                            {chefs && reservation.id == editSelected ? "" :
-                                <button id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>}
-                        </div>
-                        <div>
-                            {chefs && reservation.id == editSelected ?
-                                <button id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button> :
-                                ""}
-                        </div>
-                        <div>
-                            <button id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                            <div>
+                                <button id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                            </div>
                         </div>
                     </span>
                 ))

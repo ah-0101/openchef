@@ -14,7 +14,7 @@
   margin: 0 0;
 }
 
-.none {
+.none-2 {
   display: none;
 }
 
@@ -23,8 +23,9 @@
 }
 
 .image-profile-p {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
 .profile-label-p {
@@ -39,21 +40,39 @@
 .outer-user-info-p {
   display: flex;
   align-items: center;
+  padding-left: 10px;
 }
 
 .profile-single-container {
   display: flex;
+  padding: 0 0 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid black;
+  position: relative;
 }
 
 .label-field-container {
   display: flex;
-  /* flex-direction: column; */
 }
 
 .chef-profile-image-p {
+  width: 25%;
 }
 
 .user-fields-p {
   display: flex;
   flex-direction: column;
+}
+
+.main-text-profile-p {
+  color: #247f9e;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  word-break: break-word;
+}
+
+.input-label-field-container-p {
+  display: flex;
 }
