@@ -2,7 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { postReservation } from '../store/reservations';
+
+import { postReservation } from '../../store/reservations';
 
 const TIMES = [
   "8:00 AM",
@@ -43,17 +44,17 @@ const DURATIONS = [
   1, 2, 3, 4
 ]
 
-export default function ReservationForm({ chef_id, price }) {
-  const user = useSelector(state => state.session.user)
-  const dispatch = useDispatch()
-  const history = useHistory()
-
-  const [event_date, setEventDate] = useState("")
-  const [event_time, setEventTime] = useState("")
-  const [duration, setDuration] = useState(0)
+export default function ReservationForm({ chef_id, price, title, submitForm, callbackReservation, buttonText, formData = { event_time: "", event_date: "", duration: 0 } }) {
+  const user = useSelector(state => state.session.user);
+  const [event_date, setEventDate] = useState(formData.event_date)
+  const [event_time, setEventTime] = useState(formData.event_time)
+  const [duration, setDuration] = useState(formData.duration)
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const userid = user.id
   const chefid = Number(chef_id)
+
   const completeReservation = async (e) => {
     e.preventDefault()
 
@@ -66,14 +67,15 @@ export default function ReservationForm({ chef_id, price }) {
 
     }
     // check reservation date to be later than today
-    await dispatch(postReservation(startingReservation))
+    await dispatch(callbackReservation(startingReservation))
     history.push('/profile')
   }
 
+
   return (
     <>
-      <form onSubmit={completeReservation}>
-        <h2>Make a Reservation</h2>
+      <form id="reservation-form-id" onSubmit={completeReservation}>
+        <h2>{title}</h2>
         <div>
           <input onChange={e => setEventDate(e.target.value)} />
         </div>
@@ -94,7 +96,7 @@ export default function ReservationForm({ chef_id, price }) {
         <div>
           <p>Total - {price * duration}</p>
         </div>
-        <button> Complete your Reservation</button>
+        <button>{buttonText}</button>
       </form>
 
     </>
