@@ -8,6 +8,17 @@
 
 }
 
+.background-image{
+    /* margin-top: 40px; */
+    background-image: url("../kitchen2.jpg");
+    display: flex;
+    /* position: relative; */
+    /* padding: 5px 0px 5px 0px; */
+    justify-content: space-evenly;
+    /* justify-content: space-between; */
+    height: 430px;
+
+}
 .reservation-r{
   width: 320px;
   margin: 0 0 0 1rem;
@@ -30,6 +41,7 @@ padding: 2rem 1rem;
   height: 200px;
   width: 200px;
   border-radius: 10px;
+  margin-top: 3em;
 }
 
 .chef-name-title-r{
