@@ -9,21 +9,21 @@ import { allUserReservations } from '../store/reservations';
 import "./NavBar.css";
 
 const NavBar = ({ setAuthenticated }) => {
-    const user = useSelector(state => state.session.user)
-    const dispatch = useDispatch()
-    const history = useHistory();
+  const user = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
+  const history = useHistory();
 
 
-    const getDetails = async(e) => {
-        await dispatch(allUserReservations(user.id))
-        await dispatch(getAllReviews(user.id))
-        if (user.chef_id) {
-            await dispatch(getChefReviews(user.id))
-            await dispatch(getChefReservations(user.id))
-        }
-
-        history.push('/profile')
+  const getDetails = async (e) => {
+    await dispatch(allUserReservations(user.id))
+    await dispatch(getAllReviews(user.id))
+    if (user.chef_id) {
+      await dispatch(getChefReviews(user.id))
+      await dispatch(getChefReservations(user.id))
     }
+
+    history.push('/profile')
+  }
   return (
     <nav className="nav-bar">
       <ul className="nav-stuff">
@@ -44,9 +44,9 @@ const NavBar = ({ setAuthenticated }) => {
         </li>
         {user &&
           <li>
-            <div className="navbar-profile" onClick={getDetails} activeClassName="active">
+            <a className="navbar-profile" onClick={getDetails} activeClassName="active">
               My Profile
-          </div>
+          </a>
           </li>
         }
         <li>
