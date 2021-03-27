@@ -1,4 +1,4 @@
-.chef-reviews-title{
+.chef-reviews-title {
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.33;
@@ -6,4 +6,13 @@
   border-bottom: 1px solid #d8d9db;
   padding-bottom: 1rem;
   margin: 0 0;
+}
+
+.none {
+  display: none;
+}
+
+.image-profile-p {
+  width: 100px;
+  height: 100px;
 }

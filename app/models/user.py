@@ -91,5 +91,12 @@ class User(db.Model, UserMixin):
 
     def to_dict_reservations(self):
         return {
+            "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "chef": self.chef.to_dict(),
+            "email": self.email,
+            "city": self.city,
+            "chef_id": self.chef_id,
             "reservations": [reservation.to_dict() for reservation in self.user_reservations],
         }

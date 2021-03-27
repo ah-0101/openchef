@@ -40,39 +40,38 @@ export default function HomePage() {
 
 
     const chefArr = Object.values(chefs)
-    console.log('0000000000000000000000000', chefArr)
 
     //fix this later
     if (user == null || user.errors) {
         history.push('/login')
     }
     let chef_city;
-    let chef_price; 
+    let chef_price;
     let chef_bio;
     let chef_img;
     let chef_food_type;
     chefArr.forEach(chef => {
         // console.log(chef.city)
-        if(chef.chef_id == barId){
+        if (chef.chef_id == barId) {
             chef_city = chef.city
-            console.log(chef_city)
+            // console.log(chef_city)
             chef_price = chef.chef.price
             chef_bio = chef.chef.bio
-            chef_food_type = chef.chef.food_type_id == 2?
-            'Food Type: American':chef.chef.food_type_id == 3?
-            'Food Type: Middle Eastern':chef.chef.food_type_id == 1?
-            'Food Type: Italian':chef.chef.food_type_id == 4?
-            'Food Type: Mexican':chef.chef.food_type_id == 5?
-            'Food Type: Japanese':chef.chef.food_type_id == 4?
-            'Food Type: Chinese':'Expert at all meals'
+            chef_food_type = chef.chef.food_type_id == 2 ?
+                'Food Type: American' : chef.chef.food_type_id == 3 ?
+                    'Food Type: Middle Eastern' : chef.chef.food_type_id == 1 ?
+                        'Food Type: Italian' : chef.chef.food_type_id == 4 ?
+                            'Food Type: Mexican' : chef.chef.food_type_id == 5 ?
+                                'Food Type: Japanese' : chef.chef.food_type_id == 4 ?
+                                    'Food Type: Chinese' : 'Expert at all meals'
         }
     })
     // if(barId === )
     const searchStuff = (
         <>
 
-                
-            <SearchBar search={search} setSearch={setSearch} setBarId={setBarId} barId={barId} setChefId={setChefId}/>
+
+            <SearchBar search={search} setSearch={setSearch} setBarId={setBarId} barId={barId} setChefId={setChefId} />
             {/* <div id={barId}  className={classHandler} onClick={chefInfo}> */}
             {/* <h1 className="chef-name" id={barId}>{search?search:'no match'}</h1> */}
             {/* <p className="chef-city" id={barId} >Available In{chef_city}</p> */}
@@ -87,34 +86,34 @@ export default function HomePage() {
             <div className="grid-item">{chef_price}</div>  
             <div className="grid-item">{chef_food_type}</div>
             </div> */}
-            
-            
-            
+
+
+
             {/* </div> */}
 
 
 
             <div>
                 {
-                 chefArr?.map(chef => (
-                    <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
-                        <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
-                        <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
-                        <img id={chef.id} className="pic-size"  src={chef.chef.profile_image} alt='chef-pic'/>
-                        <p id={chef.id} className="chef-price" >Price : ${chef.chef.price}</p>
-                        <p id={chef.id} className="chef-bio">{chef.chef.bio}</p>
-                           {/* <p>{food_type[chef.food_type_id]}</p> */}
-                        <p id={chef.id} className="chef-food_type" >{chef.chef.food_type_id == 2?
-                        'Food Type: American':chef.chef.food_type_id == 3?
-                        'Food Type: Middle Eastern':chef.chef.food_type_id == 1?
-                        'Food Type: Italian':chef.chef.food_type_id == 4?
-                        'Food Type: Mexican':chef.chef.food_type_id == 5?
-                        'Food Type: Japanese':chef.chef.food_type_id == 4?
-                        'Food Type: Chinese':'Expert at all meals'}</p>
-                        <button className="btn-style" id={chef.id}>Book Me</button>
-                    </div>
-                                        ))
-                        
+                    chefArr?.map(chef => (
+                        <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
+                            <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
+                            <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
+                            <img id={chef.id} className="pic-size" src={chef.chef.profile_image} alt='chef-pic' />
+                            <p id={chef.id} className="chef-price" >Price : ${chef.chef.price}</p>
+                            <p id={chef.id} className="chef-bio">{chef.chef.bio}</p>
+                            {/* <p>{food_type[chef.food_type_id]}</p> */}
+                            <p id={chef.id} className="chef-food_type" >{chef.chef.food_type_id == 2 ?
+                                'Food Type: American' : chef.chef.food_type_id == 3 ?
+                                    'Food Type: Middle Eastern' : chef.chef.food_type_id == 1 ?
+                                        'Food Type: Italian' : chef.chef.food_type_id == 4 ?
+                                            'Food Type: Mexican' : chef.chef.food_type_id == 5 ?
+                                                'Food Type: Japanese' : chef.chef.food_type_id == 4 ?
+                                                    'Food Type: Chinese' : 'Expert at all meals'}</p>
+                            <button className="btn-style" id={chef.id}>Book Me</button>
+                        </div>
+                    ))
+
                 }
             </div>
             {/* <DateTimeField /> */}

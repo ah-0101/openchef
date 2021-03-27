@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 
-from app.models import User, db, Chef, Favorite
+from app.models import User, db, Chef, Favorite, Reservation
 
 
 chef_routes = Blueprint('chefs', __name__)
@@ -12,6 +12,14 @@ def get_all_chefs():
     users = User.query.join(Chef).all()
     return jsonify({'chefs': [user.to_dict_chefs() for user in users]})
 
+@chef_routes.route('/reservations/')
+def get_all_user_reservations():
+    users = User.query.join(Chef).all()
+    reservations = Reservation.query.all()
+    print("RESERVATION--------", reservations)
+    reserv = [reservation.to_dict() for reservation in reservations]
+    print("reserv----------->>>>>>>>", reserv)
+    return jsonify({'chefs': [user.to_dict_chefs() for user in users]})
 
 @chef_routes.route('/<int:id>/')
 def get_one_chefs(id):
