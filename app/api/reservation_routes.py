@@ -48,6 +48,13 @@ def postReservation():
     return jsonify(res.to_dict())
 
 
+@reservation_routes.route('/<int:id>/', methods=['DELETE'])
+def delete_reservation(id):
+    reservation = Reservation.query.get(id)
+    db.session.delete(reservation)
+    db.session.commit()
+
+
 @reservation_routes.route('/chef-reservation/<int:id>/')
 def getChefReservation(id):
     chef_reservations = Reservation.query.filter_by(chef_id=id).all()

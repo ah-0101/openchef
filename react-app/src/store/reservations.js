@@ -1,6 +1,6 @@
 const CONFIRM_RES = 'reservations/postRes'
 const GET_USER_RESERVATIONS = 'reservations/getUserReservations'
-const EDIT_USER_RESERVATION = 'reservations/editUserReservation'
+// const DELETE_USER_RESERVATION = 'reservations/deleteUserReservation'
 
 const postRes = (reservation) => {
   return {
@@ -15,6 +15,13 @@ const userReservations = (reservations) => {
     reservations,
   }
 }
+
+// const deleteUserReservation = (id) => {
+//   return {
+//     type: DELETE_USER_RESERVATION,
+//     id,
+//   }
+// }
 
 export const postReservation = (reservationInfo) => async (dispatch) => {
   const response = await fetch('/api/reservations/', {
@@ -63,6 +70,11 @@ export const editReservation = (user_id, chef_id, event_date, event_time, durati
   }
 }
 
+export const deleteReservation = (id) => async dispatch => {
+  const response = await fetch(`api/reservations/${id}/`, {
+    method: 'DELETE',
+  })
+}
 
 const ReservationsReducer = (state = {}, action) => {
   let newState;
@@ -72,7 +84,7 @@ const ReservationsReducer = (state = {}, action) => {
       newState[action.payload.id] = action.payload
       return newState
     case GET_USER_RESERVATIONS:
-      newState = JSON.parse(JSON.stringify(state))
+      newState = {}
       action.reservations.reservations.forEach(reservation => {
         newState[reservation.id] = reservation
       })

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { nanoid } from 'nanoid'
 import { allChefs } from '../../store/chefs';
 import { getFoodTypes } from '../../store/food_types';
-import { allUserReservations } from '../../store/reservations';
-import UpdateReservation from '../Reservations/UpdateReservationContainer';
-import { nanoid } from 'nanoid'
+import { allUserReservations, deleteReservation } from '../../store/reservations';
 
 const TIMES = [
     "8:00 AM",
@@ -53,22 +52,18 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     const [event_date, setEventDate] = useState("")
     const [event_time, setEventTime] = useState("")
     const [duration, setDuration] = useState(0)
-    const [test, setTest] = useState()
     const [editSelected, setEditSelected] = useState(0)
+    const [updateBtn, setUpdateBtn] = useState(false)
 
     const reservationArr = Object.values(reservations);
-    console.log("reservation array --->", reservationArr)
 
     let reserveId;
-    console.log("reservIDIDID", reserveId)
-
 
     useEffect(() => {
         dispatch(allChefs())
         // dispatch(getFoodTypes())
         dispatch(allUserReservations(user.id))
     }, [dispatch])
-
 
     const chefsArr = Object.values(chefs);
 
@@ -81,13 +76,17 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
         e.preventDefault()
         if (reservations[e.target.id].id == e.target.id) {
             setEditSelected(e.target.id)
-        } else {
-            return (
-                console.log("LI tags----")
-            )
+            setUpdateBtn(true)
         }
     }
 
+    const handleDeleteReservation = async (e) => {
+        e.preventDefault();
+        if (reservations[e.target.id].id == e.target.id) {
+            await dispatch(deleteReservation(e.target.id))
+            await dispatch(allUserReservations(user.id))
+        }
+    }
 
     let view;
     if (isSelected === "Reservations") {
@@ -95,7 +94,6 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
             <div className="outer-profile-div-p">
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >
-                        <UpdateReservation />
                         {chefsArr?.map(chef => (
                             <div key={nanoid()} className="test--div">
                                 <div className="none">
@@ -136,7 +134,7 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     {reservation.id == editSelected ? <select name="event_time" onChange={e => setEventTime(e.target.value)}>
                                         <option value={reservation.event_time}>{reservation.event_time}</option>
                                         {TIMES.map(time => (
-                                            <option key={nanoid()} value={event_time}>{time}</option>
+                                            <option key={nanoid()} value={reservation.event_time}>{time}</option>
                                         ))}
                                     </select> :
                                         <li>{reservation.event_time}</li>}
@@ -157,9 +155,12 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                 </div>
                             </div>
                         </div>
-                        <>
+                        <div>
                             <button id={reservation.id} type="button" onClick={handleEditReservation}>Edit</button>
-                        </>
+                        </div>
+                        <div>
+                            <button id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                        </div>
                     </span>
                 ))
                 }

@@ -32,9 +32,7 @@ function ChefAccount() {
     const foods = Object.values(food_types);
 
     const updateFoodType = (e) => {
-        // console.log("BEFORE--->>>", foodType)
         setFoodType(e.target.value)
-        // console.log("AFTER--->>>", foodType)
     }
 
     const updatePrice = (e) => {

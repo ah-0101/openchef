@@ -10,7 +10,7 @@ import ChefReviews from './ChefReviews';
 import ReservationForm from '../Reservations/ReservationForm';
 import './profile.css';
 import UpdateReservation from '../Reservations/UpdateReservationContainer';
-
+import { allUserReservations } from '../../store/reservations';
 
 function MyProfile() {
   const dispatch = useDispatch();
@@ -22,6 +22,10 @@ function MyProfile() {
   if (user === null) {
     history.push('/login')
   }
+
+  useEffect(async () => {
+    await dispatch(allUserReservations(user.id))
+  }, [])
 
   // useEffect(() => {
   //   if (user.chef_id) {
