@@ -15,7 +15,13 @@ export default function NewReservation({ chef_id, price }) {
 
     return (
         <>
-            <ReservationForm title="Make a Reservation" callbackReservation={postReservation} buttonText="Complete your Reservation" />
+            <ReservationForm title="Make a Reservation" 
+            callbackReservation={postReservation} 
+            buttonText="Complete your Reservation" 
+            chef_id={chef_id}
+            price={price}
+
+            />
         </>
     )
 }
