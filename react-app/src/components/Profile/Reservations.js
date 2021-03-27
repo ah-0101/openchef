@@ -39,11 +39,34 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     let view;
     if (isSelected === "Reservations") {
         view = (
-            <>
+            <div className="outer-profile-div-p">
                 {reservationArr?.map((reservation) => (
-                    <div key={reservation.id} >
+                    <span className="profile-single-container" key={reservation.id} >
+                        {chefsArr?.map(chef => (
+                            <div className="test--div">
+                                <div className="none">
+                                    {reserveId = reservation.chef_id}
+                                </div>
+                                <div className="outer-user-info-p">
+                                    <div className="chef-profile-image-p">
+                                        <p>{reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
+                                    </div>
+                                    <div className="user-fields-p">
+                                        <div>
+                                            <span>{reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
+                                        </div>
+                                        <div>
+                                            <p>{reserveId == chef.chef.id ? chef.city : ""}</p>
+                                        </div>
+                                        <div>
+                                            <p>{reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                         <div>
-                            <div>
+                            <div className="label-field-container">
                                 <div>
                                     <li className="profile-label-p">Date</li>
                                 </div>
@@ -51,7 +74,7 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     <li>{reservation.event_date}</li>
                                 </div>
                             </div>
-                            <div>
+                            <div className="label-field-container">
                                 <div>
                                     <li className="profile-label-p">Time</li>
                                 </div>
@@ -59,7 +82,7 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     <li>{reservation.event_time}</li>
                                 </div>
                             </div>
-                            <div>
+                            <div className="label-field-container">
                                 <div>
                                     <li className="profile-label-p">Duration</li>
                                 </div>
@@ -70,29 +93,10 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                         </div>
                         <>
                         </>
-                        {chefsArr?.map(chef => (
-                            <div>
-                                <div className="none">
-                                    {reserveId = reservation.chef_id}
-                                </div>
-                                <div>
-                                    <span>{reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
-                                </div>
-                                <div>
-                                    <p>{reserveId == chef.chef.id ? chef.city : ""}</p>
-                                </div>
-                                <div>
-                                    <p>{reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</p>
-                                </div>
-                                <div>
-                                    <p>{reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    </span>
                 ))
                 }
-            </>
+            </div>
         )
     }
 
