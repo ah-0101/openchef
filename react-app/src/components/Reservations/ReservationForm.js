@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 
-import { postReservation } from '../../store/reservations';
+// import { postReservation } from '../../store/reservations';
 
 const TIMES = [
   "8:00 AM",

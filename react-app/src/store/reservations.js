@@ -16,13 +16,6 @@ const userReservations = (reservations) => {
   }
 }
 
-const editUserReservation = (reservation) => {
-  return {
-    type: EDIT_USER_RESERVATION,
-    reservation,
-  }
-}
-
 export const postReservation = (reservationInfo) => async (dispatch) => {
   const response = await fetch('/api/reservations/', {
     method: 'POST',

@@ -20,13 +20,13 @@ function ChefAccount() {
     if (!chef) {
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         dispatch(allChefs())
         dispatch(getFoodTypes())
 
     }, [dispatch])
 
-    useEffect(async () => {
+    useEffect(() => {
         if (chef) {
             setBio(chef.chef.bio)
             setFoodType(chef.chef.food_type)
