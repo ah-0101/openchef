@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
+import { nanoid } from 'nanoid'
 
 const TIMES = [
   "8:00 AM",
@@ -80,14 +81,14 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
         <div>
           <select value={event_time} onChange={e => setEventTime(e.target.value)}>
             {TIMES.map(time => (
-              <option key={time} value={time}>{time}</option>
+              <option key={nanoid()} value={time}>{time}</option>
             ))}
           </select>
         </div>
         <div>
           <select value={duration} onChange={e => setDuration(e.target.value)}>
             {DURATIONS.map(duration => (
-              <option key={duration} value={duration}>{duration}</option>
+              <option key={nanoid()} value={duration}>{duration}</option>
             ))}
           </select> <p>Hours</p>
         </div>
