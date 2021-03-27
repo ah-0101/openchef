@@ -18,6 +18,10 @@
   display: none;
 }
 
+.res-btn-form-p {
+  display: flex;
+}
+
 .image-profile-p {
   width: 100px;
   height: 100px;

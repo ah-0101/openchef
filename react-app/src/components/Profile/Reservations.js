@@ -102,12 +102,12 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
 
     return (
         reservations &&
-        <>
+        <div className="res-btn-form-p">
             <button type="button" onClick={handleAccountView}>Reservations</button>
             <div>
                 {view}
             </div>
-        </>
+        </div>
     )
 }
 
