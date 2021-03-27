@@ -42,6 +42,7 @@ app.register_blueprint(reservation_routes, url_prefix='/api/reservations')
 app.register_blueprint(food_type_routes, url_prefix='/api/foods')
 app.register_blueprint(reviews_routes, url_prefix='/api/reviews')
 app.register_blueprint(search_routes, url_prefix='/api/search')
+app.register_blueprint(search_routes, url_prefix='/api/search')
 app.register_blueprint(favorites_routes, url_prefix='/api/favorites')
 
 db.init_app(app)
