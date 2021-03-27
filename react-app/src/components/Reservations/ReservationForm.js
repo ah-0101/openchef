@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid'
+import { Form } from 'react-bootstrap';
 
 const TIMES = [
   "8:00 AM",
@@ -76,7 +77,8 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
       <form id="reservation-form-id" onSubmit={completeReservation}>
         <h2>{title}</h2>
         <div>
-          <input onChange={e => setEventDate(e.target.value)} />
+          <Form.Control className='calender-form' type="date" name="dob"
+                         onChange={e => setEventDate(e.target.value)} />
         </div>
         <div>
           <select value={event_time} onChange={e => setEventTime(e.target.value)}>
