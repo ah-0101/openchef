@@ -29,10 +29,9 @@ function ChefReviews({ isSelected, setIsSelected }) {
     }
 
     return (
-        <>
-            <button type="button" onClick={handleChefReviewsView}>Chef Reviews</button>
+        <div className="account">
             {view}
-        </>
+        </div>
     )
 }
 

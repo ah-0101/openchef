@@ -8,6 +8,7 @@ import { allChefs } from '../store/chefs';
 import { getFoodTypes } from '../store/food_types';
 import ChefDetailPage from './ChefDetailPage';
 import { getChefReviews } from '../store/chef_reviews';
+import { nanoid } from 'nanoid';
 import './HomePageContainer.css'
 
 export default function HomePage() {
@@ -93,7 +94,7 @@ export default function HomePage() {
             <div>
                 {
                     chefArr?.map(chef => (
-                        <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
+                        <div key={nanoid()} id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
                             <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
                             <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
                             <img id={chef.id} className="pic-size" src={chef.chef.profile_image} alt='chef-pic' />
