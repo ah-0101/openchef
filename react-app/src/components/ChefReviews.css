@@ -76,3 +76,7 @@
 .input-label-field-container-p {
   display: flex;
 }
+
+.res-btn-p {
+  max-height: 25px;
+}

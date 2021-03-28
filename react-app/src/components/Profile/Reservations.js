@@ -64,8 +64,6 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
 
     const reservationArr = Object.values(reservations);
 
-    let reserveId;
-
     useEffect(() => {
         dispatch(allChefs())
         // dispatch(getFoodTypes())
@@ -121,20 +119,22 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     let view;
     if (isSelected === "Reservations") {
         view = (
-            reservations && chefs &&
+            chefs && reservations &&
             <div className="outer-profile-div-p">
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >
                         <div className="chef-profile-image-p">
                             <img className="image-profile-p" src={chefs && chefs?.[reservation.chef_id].chef?.profile_image} />
                         </div>
-                        <div className="main-text-profile-p">
-                            {chefs && chefs?.[reservation.chef_id].first_name} {chefs && chefs?.[reservation.chef_id].last_name}
+                        <div className="outer-user-info-p">
+                            <div className="main-text-profile-p">
+                                {chefs && chefs?.[reservation.chef_id].first_name} {chefs && chefs?.[reservation.chef_id].last_name}
+                            </div>
+                            <div className="main-text-profile-p">
+                                {chefs && chefs?.[reservation.chef_id].city}
+                            </div>
+                            <div className="main-text-profile-p">{chefs && chefs?.[reservation.chef_id].chef?.price}</div>
                         </div>
-                        <div className="main-text-profile-p">
-                            {chefs && chefs?.[reservation.chef_id].city}
-                        </div>
-                        <div className="main-text-profile-p">{chefs && chefs?.[reservation.chef_id].chef?.price}</div>
                         <div className="input-label-field-container-p">
                             <div>
                                 <div className="label-field-container">
@@ -199,8 +199,8 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     return (
         reservations &&
         <div className="res-btn-form-p">
-            <button type="button" onClick={handleAccountView}>Reservations</button>
-            <div>
+            <button className="res-btn-p" type="button" onClick={handleAccountView}>Reservations</button>
+            <div className="form-reservation-p">
                 {view}
             </div>
         </div>
