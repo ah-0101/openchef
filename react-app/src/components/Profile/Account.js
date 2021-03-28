@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import './profile.css';
+import '../ChefReviews.css';
 import { updateUser } from '../../store/session';
 import ChefAccount from './ChefAccount';
 

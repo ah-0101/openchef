@@ -7,6 +7,12 @@
 .profile-btn-details-container-p {
   display: flex;
   margin: 25px;
+  font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+}
+
+.sub-text-profile-p {
 }
 
 .outer-profile-container {
@@ -17,6 +23,12 @@
   align-items: center;
 }
 
+.text-container-p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .outer-account-info-container {
   display: flex;
   /* margin-top: 50px; */
@@ -24,6 +36,11 @@
 
 .input-wrapper {
   display: flex;
+}
+
+ul.profile-label-p li {
+  text-decoration: none;
+  list-style-type: none;
 }
 
 button.account-btn {
@@ -62,6 +79,7 @@ button.account-btn {
 
 .profile-label-p {
   font-weight: bold;
+  list-style-type: none;
 }
 
 .outer-profile-div-p {

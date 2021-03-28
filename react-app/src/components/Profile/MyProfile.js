@@ -8,7 +8,6 @@ import ChefReservations from './ChefReservations';
 import Reviews from './Reviews';
 import ChefReviews from './ChefReviews';
 import ReservationForm from '../Reservations/ReservationForm';
-import './profile.css';
 import '../ChefReviews.css'
 import UpdateReservation from '../Reservations/UpdateReservationContainer';
 import { allUserReservations } from '../../store/reservations';
