@@ -192,6 +192,8 @@ function UserReservations({ isSelected, setIsSelected }) {
                 }
             </div>
         )
+    } else {
+        view = ""
     }
 
     return (

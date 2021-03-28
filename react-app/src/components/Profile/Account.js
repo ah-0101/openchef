@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import '../ChefReviews.css';
+import './Account.css';
 import { updateUser } from '../../store/session';
 import ChefAccount from './ChefAccount';
 
@@ -186,7 +187,7 @@ const Account = ({ isSelected, setIsSelected }) => {
 
 
     return (
-        <div className="outer-account-info-container">
+        <div className="account">
             {view}
         </div>
     )

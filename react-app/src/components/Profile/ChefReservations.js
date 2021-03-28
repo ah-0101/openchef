@@ -19,9 +19,9 @@ const ChefReservations = ({ isSelected, setIsSelected }) => {
     }
 
     return (
-        <>
+        <div className="account">
             {view}
-        </>
+        </div>
     )
 }
 

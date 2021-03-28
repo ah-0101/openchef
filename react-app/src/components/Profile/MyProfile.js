@@ -64,22 +64,22 @@ function MyProfile() {
       <div className="reservation-component-p">
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
-      <div className="account">
+      <div>
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       {user.chef_id ? chefComponents : ""}
       <div>
         <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
-      {/* <div>
+      <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div> */}
+      </div>
       {/* <div>
         <UpdateReservation chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
-      {/* <div>
+      <div>
         <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div> */}
+      </div>
     </div>
   )
 }

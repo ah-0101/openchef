@@ -51,6 +51,8 @@ button.account-btn {
 
 .account {
   margin-top: 25px;
+  position: absolute;
+  margin-left: 125px;
 }
 
 .chef-reviews-title {
@@ -74,7 +76,8 @@ button.account-btn {
 }
 
 .reservation-component-p {
-  margin-left: 16px;
+  margin-left: 150px;
+  position: absolute;
 }
 
 .image-profile-p {
@@ -97,6 +100,8 @@ button.account-btn {
   flex-direction: column;
   align-items: flex-start;
   padding-left: 20px;
+  height: 80px;
+  justify-content: space-between;
 }
 
 .profile-single-container {
@@ -117,7 +122,7 @@ button.account-btn {
 }
 
 .must-be-robs-container-p {
-  width: 50%;
+  min-width: 200px;
 }
 
 .label-field-container {
@@ -145,7 +150,19 @@ button.account-btn {
 }
 
 .profile-nav-btn-p {
-  max-height: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 16px;
+  display: inline-block;
+  color: white;
+  background: #0a6fac;
+  width: 130px;
+  padding: 5px 0;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 200;
+  font-size: 14px;
+  font-size: 13px;
 }
 
 .calender-form-p {
