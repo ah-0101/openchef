@@ -15,18 +15,6 @@ const Account = ({ isSelected, setIsSelected }) => {
     const [errors, setErrors] = useState([]);
     const id = user.id;
 
-    // useEffect(() => {
-    //     // dispatch(updateUser(user.id))
-    // }, [dispatch])
-
-    // if (isSelected) {
-
-    // }
-
-    const handleAccountView = (e) => {
-        setIsSelected("Account")
-    }
-
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
     }
@@ -69,10 +57,6 @@ const Account = ({ isSelected, setIsSelected }) => {
         }
         await dispatch(updateUser(data))
     }
-
-    // if (user.chef_id) {
-
-    // }
 
     let view;
     if (isSelected === "Account" && user.chef_id === null) {
@@ -203,7 +187,6 @@ const Account = ({ isSelected, setIsSelected }) => {
 
     return (
         <div className="outer-account-info-container">
-            <button className="account-btn" type="button" onClick={handleAccountView}>Account Info</button>
             {view}
         </div>
     )

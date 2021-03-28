@@ -30,7 +30,6 @@ function ChefReviews({ isSelected, setIsSelected }) {
 
     return (
         <>
-            <button type="button" onClick={handleChefReviewsView}>Chef Reviews</button>
             {view}
         </>
     )

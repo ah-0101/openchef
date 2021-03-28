@@ -20,7 +20,6 @@ const ChefReservations = ({ isSelected, setIsSelected }) => {
 
     return (
         <>
-            <button type="button" onClick={handleAccountView}>Chef Reservations</button>
             {view}
         </>
     )

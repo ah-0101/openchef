@@ -12,6 +12,10 @@ import './profile.css';
 import UpdateReservation from '../Reservations/UpdateReservationContainer';
 import { allUserReservations } from '../../store/reservations';
 import ReservationBtn from './ResComponents/ReservBtn';
+import AccountBtn from './ResComponents/AccountBtn';
+import ChefReservationBtn from './ResComponents/ChefReservBtn';
+import ChefReviewsBtn from './ResComponents/ChefReviewsBtn';
+import UserReviewsBtn from './ResComponents/UserReviewsBtn';
 
 function MyProfile() {
   const dispatch = useDispatch();
@@ -51,6 +55,10 @@ function MyProfile() {
     user &&
     <div className="outer-profile-container">
       <ReservationBtn setIsSelected={setIsSelected} />
+      <AccountBtn setIsSelected={setIsSelected} />
+      <ChefReservationBtn setIsSelected={setIsSelected} />
+      <ChefReviewsBtn setIsSelected={setIsSelected} />
+      <UserReviewsBtn setIsSelected={setIsSelected} />
       <div>
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
