@@ -124,7 +124,7 @@ export default function HomePage() {
     const individualChef = (
         <>
             <ChefDetailPage id={chefId} />
-            <button onClick={e => setChefId(null)}>Back button test</button>
+            <button className='back-button' onClick={e => setChefId(null)}>Return To Home</button>
         </>
     )
     return (

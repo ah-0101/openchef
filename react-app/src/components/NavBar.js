@@ -27,31 +27,38 @@ const NavBar = ({ setAuthenticated }) => {
   return (
     <nav className="nav-bar">
       <ul className="nav-stuff">
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </li>
-        {user &&
-          <li>
-            <a className="navbar-profile" onClick={getDetails} className="active">
-              My Profile
-          </a>
+        {!user &&
+        <>
+          
+          <li className='login-nav'>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
           </li>
+          <li className='signup-nav'>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </li>
+        </>
         }
-        <li>
-          <LogoutButton />
-        </li>
+        {user &&
+        <>
+            <li className='home-nav'>
+              <NavLink to="/" exact={true} activeClassName="active">
+                Home
+              </NavLink>
+            </li>
+            <li className='profile-nav'>
+              <a className="navbar-profile" onClick={getDetails} className="active">
+                My Profile
+            </a>
+            </li>
+            <li className="logout-nav">
+              <LogoutButton />
+            </li>
+        </>
+        }
       </ul>
     </nav>
   );

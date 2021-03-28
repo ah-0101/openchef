@@ -3,7 +3,8 @@
   display: flex;
   position: relative;
   /* padding: 5px 0px 5px 0px; */
-  justify-content: space-between;
+  justify-content: space-around;
+  height:50px
 }
 
 .nav-bar a:hover {
@@ -15,6 +16,7 @@
   color: #da3743;
   font-size: 16px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-stuff li {
@@ -22,7 +24,35 @@
   padding: 30px;
 }
 
-/* .navbar-profile {
-  display: flex;
-  margin-left: 820px;
+.home-nav,
+.login-nav,
+.signup-nav{
+  position: relative;
+  top: 15px
+}
+
+.home-nav{
+  position: relative;
+  right:600px;
+  top: 0px
+}
+
+.login-nav,
+.signup-nav{
+  position:relative;
+  left: 600px
+}
+
+.logout-nav{
+  position:relative;
+  left:600px;
+}
+.profile-nav{
+  position:relative;
+  right:600px
+}
+
+/* .nav-bar a.active {
+  color: rgb(255, 0, 0);
+  cursor: default;
 } */

@@ -44,6 +44,9 @@
     position: relative;
     bottom: 40px
 }
+.btn-style:hover{
+    background-color: #b8222d;
+}
 
 .btn-style-find {
     background: #da3743;
@@ -149,7 +152,27 @@
     bottom: 80px;
 }
 
+.back-button{
+  position: absolute;
+  top: 800px;
+  left: 10px;
+  background: #da3743;
+  font-family: "Raleway", sans-serif;
+  /* font-weight: bold; */
+  /* border: 0; */
+  width: 170px;
+  height: 35px;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 5px;
+  }
 
+.back-button:hover{
+background: #b8222d;
+}
 /* 
 .grid-container {
     display: grid;

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { nanoid } from 'nanoid'
 import { Form } from 'react-bootstrap';
+import './ReservationForm.css'
 
 const TIMES = [
   "8:00 AM",
@@ -86,34 +87,44 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
 
   return (
     <>
-      <form id="reservation-form-id" onSubmit={completeReservation}>
-        <h2>{title}</h2>
-        <ul className="errors-res-form-p">
-          {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
-        </ul>
-        <div>
-          <Form.Control className='calender-form' type="date" name="dob"
-            onChange={e => setEventDate(e.target.value)} />
-        </div>
-        <div>
-          <select value={event_time} onChange={e => setEventTime(e.target.value)}>
-            {TIMES.map(time => (
-              <option key={nanoid()} value={time}>{time}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <select value={duration} onChange={e => setDuration(e.target.value)}>
-            {DURATIONS.map(duration => (
-              <option key={nanoid()} value={duration}>{duration}</option>
-            ))}
-          </select> <p>Hours</p>
-        </div>
-        <div>
-          <p>Total - {price * duration}</p>
-        </div>
-        <button>{buttonText}</button>
-      </form>
+      <div className='reservation-whole'>
+        <h2 className='res-form-title'>{title}</h2>
+        <form id="reservation-form-id" className='reservation-form' onSubmit={completeReservation}>
+          <ul className="errors-res-form-p">
+            {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
+          </ul>
+          <div className='res-form-duration'>
+            <p className='res-labels'>Duration (hours)</p>
+            <select className='res-form-select' value={duration} onChange={e => setDuration(e.target.value)}>
+              {DURATIONS.map(duration => (
+                <option key={nanoid()} value={duration}>{duration}</option>
+              ))}
+            </select> 
+          </div>
+          <div className='res-form-bottom-inputs'>
+            <div className='res-calendar-date'>
+              <p className='res-labels'>Date</p>
+              <Form.Control type="date" name="dob"
+                onChange={e => setEventDate(e.target.value)} />
+            </div>
+            <div className='res-time-input'>
+              <p className='res-labels'>Time</p>
+              <select value={event_time} onChange={e => setEventTime(e.target.value)}>
+                {TIMES.map(time => (
+                  <option key={nanoid()} value={time}>{time}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className='reservation-total'>
+            <p className='res-labels-total'>Reservation Total: </p>
+            <p className='res-total'>${price * duration}</p>
+          </div>
+          <div className='button-div'>
+            <button className='res-standard-button'>{buttonText}</button>
+          </div>
+        </form>
+      </div>
 
     </>
   )
