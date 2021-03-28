@@ -107,8 +107,23 @@ button.account-btn {
   position: relative;
 }
 
+.input-label-field-container-p {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 20px;
+  margin-right: 30px;
+  height: 80px;
+}
+
+.must-be-robs-container-p {
+  width: 50%;
+}
+
 .label-field-container {
   display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .chef-profile-image-p {
@@ -129,17 +144,15 @@ button.account-btn {
   word-break: break-word;
 }
 
-.input-label-field-container-p {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-left: 20px;
-  margin-right: 30px;
-  height: 80px;
-}
-
 .profile-nav-btn-p {
   max-height: 25px;
+}
+
+.calender-form-p {
+  width: 149px;
+  height: 16px;
+  font-size: large;
+  border: none;
 }
 
 .btn-style-p {
@@ -154,6 +167,7 @@ button.account-btn {
   font-size: 16px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
+  margin-top: 10px;
 }
 
 .CRUD-reservation-btn-p {
