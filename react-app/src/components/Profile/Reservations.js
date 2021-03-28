@@ -134,7 +134,7 @@ function UserReservations({ isSelected, setIsSelected }) {
                                 <div>
                                     <div className="label-field-container">
                                         <div>
-                                            <li className="profile-label-p">Date</li>
+                                            <li className="profile-label-p">Date: </li>
                                         </div>
                                         <div>
                                             {chefs && reservation.id == editSelected ? <Form.Control value={event_date} className='calender-form' type="date" name="dob"
@@ -146,7 +146,7 @@ function UserReservations({ isSelected, setIsSelected }) {
                                     </div>
                                     <div className="label-field-container">
                                         <div>
-                                            <li className="profile-label-p">Time</li>
+                                            <li className="profile-label-p">Time: </li>
                                         </div>
                                         <div className="placeholder-div-p">
                                             {chefs && reservation.id == editSelected ?
@@ -162,7 +162,7 @@ function UserReservations({ isSelected, setIsSelected }) {
                                     </div>
                                     <div className="label-field-container">
                                         <ul className="profile-label-p">
-                                            <li>Duration</li>
+                                            <li>Duration: </li>
                                         </ul>
                                         <div className="placeholder-div-p">
                                             {chefs && reservation.id == editSelected ?
@@ -177,17 +177,19 @@ function UserReservations({ isSelected, setIsSelected }) {
                                         </div>
                                     </div>
                                 </div>
-                                <ul className="profile-label-p">
-                                    {chefs && reservation.id == editSelected ? "" :
-                                        <button id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>}
-                                </ul>
-                                <div className="placeholder-div-p">
-                                    {chefs && reservation.id == editSelected ?
-                                        <button id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button> :
-                                        ""}
-                                </div>
-                                <div>
-                                    <button id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                                <div className="CRUD-reservation-btn-p">
+                                    <ul className="profile-label-p">
+                                        {chefs && reservation.id == editSelected ? "" :
+                                            <button className="btn-style-p" id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>}
+                                    </ul>
+                                    <div className="placeholder-div-p">
+                                        {chefs && reservation.id == editSelected ?
+                                            <button className="btn-style-p" id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button> :
+                                            ""}
+                                    </div>
+                                    <div>
+                                        <button className="btn-style-p" id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
