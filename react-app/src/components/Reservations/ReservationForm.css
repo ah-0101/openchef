@@ -1,0 +1,98 @@
+.reservation-whole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgb(153 153 153 / 40%);
+  padding: 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  color: #2d333f;
+  background-color: white;
+  margin-top: 3em;
+  margin-left: 1em
+}
+
+.res-form-title{
+  width: 100%;
+  height: 48px;
+  top: 0px;
+  background-color: white;
+  border-bottom: 1px solid #d8d9db;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 1em;
+  font-size: 21px;
+  justify-content: center;
+}
+
+.reservation-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.res-labels {
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.res-form-select{
+  width: 100%;
+  height: 33px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  box-sizing: content-box;
+  margin-bottom: 2px;
+}
+
+.res-form-select:hover{
+  border-bottom: 2px solid rgba(218, 55, 67, 1);
+  margin-bottom: 2px;
+}
+
+.res-form-bottom-inputs {
+  display: flex;
+  flex-direction: row;
+  margin: 1em 0 ;
+}
+
+.res-time-input{
+  box-sizing: content-box;
+  margin-bottom: 2px;
+  margin-left: 1em;
+  
+}
+
+.res-calendar-date{
+  /* box-sizing: content-box; */
+  margin-bottom: 2px;
+  
+}
+
+.reservation-total{
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.res-total{
+  margin-bottom: 3px;
+  font-size: 20px;
+  font-weight: 550;
+  color:rgba(218, 55, 67, 1)
+}
+
+.res-standard-button{
+    background: #da3743;
+    font-family: "Raleway", sans-serif;
+    border: black 1px solid;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-bottom: 1em;
+  }
