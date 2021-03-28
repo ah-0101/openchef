@@ -11,6 +11,7 @@ import ReservationForm from '../Reservations/ReservationForm';
 import './profile.css';
 import UpdateReservation from '../Reservations/UpdateReservationContainer';
 import { allUserReservations } from '../../store/reservations';
+import ReservationBtn from './ResComponents/ReservBtn';
 
 function MyProfile() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function MyProfile() {
   return (
     user &&
     <div className="outer-profile-container">
+      <ReservationBtn setIsSelected={setIsSelected} />
       <div>
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>

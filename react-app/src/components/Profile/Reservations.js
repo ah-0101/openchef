@@ -47,7 +47,7 @@ const DURATIONS = [
     1, 2, 3, 4
 ]
 
-function UserReservations({ isSelected, setIsSelected, chefReservations, setChefReservations }) {
+function UserReservations({ isSelected, setIsSelected }) {
     const user = useSelector(state => state.session.user);
     const chefs = useSelector(state => state.chefs)
     const reservations = useSelector(state => state.reservations)
@@ -199,7 +199,7 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     return (
         reservations &&
         <div className="res-btn-form-p">
-            <button className="res-btn-p" type="button" onClick={handleAccountView}>Reservations</button>
+            {/* <button className="res-btn-p" type="button" onClick={handleAccountView}>Reservations</button> */}
             <div className="form-reservation-p">
                 {view}
             </div>
