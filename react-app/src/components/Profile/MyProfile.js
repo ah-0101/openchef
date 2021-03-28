@@ -9,6 +9,7 @@ import Reviews from './Reviews';
 import ChefReviews from './ChefReviews';
 import ReservationForm from '../Reservations/ReservationForm';
 import './profile.css';
+import '../ChefReviews.css'
 import UpdateReservation from '../Reservations/UpdateReservationContainer';
 import { allUserReservations } from '../../store/reservations';
 import ReservationBtn from './ResComponents/ReservBtn';
@@ -53,17 +54,23 @@ function MyProfile() {
 
   return (
     user &&
-    <div className="outer-profile-container">
-      <ReservationBtn setIsSelected={setIsSelected} />
-      <AccountBtn setIsSelected={setIsSelected} />
-      <ChefReservationBtn setIsSelected={setIsSelected} />
-      <ChefReviewsBtn setIsSelected={setIsSelected} />
-      <UserReviewsBtn setIsSelected={setIsSelected} />
-      <div>
+    <div className="profile-btn-details-container-p" >
+      <div className="outer-profile-container">
+        <ReservationBtn setIsSelected={setIsSelected} />
+        <AccountBtn setIsSelected={setIsSelected} />
+        <ChefReservationBtn setIsSelected={setIsSelected} />
+        <ChefReviewsBtn setIsSelected={setIsSelected} />
+        <UserReviewsBtn setIsSelected={setIsSelected} />
+      </div>
+      <div className="reservation-component-p">
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       <div className="account">
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
+      </div>
+      {user.chef_id ? chefComponents : ""}
+      <div>
+        <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
@@ -74,10 +81,6 @@ function MyProfile() {
       {/* <div>
         <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
-      {user.chef_id ? chefComponents : ""}
-      <div>
-        <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
     </div>
   )
 }

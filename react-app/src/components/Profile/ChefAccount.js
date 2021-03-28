@@ -44,7 +44,7 @@ function ChefAccount() {
     }
 
     return (
-        // chef &&
+        chef &&
         <>
             <div>
                 <label>Food Type</label>

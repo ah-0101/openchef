@@ -4,6 +4,36 @@
   padding: 0px;
 }
 
+.profile-btn-details-container-p {
+  display: flex;
+  margin: 25px;
+}
+
+.outer-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-height: 400px;
+  align-items: center;
+}
+
+.outer-account-info-container {
+  display: flex;
+  /* margin-top: 50px; */
+}
+
+.input-wrapper {
+  display: flex;
+}
+
+button.account-btn {
+  margin-top: 25px;
+}
+
+.account {
+  margin-top: 25px;
+}
+
 .chef-reviews-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -20,6 +50,8 @@
 
 .res-btn-form-p {
   display: flex;
+  margin-left: 16px;
+  width: 100%;
 }
 
 .image-profile-p {
@@ -39,8 +71,9 @@
 
 .outer-user-info-p {
   display: flex;
-  align-items: center;
-  padding-left: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
 }
 
 .profile-single-container {
@@ -56,7 +89,7 @@
 }
 
 .chef-profile-image-p {
-  width: 25%;
+  max-width: 150px;
 }
 
 .user-fields-p {
@@ -77,6 +110,9 @@
   display: flex;
 }
 
-.res-btn-p {
+.profile-nav-btn-p {
   max-height: 25px;
+}
+
+.reservation-component-p {
 }
