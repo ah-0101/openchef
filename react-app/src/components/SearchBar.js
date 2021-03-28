@@ -112,35 +112,31 @@ export default function SearchBar({ search, setSearch, setBarId, barId, setChefI
                 </div>
 
                 <div>
-                    <div className='chef-welcome'>Find your Chef for any occasion</div>
-                    {/* <span>ss</span> */}
-                    <div>
-                        <input className={`search-bar ${classHandler}`} onChange={handleSearchType} placeholder={"         Search by Cuisine or Chef name!"}></input>
-                        <div className='classRender'>
 
-                            {
-                                search?.map(chef => (
-                                    <>
+                <input className={`search-bar ${classHandler}`} onChange={handleSearchType} placeholder={"         Search by Cuisine or Chef name!"}></input>
+                <div className='classRender'>
 
-                                        <div className={classHandler2} id={chef.id} >{event === '' ? '' : (<p className='search-ind' id={chef.id} onClick={chefInfoDisplay}>  {chef.first_name} {chef.last_name}</p>)}
-                                        </div>
-                                        {/* <div className='classRender' >{chef.last_name}</div> */}
-                                    </>
-                                ))
-                            }
+                    {
+                        search?.map(chef=> (
+                            <>
+
+                        <div className={classHandler2} id={chef.id} >
+                        {event === '' ? '':(<p className='search-ind'  id={chef.id} onClick={chefInfoDisplay}>
+                         <span className='colon'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span> 
+                             {chef.first_name} {chef.last_name}                             
+                        <br/>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{chef.city}</p>)}
                         </div>
-                    </div>
-                    {/* <div className={classHandler} id={barId} onClick={chefInfoDisplay}> */}
-                    {/* <p className='search-toggle-content' id={barId} onClick={chefInfoDisplay}> */}
-                    {/* {search} */}
-                    {/* </p> */}
-                    {/* </div> */}
-                    {/* <div className={classHandler2} id={barId} onClick={chefInfoDisplay}><p className='search-toggle-content'  id={inId}  onClick={chefInfoDisplay}>{searchSecondField}</p></div> */}
+                        </>
+                    ))
+                }
                 </div>
-            </nav>
-            <div>
+                </div>
+                </div>
+                        </nav>
+                        <div>
+                       
+                        </div>
 
-            </div>
         </>
     )
 }
