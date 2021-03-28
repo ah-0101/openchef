@@ -49,6 +49,7 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
   const [event_date, setEventDate] = useState(formData.event_date)
   const [event_time, setEventTime] = useState(formData.event_time)
   const [duration, setDuration] = useState(formData.duration)
+  const [errors, setErrors] = useState([])
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -57,18 +58,29 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
 
   const completeReservation = async (e) => {
     e.preventDefault()
-
-    const startingReservation = {
-      user_id: userid,
-      chef_id: chefid,
-      event_date: event_date,
-      event_time: event_time,
-      duration: Number(duration)
-
+    let error = []
+    if (!event_date || !event_time || !event_date || !duration) {
+      error.push("Please fill out all the fields!")
+      setErrors(error)
+    } else {
+      const startingReservation = {
+        user_id: userid,
+        chef_id: chefid,
+        event_date: event_date,
+        event_time: event_time,
+        duration: Number(duration)
+      }
+      console.log(
+        userid,
+        chefid,
+        event_date,
+        event_time,
+        duration,
+      )
+      // check reservation date to be later than today
+      await dispatch(callbackReservation(startingReservation))
+      history.push('/profile')
     }
-    // check reservation date to be later than today
-    await dispatch(callbackReservation(startingReservation))
-    history.push('/profile')
   }
 
 
@@ -76,9 +88,12 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
     <>
       <form id="reservation-form-id" onSubmit={completeReservation}>
         <h2>{title}</h2>
+        <ul className="errors-res-form-p">
+          {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
+        </ul>
         <div>
           <Form.Control className='calender-form' type="date" name="dob"
-                         onChange={e => setEventDate(e.target.value)} />
+            onChange={e => setEventDate(e.target.value)} />
         </div>
         <div>
           <select value={event_time} onChange={e => setEventTime(e.target.value)}>

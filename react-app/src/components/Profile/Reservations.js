@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid'
 import { allChefs } from '../../store/chefs';
 import { getFoodTypes } from '../../store/food_types';
 import { allUserReservations, deleteReservation, editReservation } from '../../store/reservations';
+import { Form } from 'react-bootstrap';
 import '../ChefReviews.css'
 
 const TIMES = [
@@ -68,12 +69,10 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     useEffect(() => {
         dispatch(allChefs())
         // dispatch(getFoodTypes())
-        console.log("CHEFS USEEFFECT-------->>>>>")
     }, [dispatch])
 
     useEffect(() => {
         dispatch(allUserReservations(user.id))
-        console.log("RESERVATIONS USEEFFECT-------->>>>>")
     }, [dispatch])
 
     const chefsArr = Object.values(chefs);
@@ -133,9 +132,9 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >
                         {chefsArr?.map(chef => (
-                            <div className="test--div">
+                            <div key={nanoid()} className="test--div">
                                 <div className="new-container-p">
-                                    <div key={nanoid()} className="none-2">
+                                    <div className="none-2">
                                         {reserveId = reservation.chef_id}
                                     </div>
                                     <div className="outer-user-info-p">
@@ -164,7 +163,8 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                         <li className="profile-label-p">Date</li>
                                     </div>
                                     <div>
-                                        {chefs && reservation.id == editSelected ? <input value={event_date} onChange={e => setEventDate(e.target.value)} /> : <li>{reservation.event_date}</li>}
+                                        {chefs && reservation.id == editSelected ? <Form.Control value={event_date} className='calender-form' type="date" name="dob"
+                                            onChange={e => setEventDate(e.target.value)} /> : <li>{reservation.event_date}</li>}
                                     </div>
                                 </div>
                                 <div className="label-field-container">
@@ -174,7 +174,7 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
                                     <div>
                                         {chefs && reservation.id == editSelected ?
                                             <select name="event_time" onChange={e => setEventTime(e.target.value)}>
-                                                <option value={event_time}>{reservation.event_time}</option>
+                                                <option value={event_time}>{event_time}</option>
                                                 {TIMES.map(time => (
                                                     <option key={nanoid()} value={event_time}>{time}</option>
                                                 ))}
