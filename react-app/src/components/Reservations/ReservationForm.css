@@ -85,14 +85,29 @@
   color:rgba(218, 55, 67, 1)
 }
 
+.button-div{
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .res-standard-button{
-    background: #da3743;
-    font-family: "Raleway", sans-serif;
-    border: black 1px solid;
-    border-radius: 3px;
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-    margin-bottom: 1em;
+  font-weight: 500;
+  width: 300px;
+  height: 45px;
+  border-radius: 2px;
+  color: #2d333f;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-bottom: 1em;
+  font-size: 16px;
+  font-weight: 200;
+  align-items: center;
   }
+
+.res-standard-button:hover{
+  border: 2px solid rgba(218, 55, 67, 1);
+  background-color: rgba(218, 55, 67, 1);
+  color:#fff
+}

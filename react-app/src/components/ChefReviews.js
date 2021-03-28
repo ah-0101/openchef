@@ -14,7 +14,7 @@ export default function ChefReviews() {
       {chefReviews.map(review => (
         <div key={review.id} className='review-container-r'>
           <div className='review-profile-holder'> </div>
-          <div className='review-rating-r'>{review.rating}</div>
+          <div className='review-rating-r'>{review.rating}/5</div>
           <div className='review-comment-r'>{review.comment}</div>
         </div>
       ))}
