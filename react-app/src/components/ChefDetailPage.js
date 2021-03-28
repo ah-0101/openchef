@@ -21,7 +21,7 @@ export default function ChefDetailPage({ id }) {
   return (
     reviews &&
     <>
-
+      <nav className='background-image'></nav>
       <div className='all-details'>
         <div className='profile-image'>
           <img src={`${chef.chef.profile_image}`} />
