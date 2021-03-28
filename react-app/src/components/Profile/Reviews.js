@@ -6,10 +6,6 @@ import { useHistory } from 'react-router-dom';
 function Reviews({ isSelected, setIsSelected }) {
     const dispatch = useDispatch();
 
-    const handleAccountView = (e) => {
-        setIsSelected("Reviews")
-    }
-
     let view;
     if (isSelected === "Reviews") {
         view = (
@@ -20,10 +16,9 @@ function Reviews({ isSelected, setIsSelected }) {
     }
 
     return (
-        <>
-            <button type="button" onClick={handleAccountView}>Reviews</button>
+        <div className="account">
             {view}
-        </>
+        </div>
     )
 }
 

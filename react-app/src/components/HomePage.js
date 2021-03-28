@@ -8,6 +8,7 @@ import { allChefs } from '../store/chefs';
 import { getFoodTypes } from '../store/food_types';
 import ChefDetailPage from './ChefDetailPage';
 import { getChefReviews } from '../store/chef_reviews';
+import { nanoid } from 'nanoid';
 import './HomePageContainer.css'
 
 export default function HomePage() {
@@ -35,7 +36,6 @@ export default function HomePage() {
         e.preventDefault()
         await dispatch(getChefReviews(e.target.id))
         setChefId(e.target.id)
-        console.log(search)
     }
 
 
@@ -51,10 +51,8 @@ export default function HomePage() {
     let chef_img;
     let chef_food_type;
     chefArr.forEach(chef => {
-        // console.log(chef.city)
         if (chef.chef_id == barId) {
             chef_city = chef.city
-            // console.log(chef_city)
             chef_price = chef.chef.price
             chef_bio = chef.chef.bio
             chef_food_type = chef.chef.food_type_id == 2 ?
@@ -97,7 +95,7 @@ export default function HomePage() {
                 <p className="available-chef"> Available to cook </p>
                 {
                     chefArr?.map(chef => (
-                        <div id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
+                        <div key={nanoid()} id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
                             <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
                             <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
                             <img id={chef.id} className="pic-size" src={chef.chef.profile_image} alt='chef-pic' />

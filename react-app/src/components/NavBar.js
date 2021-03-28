@@ -44,7 +44,7 @@ const NavBar = ({ setAuthenticated }) => {
         </li>
         {user &&
           <li>
-            <a className="navbar-profile" onClick={getDetails} activeClassName="active">
+            <a className="navbar-profile" onClick={getDetails} className="active">
               My Profile
           </a>
           </li>

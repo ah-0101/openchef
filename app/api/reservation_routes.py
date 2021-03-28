@@ -17,6 +17,7 @@ def getChefReservations(id):
 @reservation_routes.route('/<int:id>/', methods=['PATCH'])
 def updateReservation(id):
     reservation = Reservation.query.get(id)
+    print('reservvvvvvvv----------', reservation)
     reservation.user_id = request.json.get('user_id', reservation.user_id)
     reservation.chef_id = request.json.get('chef_id', reservation.chef_id)
     reservation.event_date = request.json.get('event_date', reservation.event_date)
@@ -46,6 +47,13 @@ def postReservation():
     db.session.add(res)
     db.session.commit()
     return jsonify(res.to_dict())
+
+
+@reservation_routes.route('/<int:id>/', methods=['DELETE'])
+def delete_reservation(id):
+    reservation = Reservation.query.get(id)
+    db.session.delete(reservation)
+    db.session.commit()
 
 
 @reservation_routes.route('/chef-reservation/<int:id>/')

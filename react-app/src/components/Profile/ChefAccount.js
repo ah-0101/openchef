@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import './profile.css';
+import '../ChefReviews.css';
 import { getFoodTypes } from '../../store/food_types';
 import { allChefs } from '../../store/chefs';
 
@@ -32,9 +32,7 @@ function ChefAccount() {
     const foods = Object.values(food_types);
 
     const updateFoodType = (e) => {
-        // console.log("BEFORE--->>>", foodType)
         setFoodType(e.target.value)
-        // console.log("AFTER--->>>", foodType)
     }
 
     const updatePrice = (e) => {
@@ -46,7 +44,7 @@ function ChefAccount() {
     }
 
     return (
-        // chef &&
+        chef &&
         <>
             <div>
                 <label>Food Type</label>
