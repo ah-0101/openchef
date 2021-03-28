@@ -47,7 +47,7 @@ const DURATIONS = [
     1, 2, 3, 4
 ]
 
-function UserReservations({ isSelected, setIsSelected, chefReservations, setChefReservations }) {
+function FixReservations({ isSelected, setIsSelected, chefReservations, setChefReservations }) {
     const user = useSelector(state => state.session.user);
     const chefs = useSelector(state => state.chefs)
     const reservations = useSelector(state => state.reservations)
@@ -125,16 +125,32 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
             <div className="outer-profile-div-p">
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >
-                        <div className="chef-profile-image-p">
-                            <img className="image-profile-p" src={chefs && chefs?.[reservation.chef_id].chef?.profile_image} />
-                        </div>
-                        <div className="main-text-profile-p">
-                            {chefs && chefs?.[reservation.chef_id].first_name} {chefs && chefs?.[reservation.chef_id].last_name}
-                        </div>
-                        <div className="main-text-profile-p">
-                            {chefs && chefs?.[reservation.chef_id].city}
-                        </div>
-                        <div className="main-text-profile-p">{chefs && chefs?.[reservation.chef_id].chef?.price}</div>
+                        {chefs[reservation.id]}
+                        {chefsArr?.map(chef => (
+                            <div key={nanoid()} className="test--div">
+                                <div className="new-container-p">
+                                    <div className="none-2">
+                                        {reserveId = reservation.chef_id}
+                                    </div>
+                                    <div className="outer-user-info-p">
+                                        <div className="chef-profile-image-p">
+                                            <p>{chefs && reserveId == chef.chef.id ? <img className="image-profile-p" src={chef.chef.profile_image} /> : ""}</p>
+                                        </div>
+                                        <div className="user-fields-p">
+                                            <div className="main-text-profile-p">
+                                                <span>{chefs && reserveId == chef.chef.id ? chef.first_name : ""} {reserveId == chef.chef.id ? chef.last_name : ""}</span>
+                                            </div>
+                                            <div className="main-text-profile-p">
+                                                <span>{chefs && reserveId == chef.chef.id ? chef.city : ""}</span>
+                                            </div>
+                                            <div className="main-text-profile-p">
+                                                <span>{chefs && reserveId == chef.chef.id ? "$" + chef.chef.price + ".00/hr" : ""}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                         <div className="input-label-field-container-p">
                             <div>
                                 <div className="label-field-container">
@@ -207,4 +223,4 @@ function UserReservations({ isSelected, setIsSelected, chefReservations, setChef
     )
 }
 
-export default UserReservations;
+export default FixReservations;
