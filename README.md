@@ -40,10 +40,10 @@ $ flask run
 #### Run front end server
 $ npm start
 
-##Hosting 
+## Hosting 
   1.Heroku
       *Heroku is a platform as a service that enables developers to build, run, and operate applications        entirely in the cloud.
-##Features
+## Features
 
    *Logged-in users have can book a chef and edit, Logged-in chef can book another chef, and edit his     reservations.
    
