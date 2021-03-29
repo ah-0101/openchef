@@ -5,6 +5,8 @@ Inspired by opentable.com, openchef is a the place where you can find chefs, you
 
 ### [live link](https://open-chef.herokuapp.com/login)**
 
+![Alt text](https://github.com/Ace-0101/openchef/blob/main/chefpage.png)
+
 ## Technologies
    openChef is built using the following stack & libraries:
 
