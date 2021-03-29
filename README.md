@@ -12,6 +12,7 @@ Inspired by opentable.com, openchef is a the place where you can find chefs, you
  
 ## Backend 
    1.Python 
+      *Flask-SQLAlchemy
 
    2.PostgreSQL
       *PostgreSQL is a relational database management system emphasizing extensibility and SQL                    compliance.
