@@ -41,11 +41,11 @@ $ flask run
 $ npm start
 
 ## Hosting 
-  1.Heroku
+    1. Heroku
       *Heroku is a platform as a service that enables developers to build, run, and operate applications        entirely in the cloud.
 ## Features
 
-   *Logged-in users have can book a chef and edit, Logged-in chef can book another chef, and edit his     reservations.
+    *Logged-in users have can book a chef and edit, Logged-in chef can book another chef, and edit his reservations.
    
 ###Codes
 * This is the search route 
