@@ -11,7 +11,7 @@ Inspired by opentable.com, openchef is a the place where you can find chefs, you
    openChef is built using the following stack & libraries:
  
 ## Backend 
-   1. Python 
+   1.Python 
 
    2.PostgreSQL
       *PostgreSQL is a relational database management system emphasizing extensibility and SQL                    compliance.
@@ -25,19 +25,19 @@ Inspired by opentable.com, openchef is a the place where you can find chefs, you
    3.Redux
       *Redux is a JavaScript library for managing application state.
       
-  ## how to use :
-  # Install flask dependencies in root directory
+### how to use :
+ #### Install flask dependencies in root directory
 $ pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
 
-# Install dependencies in react-app directory
+#### Install dependencies in react-app directory
 $ cd react-app
 $ npm install
 
-# Run back end server from pipenv shell
+#### Run back end server from pipenv shell
 $ pipenv shell
 $ flask run
 
-# Run front end server
+#### Run front end server
 $ npm start
 
 ##Hosting 
