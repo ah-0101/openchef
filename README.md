@@ -3,8 +3,7 @@
 Brief Introduction
 Inspired by opentable.com, openchef is a the place where you can find chefs, you can book, make a reservation, update a reservation, and cancel it.
 
-
-Live Link
+### [live link](https://open-chef.herokuapp.com/login)**
 
 ## Technologies
    openChef is built using the following stack & libraries:
