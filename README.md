@@ -31,11 +31,31 @@ Inspired by opentable.com, openchef is a the place where you can find chefs, you
    *Logged-in users have can book a chef and edit, Logged-in chef can book another chef, and edit his     reservations.
    
 ###Codes
+* This is the search route 
 ```python 
 @search_routes.route('/<id>/')
 def getChefReservation(id):
     search_for_chef = User.query.filter(User.first_name.ilike(f'%{id}%')).join(Chef).all()
     return jsonify([user.to_dict() for user in search_for_chef])
+```
+* This is the fetch 
+```javascript
+  const keyword = e.target.value
+        if (keyword === '') {
+            setClassHandler('search-icon')
+            setClassHandler2('search-ind-none')
+            return
+        }else{
+            setClassHandler('search-icon-none')
+            setClassHandler2('')
+        }
+        setEvent(e.target.value)
+        const chefSearch = await fetch(`/api/search/${keyword}`);
+        let jsonChefs = await chefSearch.json();
+        setTimeout(() => {
+            setSearch(jsonChefs)
+        }, 200);
+    }
 ```
 
 ```javascript
