@@ -57,7 +57,7 @@ def getChefReservation(id):
         }, 200);
     }
 ```
-
+* This code is displaying the chefs on the Home-Page
 ```javascript
  {
                     chefArr?.map(chef => (
