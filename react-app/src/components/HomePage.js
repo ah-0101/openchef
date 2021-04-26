@@ -107,7 +107,7 @@ export default function HomePage() {
                                     'Food Type: Middle Eastern' : chef.chef.food_type_id == 1 ?
                                         'Food Type: Italian' : chef.chef.food_type_id == 4 ?
                                             'Food Type: Mexican' : chef.chef.food_type_id == 5 ?
-                                                'Food Type: Japanese' : chef.chef.food_type_id == 4 ?
+                                                'Food Type: Japanese' : chef.chef.food_type_id == 6 ?
                                                     'Food Type: Chinese' : 'Expert at all meals'}</p>
                             <button className="btn-style" id={chef.id}>Book Me</button>
                         </div>
@@ -115,7 +115,6 @@ export default function HomePage() {
 
                 }
             </div>
-            {/* <DateTimeField /> */}
 
 
 
