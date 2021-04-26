@@ -6,12 +6,6 @@ import ReservationForm from './ReservationForm';
 import { postReservation } from '../../store/reservations';
 
 export default function NewReservation({ chef_id, price }) {
-    // const user = useSelector(state => state.session.user)
-    // const dispatch = useDispatch()
-    // const history = useHistory()
-
-
-
 
     return (
         <>
