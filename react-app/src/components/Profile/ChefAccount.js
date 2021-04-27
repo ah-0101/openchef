@@ -49,39 +49,48 @@ function ChefAccount({ first_name, last_name, city }) {
     const handleUpdateAccount = async (e) => {
         e.preventDefault();
 
+        console.log("Chef info---", chef.chef.price, chef.chef.food_type_id, chef.chef.bio,
+            price, food_type_id, bio
+        )
+
         const error = []
         if (user.first_name === first_name &&
             user.last_name === last_name &&
-            user.city === city) {
+            user.city === city &&
+            chef.chef.bio === bio &&
+            chef.chef.price === price &&
+            chef.chef.food_type_id === food_type_id) {
             error.push("No changes have been made! Please make an update.")
         }
         if (first_name === "" ||
             last_name === "" ||
-            city === "" /*||
-        email === ""*/) {
+            city === "") {
             error.push("Please fill out all fields");
         }
         setErrors(error)
 
-        const data = {
-            id: user.id,
-            first_name: first_name,
-            last_name: last_name,
-            city: city,
-            // email: email,
-        }
-        await dispatch(updateUser(data))
+        if (!error.length) {
+            const data = {
+                id: user.id,
+                first_name: first_name,
+                last_name: last_name,
+                city: city,
+            }
+            await dispatch(updateUser(data))
 
-        const chefData = {
-            id,
-            userId: user.id,
-            food_type_id: Number(food_type_id),
-            bio,
-            price,
+            const chefData = {
+                id,
+                userId: user.id,
+                food_type_id: Number(food_type_id),
+                bio,
+                price,
+            }
+            await dispatch(updateChef(chefData));
+            alert("Your profile was updated successfully")
         }
-        await dispatch(updateChef(chefData));
     }
-    // debugger
+    console.log("errorss------", errors)
+
     return (
         // Object.values(chef)?.length > 0 &&
         <>
@@ -123,6 +132,9 @@ function ChefAccount({ first_name, last_name, city }) {
                 </div>
             </div>
             <button type="button" onClick={handleUpdateAccount}>Update</button>
+            <ul>
+                {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
+            </ul>
         </>
     )
 }
