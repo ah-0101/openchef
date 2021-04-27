@@ -49,10 +49,6 @@ function ChefAccount({ first_name, last_name, city }) {
     const handleUpdateAccount = async (e) => {
         e.preventDefault();
 
-        console.log("Chef info---", chef.chef.price, chef.chef.food_type_id, chef.chef.bio,
-            price, food_type_id, bio
-        )
-
         const error = []
         if (user.first_name === first_name &&
             user.last_name === last_name &&
@@ -89,26 +85,27 @@ function ChefAccount({ first_name, last_name, city }) {
             alert("Your profile was updated successfully")
         }
     }
-    console.log("errorss------", errors)
 
     return (
         // Object.values(chef)?.length > 0 &&
         <>
-            <div>
+            <div className="input-wrapper">
                 <label>Food Type</label>
                 <select
+                    className="profile-input"
                     onChange={updateFoodType}
                     name="food_type"
                 >
-                    <option selected value={food_type_id}>{food_types[food_type_id]?.name}</option>
+                    <option defaultValue value={food_type_id}>{food_types[food_type_id]?.name}</option>
                     {foods && foods.map((food, i) => (
                         <option value={food.id} key={i}>{food.name}</option>
                     ))}
                 </select>
             </div>
-            <div>
+            <div className="input-wrapper">
                 <label>Price $</label>
                 <input
+                    className="profile-input"
                     type="number"
                     name="price"
                     className="form_text"
@@ -123,8 +120,9 @@ function ChefAccount({ first_name, last_name, city }) {
                 <div>
                     <label>Bio</label>
                 </div>
-                <div>
+                <div className="input-wrapper">
                     <textarea
+                        className="profile-input"
                         name="bio"
                         value={bio}
                         onChange={handleBio}

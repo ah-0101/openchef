@@ -70,13 +70,12 @@ const Account = ({ isSelected, setIsSelected }) => {
                     <div className="profile-label">
                         <label>First Name</label>
                     </div>
-                    <div className="profile-input">
-                        <input
-                            name="first_name"
-                            value={first_name}
-                            onChange={handleFirstName}
-                        />
-                    </div>
+                    <input
+                        className="profile-input"
+                        name="first_name"
+                        value={first_name}
+                        onChange={handleFirstName}
+                    />
                 </div>
                 <div className="input-wrapper">
                     <div className="profile-label">
@@ -131,38 +130,35 @@ const Account = ({ isSelected, setIsSelected }) => {
                     <div className="profile-label">
                         <label>First Name</label>
                     </div>
-                    <div className="profile-input">
-                        <input
-                            name="first_name"
-                            value={first_name}
-                            onChange={handleFirstName}
-                        />
-                    </div>
+                    <input
+                        className="profile-input"
+                        name="first_name"
+                        value={first_name}
+                        onChange={handleFirstName}
+                    />
                 </div>
                 <div className="input-wrapper">
                     <div className="profile-label">
                         <label>Last Name</label>
                     </div>
-                    <div className="profile-input">
-                        <input
-                            name="last_name"
-                            value={last_name}
-                            onChange={handleLastName}
-                        />
-                    </div>
+                    <input
+                        className="profile-input"
+                        name="last_name"
+                        value={last_name}
+                        onChange={handleLastName}
+                    />
                 </div>
                 <div className="input-wrapper">
                     <div className="profile-label">
                         <label>City</label>
                     </div>
                     <div>
-                        <div className="profile-input">
-                            <input
-                                name="city"
-                                value={city}
-                                onChange={handleCity}
-                            />
-                        </div>
+                        <input
+                            className="profile-input"
+                            name="city"
+                            value={city}
+                            onChange={handleCity}
+                        />
                     </div>
                 </div>
                 {/* <div className="input-wrapper">
