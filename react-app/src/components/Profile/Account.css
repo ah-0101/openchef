@@ -13,3 +13,18 @@
 .profile-label {
   font-size: larger;
 }
+
+.btn-style-profile {
+  background: #da3743;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  border: 0;
+  width: 300px;
+  min-height: 40px;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  bottom: 40px;
+}

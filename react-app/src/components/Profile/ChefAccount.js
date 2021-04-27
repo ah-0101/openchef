@@ -131,7 +131,7 @@ function ChefAccount({ first_name, last_name, city }) {
                     onChange={handleBio}
                 />
             </div>
-            <button className="btn-style" type="button" onClick={handleUpdateAccount}>Update</button>
+            <button className="btn-style-profile" type="button" onClick={handleUpdateAccount}>Update</button>
             <ul>
                 {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
             </ul>
