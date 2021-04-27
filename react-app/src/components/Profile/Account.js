@@ -117,7 +117,7 @@ const Account = ({ isSelected, setIsSelected }) => {
                         </div>
                     </div>
                 </div> */}
-                <button type="button" onClick={handleUpdateAccount}>Update</button>
+                <button className="btn-style-p" type="button" onClick={handleUpdateAccount}>Update</button>
             </form>
         )
     } else if (isSelected === "Account" && user.chef_id) {
