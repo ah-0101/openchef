@@ -92,10 +92,10 @@ export default function HomePage() {
 
 
             <div>
-                <p className="available-chef"> Available to cook </p>
                 {
                     chefArr?.map(chef => (
                         <div key={nanoid()} id={chef.id} className="chef-container" onClick={chefInfoDisplay}>
+                            <p className="available-chef"> Available to cook </p>
                             <h1 className="chef-name" id={chef.id}>{chef.first_name} {chef.last_name}</h1>
                             <p className="chef-city" id={chef.id} >Available In {chef.city}</p>
                             <img id={chef.id} className="pic-size" src={chef.chef.profile_image} alt='chef-pic' />

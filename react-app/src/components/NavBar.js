@@ -44,12 +44,14 @@ const NavBar = ({ setAuthenticated }) => {
         }
         {user &&
         <>
+        <nav className="nav-nav">
+
             <li className='home-nav'>
               <NavLink to="/" exact={true} activeClassName="active">
                 Home
               </NavLink>
             </li>
-            <li className='profile-nav'>
+            <li className='profile-nav' id='profile-nav_id'>
               <a className="navbar-profile" onClick={getDetails} className="active">
                 My Profile
             </a>
@@ -57,6 +59,7 @@ const NavBar = ({ setAuthenticated }) => {
             <li className="logout-nav">
               <LogoutButton />
             </li>
+        </nav>
         </>
         }
       </ul>

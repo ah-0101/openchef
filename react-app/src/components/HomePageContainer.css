@@ -20,11 +20,35 @@
     right: 200px
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1500px) {
     .chef-container {
         /* display: none; */
         /* max-width: 100px; */
         min-width: 20rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .chef-container {
+        /* display: none; */
+        /* max-width: 100px; */
+        min-width: 18rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .chef-container {
+        /* display: none; */
+        /* max-width: 100px; */
+        min-width: 14rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .chef-container {
+        /* display: none; */
+        /* max-width: 100px; */
+        min-width: 12rem;
     }
 }
 
