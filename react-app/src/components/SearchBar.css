@@ -1,177 +1,183 @@
 .search-bar {
-    /* border-radius: 4px solid #fafafa; */
-    border-bottom: 4px solid #fafafa;
-    width: 640px;
-    height: 50px;
-    font-size: 20px;
-    margin-top: 198px;
-    position: relative;
-    right: 100px;
-    top: 2px;
-    border: none;
-    border-radius: 6px;
+  /* border-radius: 4px solid #fafafa; */
+  border-bottom: 4px solid #fafafa;
+  width: 640px;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 198px;
+  position: relative;
+  right: 100px;
+  top: 2px;
+  border: none;
+  border-radius: 6px;
 }
 
 .search-icon {
-    background: url(../icon-search.jpg) no-repeat left 10px center;
-    background-size: 30px;
-    background-color: white;
+  background: url(../icon-search.jpg) no-repeat left 10px center;
+  background-size: 30px;
+  background-color: white;
 }
 
 .border-calender {
-    width: 440px;
-    height: 50px;
-    margin-top: 200px;
-    font-size: 20px;
-    background-color: white;
-    /* border-radius: 4px; */
-    border-bottom: 4px solid #fafafa;
-    position: absolute;
-    left: 800px;
-    border-radius: 6px;
+  width: 440px;
+  height: 50px;
+  margin-top: 200px;
+  font-size: 20px;
+  background-color: white;
+  /* border-radius: 4px; */
+  border-bottom: 4px solid #fafafa;
+  position: absolute;
+  left: 800px;
+  border-radius: 6px;
 }
 
 .calender-form {
-    padding-top: 10px;
-    width: 190px;
-    height: 36px;
-    font-size: large;
-    border: none;
+  padding-top: 10px;
+  width: 190px;
+  height: 36px;
+  font-size: large;
+  border: none;
 }
 
 .time-form {
-    padding-top: 10px;
-    width: 150px;
-    height: 50px;
-    font-size: large;
-    border: none;
+  padding-top: 10px;
+  width: 150px;
+  height: 50px;
+  font-size: large;
+  border: none;
 }
 
 .duration-form {
-    /* padding-top: 10px; */
-    width: 90px;
-    height: 46px;
-    font-size: large;
-    border: none;
-    position: relative;
-    bottom: 4px;
+  /* padding-top: 10px; */
+  width: 90px;
+  height: 46px;
+  font-size: large;
+  border: none;
+  position: relative;
+  bottom: 4px;
 }
 
 .search-toggle {
-    border: 4px solid #fafafa;
-    height: 50px;
-    /* color: #da3743 */
-    background-color: #ffffff;
-    position: absolute;
-    top: 378px;
-    left: 350px;
-    border-radius: 6px;
-    width: 397px;
+  border: 4px solid #fafafa;
+  height: 50px;
+  /* color: #da3743 */
+  background-color: #ffffff;
+  position: absolute;
+  top: 378px;
+  left: 350px;
+  border-radius: 6px;
+  width: 397px;
 }
 
 .search-toggle-content {
-    padding-left: 20px;
-    padding-top: 10px;
-    color: rgb(7, 7, 7);
-    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    ;
-    font-size: large;
-    font-weight: 500;
+  padding-left: 20px;
+  padding-top: 10px;
+  color: rgb(7, 7, 7);
+  font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+  font-size: large;
+  font-weight: 500;
 }
 
 .search-toggle-none {
-    display: none;
+  display: none;
 }
 
-@media screen and (max-width:1200px) {
-    .chef-welcome {
-        display: none;
-    }
+@media screen and (max-width: 1000px) {
+  #chef-welcome-id {
+    display: none;
+  }
 }
 
 .chef-welcome {
-    font-size: 50px;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: relative;
-    left: -120px;
-    top: 130px;
+  font-size: 50px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;
+  left: -120px;
+  top: 130px;
 }
 
 .search-toggle2-none {
-    display: none;
+  display: none;
 }
 
 .search-toggle2 {
-    border: 4px solid #fafafa;
-    height: 50px;
-    /* color: #da3743 */
-    background-color: #ffffff;
-    position: absolute;
-    top: 436px;
-    /* left: 320px; */
-    /* width: 398px; */
-    left: 350px;
-    border-radius: 6px;
-    width: 397px;
+  border: 4px solid #fafafa;
+  height: 50px;
+  /* color: #da3743 */
+  background-color: #ffffff;
+  position: absolute;
+  top: 436px;
+  /* left: 320px; */
+  /* width: 398px; */
+  left: 350px;
+  border-radius: 6px;
+  width: 397px;
 }
 
 .search-toggle2:hover {
-    background-color: #da3743;
-    transition: background 0.3s ease-in-out;
-    cursor: pointer;
+  background-color: #da3743;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .search-toggle:hover {
-    background-color: #da3743;
-    transition: background 0.3s ease-in-out;
-    cursor: pointer;
+  background-color: #da3743;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .classRender {
-    /* border: 4px solid #fafafa; */
-    /* color: #da3743 */
-    background-color: #ffffff;
-    width: 640px;
-    position: relative;
-    /* bottom: 14px;*/
-    left: -100px;
-    color: rgb(118, 118, 118);
-    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    font-weight: 700;
-    /* border-top: 0.1px solid; */
+  /* border: 4px solid #fafafa; */
+  /* color: #da3743 */
+  background-color: #ffffff;
+  width: 640px;
+  position: relative;
+  /* bottom: 14px;*/
+  left: -100px;
+  color: rgb(118, 118, 118);
+  font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+  font-weight: 700;
+  /* border-top: 0.1px solid; */
 }
 
 .search-ind {
-    border: 4px solid #fafafa;
-    background: url(../chefhar.png  ) no-repeat left 10px center;
-    background-size: 30px;
-    background-color: white;
+  border: 4px solid #fafafa;
+  background: url(../chefhar.png) no-repeat left 10px center;
+  background-size: 30px;
+  background-color: white;
 }
 
 .search-ind:hover {
-    background-color: #da3743;
-    /* transition: background 0.05s ease-in-out; */
-    transition: all 0.4s ease-out;
-    cursor: pointer;
-    color: white;
-    /* border-radius: 2px; */
-    border: 4px solid #da3743;
+  background-color: #da3743;
+  /* transition: background 0.05s ease-in-out; */
+  transition: all 0.4s ease-out;
+  cursor: pointer;
+  color: white;
+  /* border-radius: 2px; */
+  border: 4px solid #da3743;
 }
 
 .search-ind-none {
-    display: none;
+  display: none;
 }
 
 .available-chef {
-    font-size: larger;
-    color: #2d333f;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 2rem;
-    font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    padding-top: 40px;
-    position: relative;
-    left: 270px;
-    border-bottom: 1px solid #d8d9db;
+  font-size: larger;
+  color: #2d333f;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
+  font-family: BrandonText, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+  padding-top: 40px;
+  position: relative;
+  left: 270px;
+  border-bottom: 1px solid #d8d9db;
 }

@@ -32,6 +32,8 @@ def get_one_chefs(id):
     chef = Chef.query.get(id)
     return jsonify(chef.to_dict())
 
+@chef_routes.route('/')
+
 
 # TODO this is going to fitch the data for the chef where the chef have an 'h' anywhere. # noqa
 # ! PS you can set a backTek `` inside the .like and set a variable that will change while typing # noqa

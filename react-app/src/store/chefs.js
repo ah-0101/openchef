@@ -1,5 +1,6 @@
 const GET_CHEFS = 'chefs/getChefs'
 const GET_ONE_CHEF = 'chefs/getOneChef'
+const UPDATE_CHEF = 'chefs/updateChef'
 
 const getChefs = (chefs) => {
     return {
@@ -11,6 +12,13 @@ const getChefs = (chefs) => {
 const getAChef = (chef) => {
     return {
         type: GET_ONE_CHEF,
+        payload: chef,
+    }
+}
+
+const updateChefInfo = (chef) => {
+    return {
+        type: UPDATE_CHEF,
         payload: chef,
     }
 }
@@ -33,6 +41,21 @@ export const getOneChef = (id) => async (dispatch) => {
         const data = await response.json();
         await dispatch(getAChef(data))
         return response;
+    }
+}
+
+export const updateChef = (data) => async dispatch => {
+    const { id, food_type, price, bio } = data
+    const res = await fetch(`/api/chefs/${id}/`, {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getAChef(data))
     }
 }
 

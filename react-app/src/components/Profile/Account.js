@@ -179,8 +179,7 @@ const Account = ({ isSelected, setIsSelected }) => {
                         </div>
                     </div>
                 </div> */}
-                <ChefAccount />
-                <button type="button" onClick={handleUpdateAccount}>Update</button>
+                <ChefAccount first_name={first_name} last_name={last_name} city={city} />
             </form>
         )
     }

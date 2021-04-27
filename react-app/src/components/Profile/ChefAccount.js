@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import '../ChefReviews.css';
 import { getFoodTypes } from '../../store/food_types';
-import { allChefs } from '../../store/chefs';
+import { allChefs, updateChef } from '../../store/chefs';
+import { updateUser } from '../../store/session';
 
 
-function ChefAccount() {
+function ChefAccount({ first_name, last_name, city }) {
     const user = useSelector(state => state.session.user);
     const chef = useSelector(state => state.chefs[user.id])
     const food_types = useSelector(state => state.food_types)
@@ -13,6 +14,7 @@ function ChefAccount() {
     const [bio, setBio] = useState(chef?.chef.bio)
     const dispatch = useDispatch();
     const [price, setPrice] = useState(chef?.chef.price)
+    const [errors, setErrors] = useState([]);
     const id = user.chef_id
 
     useEffect(() => {
@@ -41,6 +43,40 @@ function ChefAccount() {
 
     const handleBio = (e) => {
         setBio(e.target.value)
+    }
+
+    const handleUpdateAccount = async (e) => {
+        e.preventDefault();
+
+        const error = []
+        if (user.first_name === first_name &&
+            user.last_name === last_name &&
+            user.city === city) {
+            error.push("No changes have been made! Please make an update.")
+        }
+        if (first_name === "" ||
+            last_name === "" ||
+            city === "" /*||
+        email === ""*/) {
+            error.push("Please fill out all fields");
+        }
+        setErrors(error)
+
+        const data = {
+            id: id,
+            first_name: first_name,
+            last_name: last_name,
+            city: city,
+            // email: email,
+        }
+        await dispatch(updateUser(data))
+
+        const chefData = {
+            foodType,
+            bio,
+            price,
+        }
+        await dispatch(updateChef(chefData));
     }
 
     return (
@@ -83,6 +119,7 @@ function ChefAccount() {
                     />
                 </div>
             </div>
+            <button type="button" onClick={handleUpdateAccount}>Update</button>
         </>
     )
 }
