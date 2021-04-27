@@ -75,7 +75,7 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
     return (
         <>
             <nav className="nav-search-bar">
-                <div className="border-calender">
+                {/* <div className="border-calender">
                     <Form.Control className='calender-form' type="date"
                          onChange={date => setEventState(date)} />
                     <select className='time-form' value={event_time} onChange={e => setEventTime(e.target.value)}>
@@ -88,10 +88,10 @@ export default function SearchBar({search,setSearch,setBarId,barId,setChefId}) {
                             <option key={duration} value={duration}>⌚ {duration}</option>
                         ))}
                     </select>
-                </div>
+                </div> */}
             <div>
-                <div className='chef-welcome'>Find your Chef for any occasion</div>
                 {/* <span>ss</span> */}
+                <div className='chef-welcome'>Find your Chef for any occasion</div>
                 <div>
                 <input className={`search-bar ${classHandler}`} onChange={handleSearchType} placeholder={"         Search by Cuisine or Chef name!"}></input>
                 <div className='classRender'>
