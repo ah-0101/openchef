@@ -1,148 +1,152 @@
 .all-details {
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  /* flex-direction: row-reverse; */
-  margin-left: auto;
-  margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
 }
 
 .background-image {
-  /* margin-top: 40px; */
-  background-image: url("../kitchen2.jpg");
-  display: flex;
-  /* position: relative; */
-  /* padding: 5px 0px 5px 0px; */
-  justify-content: space-evenly;
-  /* justify-content: space-between; */
-  height: 430px;
+    /* margin-top: 40px; */
+    background-image: url("../kitchen2.jpg");
+    display: flex;
+    /* position: relative; */
+    /* padding: 5px 0px 5px 0px; */
+    justify-content: space-evenly;
+    /* justify-content: space-between; */
+    height: 430px;
 }
+
 .reservation-r {
-  width: 320px;
-  margin: 0 0 0 1rem;
-  z-index: 0;
+    width: 320px;
+    margin: 0 0 0 1rem;
+    z-index: 0;
 }
 
 .detail-rev-section-r {
-  /* padding: 2rem 1rem; */
-  width: 640px;
-  z-index: 0;
-  background: white;
-  display: block;
+    /* padding: 2rem 1rem; */
+    width: 640px;
+    z-index: 0;
+    background: white;
+    display: block;
 }
 
 .details-only-r {
-  padding: 2rem 1rem;
+    padding: 2rem 1rem;
 }
 
 .profile-image img {
-  height: 200px;
-  width: 200px;
-  border-radius: 10px;
-  margin-top: 3em;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 3em;
 }
 
 .chef-name-title-r {
-  outline: none;
-  color: #2d333f;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #d8d9db;
-  margin: 0 0;
-  /* text-align: center; */
+    outline: none;
+    color: #2d333f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #d8d9db;
+    margin: 0 0;
+    /* text-align: center; */
 }
 
 .navigation-chef-div-r {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .navigation-bar-chef-details {
-  height: 48px;
-  list-style: none;
-  background-color: #fff;
-  border-radius: 2px 2px 0 0;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-  position: relative;
-  display: flex;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-  border-bottom: 1px solid #d8d9db;
-  /* justify-content: center; */
+    height: 48px;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 2px 2px 0 0;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    border-bottom: 1px solid #d8d9db;
+    /* justify-content: center; */
 }
 
 .list-elements-chef-detail {
-  padding: 14px 0.5rem;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  text-decoration: none;
-  color: #da3743;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+    padding: 14px 0.5rem;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #da3743;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .chef-short-info-r {
-  display: flex;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  margin-top: 0;
-  /* justify-content: space-around; */
+    display: flex;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0;
+    /* justify-content: space-around; */
 }
 
 .chef-city-r {
-  margin-right: 1rem;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+    margin-right: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .chef-price-r {
-  margin-right: 1rem;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+    margin-right: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
+
 .chef-cuisine-r {
-  margin-right: 1rem;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+    margin-right: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
+
 .chef-bio-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  line-height: 1.33;
-  color: #2d333f;
-  border-bottom: 1px solid #d8d9db;
-  padding-bottom: 1rem;
-  margin: 0 0;
-  /* display: flex; */
-  /* justify-content: space-between; */
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.33;
+    color: #2d333f;
+    border-bottom: 1px solid #d8d9db;
+    padding-bottom: 1rem;
+    margin: 0 0;
+    /* display: flex; */
+    /* justify-content: space-between; */
 }
 
 .chef-reviews-r {
-  padding: 2rem 1rem;
-  width: 640px;
-  z-index: 0;
-  background: white;
-  display: block;
+    padding: 2rem 1rem;
+    width: 640px;
+    z-index: 0;
+    background: white;
+    display: block;
 }
 
 .chef-bio-text-r {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
 }
 
 .errors-res-form-p {
-  color: red;
+    color: red;
 }
