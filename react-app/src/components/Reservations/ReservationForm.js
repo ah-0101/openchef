@@ -45,7 +45,7 @@ const DURATIONS = [
   1, 2, 3, 4
 ]
 
-export default function ReservationForm({ chef_id, price, title, callbackReservation, buttonText, formData = { event_time: "", event_date: "", duration: 0 } }) {
+export default function ReservationForm({ chef_id, price, title, callbackReservation, buttonText, formData = { event_time: "6:00 PM", event_date: "", duration: 1 } }) {
   const user = useSelector(state => state.session.user);
   const [event_date, setEventDate] = useState(formData.event_date)
   const [event_time, setEventTime] = useState(formData.event_time)
@@ -71,13 +71,7 @@ export default function ReservationForm({ chef_id, price, title, callbackReserva
         event_time: event_time,
         duration: Number(duration)
       }
-      console.log(
-        userid,
-        chefid,
-        event_date,
-        event_time,
-        duration,
-      )
+
       // check reservation date to be later than today
       await dispatch(callbackReservation(startingReservation))
       history.push('/profile')
