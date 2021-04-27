@@ -13,9 +13,9 @@ import UpdateReservation from '../Reservations/UpdateReservationContainer';
 import { allUserReservations } from '../../store/reservations';
 import ReservationBtn from './ResComponents/ReservBtn';
 import AccountBtn from './ResComponents/AccountBtn';
-import ChefReservationBtn from './ResComponents/ChefReservBtn';
-import ChefReviewsBtn from './ResComponents/ChefReviewsBtn';
-import UserReviewsBtn from './ResComponents/UserReviewsBtn';
+// import ChefReservationBtn from './ResComponents/ChefReservBtn';
+// import ChefReviewsBtn from './ResComponents/ChefReviewsBtn';
+// import UserReviewsBtn from './ResComponents/UserReviewsBtn';
 
 function MyProfile() {
   const dispatch = useDispatch();
@@ -57,9 +57,9 @@ function MyProfile() {
       <div className="outer-profile-container">
         <ReservationBtn setIsSelected={setIsSelected} />
         <AccountBtn setIsSelected={setIsSelected} />
-        <ChefReservationBtn setIsSelected={setIsSelected} />
+        {/* <ChefReservationBtn setIsSelected={setIsSelected} />
         <ChefReviewsBtn setIsSelected={setIsSelected} />
-        <UserReviewsBtn setIsSelected={setIsSelected} />
+        <UserReviewsBtn setIsSelected={setIsSelected} /> */}
       </div>
       <div className="reservation-component-p">
         <Reservations chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
@@ -68,18 +68,18 @@ function MyProfile() {
         <Account isSelected={isSelected} setIsSelected={setIsSelected} />
       </div>
       {user.chef_id ? chefComponents : ""}
-      <div>
+      {/* <div>
         <Reviews isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <ChefReservations isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
+      </div> */}
       {/* <div>
         <UpdateReservation chefReservations={chefReservations} setChefReservations={setChefReservations} isSelected={isSelected} setIsSelected={setIsSelected} />
       </div> */}
-      <div>
+      {/* <div>
         <ChefReviews isSelected={isSelected} setIsSelected={setIsSelected} />
-      </div>
+      </div> */}
     </div>
   )
 }
