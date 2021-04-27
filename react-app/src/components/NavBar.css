@@ -1,86 +1,83 @@
 .nav-bar {
-    /* background: #f1f2f4;
+  /* background: #f1f2f4;
     position: sticky;
     height: 50px */
-    justify-content: space-evenly;
-    display: flex;
-    background-color: rgb(248, 219, 219);
-    filter: drop-shadow(6px 6px 50px rgb(224, 178, 178));
-    height: 55px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
+  justify-content: space-evenly;
+  display: flex;
+  background-color: #f1f2f4;
+  height: 55px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
 }
 
 .nav-bar a:hover {
-    color: #b8222d;
+  color: #b8222d;
 }
 
 .nav-bar a {
-    font-family: "Raleway", sans-serif;
-    color: #da3743;
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  color: #da3743;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-stuff li {
-    display: inline;
-    padding: 30px;
+  display: inline;
+  padding: 30px;
 }
 
 .home-nav,
 .login-nav,
 .signup-nav {
-    position: relative;
-    top: 15px
+  position: relative;
+  top: 15px;
 }
 
 .home-nav {
-    position: fixed;
-    left: 0%;
-    top: -16px;
+  position: fixed;
+  left: 0%;
+  top: -16px;
 }
 
 .signup-nav {
-    position: fixed;
-    right: 5%;
-    top: -16px;
+  position: fixed;
+  right: 5%;
+  top: -16px;
 }
 
 .login-nav {
-    position: fixed;
-    left: 5%;
-    top: -16px;
+  position: fixed;
+  left: 5%;
+  top: -16px;
 }
 
 .logout-nav {
-    position: fixed;
-    right: 0%;
-    top: -27px;
+  position: fixed;
+  right: 0%;
+  top: -27px;
 }
 
 .profile-nav {
-    position: fixed;
-    left: 5%;
-    top: -16px;
+  position: fixed;
+  left: 5%;
+  top: -16px;
 }
 
 @media screen and (max-width: 1000px) {
-    #profile-nav_id {
-        position: fixed;
-        left: 9%;
-        top: -16px;
-    }
+  #profile-nav_id {
+    position: fixed;
+    left: 9%;
+    top: -16px;
+  }
 }
-
 
 /* .nav-bar a.active {
   color: rgb(255, 0, 0);
   cursor: default;
 } */
-
 
 /* 
 .nav-nav li {
