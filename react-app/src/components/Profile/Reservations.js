@@ -113,7 +113,7 @@ function UserReservations({ isSelected, setIsSelected }) {
     let view;
     if (isSelected === "Reservations") {
         view = (
-            chefs && reservations &&
+            Object.values(chefs).length > 0 &&
             <div className="outer-profile-div-p">
                 {reservationArr?.map((reservation) => (
                     <span className="profile-single-container" key={nanoid()} >

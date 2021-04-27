@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import '../ChefReviews.css';
 import { getFoodTypes } from '../../store/food_types';
-import { allChefs } from '../../store/chefs';
+import { allChefs, updateChef } from '../../store/chefs';
+import { updateUser } from '../../store/session';
 
 
-function ChefAccount() {
+function ChefAccount({ first_name, last_name, city }) {
     const user = useSelector(state => state.session.user);
     const chef = useSelector(state => state.chefs[user.id])
     const food_types = useSelector(state => state.food_types)
-    const [foodType, setFoodType] = useState(food_types?.name);
+    const [food_type_id, setFoodTypeId] = useState(chef?.chef.food_type_id);
     const [bio, setBio] = useState(chef?.chef.bio)
     const dispatch = useDispatch();
     const [price, setPrice] = useState(chef?.chef.price)
+    const [errors, setErrors] = useState([]);
     const id = user.chef_id
 
     useEffect(() => {
@@ -24,15 +26,16 @@ function ChefAccount() {
     useEffect(() => {
         if (chef) {
             setBio(chef.chef.bio)
-            setFoodType(chef.chef.food_type)
             setPrice(chef.chef.price)
         }
     }, [chef])
 
-    const foods = Object.values(food_types);
+    const foodsArr = Object.values(food_types);
+
+    const foods = foodsArr.filter(food => food.id !== food_type_id);
 
     const updateFoodType = (e) => {
-        setFoodType(e.target.value)
+        setFoodTypeId(e.target.value)
     }
 
     const updatePrice = (e) => {
@@ -43,24 +46,70 @@ function ChefAccount() {
         setBio(e.target.value)
     }
 
+    const handleUpdateAccount = async (e) => {
+        e.preventDefault();
+
+        const error = []
+        if (user.first_name === first_name &&
+            user.last_name === last_name &&
+            user.city === city &&
+            chef.chef.bio === bio &&
+            chef.chef.price === price &&
+            chef.chef.food_type_id === food_type_id) {
+            error.push("No changes have been made! Please make an update.")
+        }
+        if (first_name === "" ||
+            last_name === "" ||
+            city === "") {
+            error.push("Please fill out all fields");
+        }
+        setErrors(error)
+
+        if (!error.length) {
+            const data = {
+                id: user.id,
+                first_name: first_name,
+                last_name: last_name,
+                city: city,
+            }
+            await dispatch(updateUser(data))
+
+            const chefData = {
+                id,
+                userId: user.id,
+                food_type_id: Number(food_type_id),
+                bio,
+                price,
+            }
+            await dispatch(updateChef(chefData));
+            alert("Your profile was updated successfully")
+        }
+    }
+
     return (
-        chef &&
+        // Object.values(chef)?.length > 0 &&
         <>
-            <div>
-                <label>Food Type</label>
+            <div className="input-wrapper">
+                <div className="profile-label">
+                    <label>Food Type</label>
+                </div>
                 <select
+                    className="profile-input"
                     onChange={updateFoodType}
                     name="food_type"
                 >
-                    <option value='' disabled>Select one...</option>
+                    <option defaultValue value={food_type_id}>{food_types[food_type_id]?.name}</option>
                     {foods && foods.map((food, i) => (
-                        <option value={foodType} key={i}>{food.name}</option>
+                        <option value={food.id} key={i}>{food.name}</option>
                     ))}
                 </select>
             </div>
-            <div>
-                <label>Price $</label>
+            <div className="input-wrapper">
+                <div className="profile-label">
+                    <label>Price $</label>
+                </div>
                 <input
+                    className="profile-input"
                     type="number"
                     name="price"
                     className="form_text"
@@ -71,18 +120,21 @@ function ChefAccount() {
                     value={price}
                 />
             </div>
-            <div>
-                <div>
+            <div className="input-wrapper">
+                <div className="profile-label">
                     <label>Bio</label>
                 </div>
-                <div>
-                    <textarea
-                        name="bio"
-                        value={bio}
-                        onChange={handleBio}
-                    />
-                </div>
+                <textarea
+                    className="profile-input"
+                    name="bio"
+                    value={bio}
+                    onChange={handleBio}
+                />
             </div>
+            <button className="btn-style-profile" type="button" onClick={handleUpdateAccount}>Update</button>
+            <ul>
+                {errors.map((error, idx) => <li className="error-li" key={idx}>{error}</li>)}
+            </ul>
         </>
     )
 }

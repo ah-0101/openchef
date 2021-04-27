@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 
 from app.models import User, db, Chef, Favorite, Reservation
@@ -30,6 +30,18 @@ def get_one_chefs(id):
     """
     # chef = User.query.join(Chef).filter_by(id=Chef.id).first()
     chef = Chef.query.get(id)
+    return jsonify(chef.to_dict())
+
+@chef_routes.route('/<int:id>/', methods=["PATCH"])
+def update_chef(id):
+    """
+    Updates chef's profile info
+    """
+    chef = Chef.query.get(id)
+    chef.price = request.json.get('price', chef.price)
+    chef.bio = request.json.get('bio', chef.bio)
+    chef.food_type_id = request.json.get('food_type_id', chef.food_type_id)
+    db.session.commit()
     return jsonify(chef.to_dict())
 
 
