@@ -10,7 +10,7 @@ function ChefAccount({ first_name, last_name, city }) {
     const user = useSelector(state => state.session.user);
     const chef = useSelector(state => state.chefs[user.id])
     const food_types = useSelector(state => state.food_types)
-    const [foodType, setFoodType] = useState(food_types?.name);
+    const [food_type_id, setFoodTypeId] = useState(chef?.chef.food_type_id);
     const [bio, setBio] = useState(chef?.chef.bio)
     const dispatch = useDispatch();
     const [price, setPrice] = useState(chef?.chef.price)
@@ -26,15 +26,16 @@ function ChefAccount({ first_name, last_name, city }) {
     useEffect(() => {
         if (chef) {
             setBio(chef.chef.bio)
-            setFoodType(chef.chef.food_type)
             setPrice(chef.chef.price)
         }
     }, [chef])
 
-    const foods = Object.values(food_types);
+    const foodsArr = Object.values(food_types);
+
+    const foods = foodsArr.filter(food => food.id !== food_type_id);
 
     const updateFoodType = (e) => {
-        setFoodType(e.target.value)
+        setFoodTypeId(e.target.value)
     }
 
     const updatePrice = (e) => {
@@ -63,7 +64,7 @@ function ChefAccount({ first_name, last_name, city }) {
         setErrors(error)
 
         const data = {
-            id: id,
+            id: user.id,
             first_name: first_name,
             last_name: last_name,
             city: city,
@@ -72,15 +73,17 @@ function ChefAccount({ first_name, last_name, city }) {
         await dispatch(updateUser(data))
 
         const chefData = {
-            foodType,
+            id,
+            userId: user.id,
+            food_type_id: Number(food_type_id),
             bio,
             price,
         }
         await dispatch(updateChef(chefData));
     }
-
+    // debugger
     return (
-        chef &&
+        // Object.values(chef)?.length > 0 &&
         <>
             <div>
                 <label>Food Type</label>
@@ -88,9 +91,9 @@ function ChefAccount({ first_name, last_name, city }) {
                     onChange={updateFoodType}
                     name="food_type"
                 >
-                    <option value='' disabled>Select one...</option>
+                    <option selected value={food_type_id}>{food_types[food_type_id]?.name}</option>
                     {foods && foods.map((food, i) => (
-                        <option value={foodType} key={i}>{food.name}</option>
+                        <option value={food.id} key={i}>{food.name}</option>
                     ))}
                 </select>
             </div>

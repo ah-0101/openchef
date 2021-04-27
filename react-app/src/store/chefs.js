@@ -45,7 +45,7 @@ export const getOneChef = (id) => async (dispatch) => {
 }
 
 export const updateChef = (data) => async dispatch => {
-    const { id, food_type, price, bio } = data
+    const { id, userId } = data
     const res = await fetch(`/api/chefs/${id}/`, {
         method: 'PATCH',
         headers: {
@@ -54,8 +54,10 @@ export const updateChef = (data) => async dispatch => {
         body: JSON.stringify(data)
     });
     if (res.ok) {
-        const data = await res.json();
-        dispatch(getAChef(data))
+        const resData = await res.json();
+        const data = { ...resData, userId };
+        // debugger
+        dispatch(updateChefInfo(data))
     }
 }
 
@@ -69,6 +71,7 @@ const ChefsReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_CHEFS:
             newState = {};
+            console.log("CHEFS----", action.payload)
             action.payload.chefs.forEach(chef => {
                 newState[chef.id] = chef;
             })
@@ -77,6 +80,12 @@ const ChefsReducer = (state = {}, action) => {
             newState = {};
             newState.chef = action.payload;
             return newState
+        case UPDATE_CHEF:
+            newState = { ...state };
+            newState[action.payload.userId].chef.bio = action.payload.bio
+            newState[action.payload.userId].chef.food_type_id = action.payload.food_type_id
+            newState[action.payload.userId].chef.price = action.payload.price
+            return newState;
         default:
             return state
     }
