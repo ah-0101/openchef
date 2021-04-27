@@ -152,14 +152,12 @@ const Account = ({ isSelected, setIsSelected }) => {
                     <div className="profile-label">
                         <label>City</label>
                     </div>
-                    <div>
-                        <input
-                            className="profile-input"
-                            name="city"
-                            value={city}
-                            onChange={handleCity}
-                        />
-                    </div>
+                    <input
+                        className="profile-input"
+                        name="city"
+                        value={city}
+                        onChange={handleCity}
+                    />
                 </div>
                 {/* <div className="input-wrapper">
                     <div className="profile-label">

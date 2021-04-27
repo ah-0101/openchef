@@ -90,7 +90,9 @@ function ChefAccount({ first_name, last_name, city }) {
         // Object.values(chef)?.length > 0 &&
         <>
             <div className="input-wrapper">
-                <label>Food Type</label>
+                <div className="profile-label">
+                    <label>Food Type</label>
+                </div>
                 <select
                     className="profile-input"
                     onChange={updateFoodType}
@@ -103,7 +105,9 @@ function ChefAccount({ first_name, last_name, city }) {
                 </select>
             </div>
             <div className="input-wrapper">
-                <label>Price $</label>
+                <div className="profile-label">
+                    <label>Price $</label>
+                </div>
                 <input
                     className="profile-input"
                     type="number"
@@ -116,18 +120,16 @@ function ChefAccount({ first_name, last_name, city }) {
                     value={price}
                 />
             </div>
-            <div>
-                <div>
+            <div className="input-wrapper">
+                <div className="profile-label">
                     <label>Bio</label>
                 </div>
-                <div className="input-wrapper">
-                    <textarea
-                        className="profile-input"
-                        name="bio"
-                        value={bio}
-                        onChange={handleBio}
-                    />
-                </div>
+                <textarea
+                    className="profile-input"
+                    name="bio"
+                    value={bio}
+                    onChange={handleBio}
+                />
             </div>
             <button type="button" onClick={handleUpdateAccount}>Update</button>
             <ul>

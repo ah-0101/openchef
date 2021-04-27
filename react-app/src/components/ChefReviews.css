@@ -35,6 +35,12 @@
 
 .input-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form.inner-account-info-container {
+  min-width: 600px;
 }
 
 ul.profile-label-p li {
