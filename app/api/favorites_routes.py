@@ -7,7 +7,6 @@ favorites_routes = Blueprint('favorites', __name__)
 
 @favorites_routes.route('/', methods=['POST'])
 def postFavorites():
-    print(">>>>>>>>>>>")
     data = request.json
     res = Favorite(
         user_id=data['user_id'],

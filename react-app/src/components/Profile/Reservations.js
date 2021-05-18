@@ -176,14 +176,21 @@ function UserReservations({ isSelected, setIsSelected }) {
                                 <div className="CRUD-reservation-btn-p">
                                     <ul className="profile-label-p">
                                         {chefs && reservation.id == editSelected ? "" :
-                                            <button className="btn-style-p" id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>}
+                                            <>
+                                                <button className="update-btn-style-p" id={reservation.id} type="button" onClick={handleEditReservation}>Edit Reservation</button>
+                                                <div>
+                                                    <button className="btn-style-p" id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
+                                                </div>
+                                            </>}
                                     </ul>
                                     {chefs && reservation.id == editSelected ?
-                                        <button className="btn-style-p" id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button> :
-                                        ""}
-                                    <div>
-                                        <button className="btn-style-p" id={reservation.id} type="button" onClick={handleDeleteReservation}>Cancel Reservation</button>
-                                    </div>
+                                        <>
+                                            <button className="update-btn-style-p" id={reservation.id} type="button" onClick={updateReservation}>Update Reservation</button>
+                                            <div>
+                                                <button className="btn-style-p" id={reservation.id} type="button" onClick={e => setEditSelected(0)}>Cancel Edit</button>
+                                            </div>
+                                        </>
+                                        : ""}
                                 </div>
                             </div>
                         </div>

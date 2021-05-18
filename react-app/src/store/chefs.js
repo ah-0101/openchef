@@ -71,7 +71,6 @@ const ChefsReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_CHEFS:
             newState = {};
-            console.log("CHEFS----", action.payload)
             action.payload.chefs.forEach(chef => {
                 newState[chef.id] = chef;
             })
