@@ -13,5 +13,4 @@ def chef_reviews(id):
 @reviews_routes.route('/<int:id>/')
 def user_reviews(id):
     reviews = Review.query.filter_by(user_id=id).all()
-    print("REVIEWS FOR USER---->>>>", reviews)
     return jsonify({"reviews": [review.to_dict() for review in reviews]})

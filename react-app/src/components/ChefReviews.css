@@ -160,14 +160,14 @@ button.account-btn {
   line-height: 16px;
   display: inline-block;
   color: white;
-  background: #0a6fac;
+  background: #2553be;
   width: 140px;
   height: 50px;
   padding: 5px 0;
   cursor: pointer;
+  border-radius: 4px;
   text-align: center;
   font-weight: 400;
-  /* font-size: 12px; */
   font-size: 13px;
 }
 
@@ -180,6 +180,21 @@ button.account-btn {
 
 .btn-style-p {
   background: #da3743;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  border: 0;
+  width: 180px;
+  min-height: 32px;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+.update-btn-style-p {
+  background: #2553be;
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   border: 0;
