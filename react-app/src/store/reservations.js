@@ -38,7 +38,7 @@ export const postReservation = (reservationInfo) => async (dispatch) => {
 }
 
 export const allUserReservations = (user_id) => async (dispatch) => {
-  const response = await fetch(`/api/reservations/${user_id}`, {
+  const response = await fetch(`/api/reservations/${user_id}/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
